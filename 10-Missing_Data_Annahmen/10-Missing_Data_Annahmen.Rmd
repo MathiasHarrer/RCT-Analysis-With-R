@@ -1,6 +1,6 @@
 ---
 title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
-subtitle: Aufbau & Hintergrund
+subtitle: Missing Data
 author: Prof. Dr. David Ebert & Mathias Harrer
 date: Graduiertenseminar TUM-FGZ
 institute: Psychology & Digital Mental Health Care, Technische Universität München
@@ -67,14 +67,67 @@ header-includes: |
 ---
 
 ```{r,setup, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 ```
 
-# First Section
 
-## First Frame
+# Missing Data-Mechanismen
 
-Hello, world!
+## Unbequeme Wahrheiten ... (I)
+
+_"Obviously the best way to treat missing data is not to have them."_
+\newline \scriptsize @orchard1972missing \par \normalsize
+
+Fehlende Werte sind, insbesondere in der medizinischen und psychologischen Forschung, 
+häufig \alert{unvermeidbar}!
+
+**Der Umgang mit fehlenden Werten in der (medizinisch-psychologischen) Forschung ist oftmals mangelhaft:**
+
+- Verteilung fehlender Werte nicht transparent berichtet
+- Unpassendes missing data handling (z.B. \alert{listwise deletion})
+- Adäquate Imputationsmethoden (z.B. MI, FIML) häufig nicht benutzt, inadäquat angewendet, oder
+unzureichend berichtet
+
+
+## Unbequeme Wahrheiten ... (II)
+
+**\textsf{R} macht es nicht (automatisch) "richtig"**
+
+\small
+
+```{r, eval=FALSE, comment="##>", background="green"}
+y <- 1:10
+x <- c(1, NA, NA, NA, 3, 5, 8, 10, -1, 10)
+summary(lm(y ~ x))
+```
+
+```
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)   4.9403     1.7738   2.785   0.0387 *
+## x             0.3172     0.2709   1.171   0.2945  
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+## 
+## Residual standard error: 2.904 on 5 degrees of freedom
+##   (3 observations deleted due to missingness)
+```
+\par \normalsize
+
+## Unbequeme Wahrheiten ... (III)
+
+\metroset{block=fill} 
+\begin{alert}{Taxonomie: Gründe für fehlende Werte in klinischen Studien}
+\begin{itemize}
+  \item \textbf{Instrumente}: Response Burden, zu langes Assessment. 
+  \item \textbf{Teilnehmende}: Überforderung, Privatsphäre-Bedenken, Movationsprobleme (Dropout)
+  \item \textbf{Center}: Inadäquate Umsetzung des Studienmethodik, Personalmangel 
+  \item \textbf{Personal}: Falsche Datenerfassung, Datenverlust, falsche Dateneingabe
+  \item \textbf{Studie}: Technische Fehler, Zeitverzögerungen bei Follow-Ups
+\end{itemize}
+\end{block}
+
+\scriptsize @palmer2018systematic \par \normalsize
 
 # Second Section
 
@@ -183,6 +236,7 @@ with an optional background color.
 
 ## References {.allowframebreaks}
 
+\scriptsize
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  4 OCT 2021 13:53
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  4 OCT 2021 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1576,6 +1576,10 @@ LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
 Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
 (Font)              scaled to size 9.22536pt on input line 13.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.73999pt on input line 21.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.68921pt on input line 21.
 )
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
@@ -1624,6 +1628,11 @@ File: logo/tum_white.png Graphic file (type bmp)
 [13
 
 ]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[14
+
+]
 \tf@nav=\write7
 \openout7 = `06-Aufbau_Hintergrund.nav'.
 
@@ -1638,12 +1647,12 @@ Package rerunfilecheck Info: File `06-Aufbau_Hintergrund.out' has not changed.
 (rerunfilecheck)             Checksum: AC39A4BFE25B5F7CF5EE3091202F0209;310.
  ) 
 Here is how much of TeX's memory you used:
- 29254 strings out of 478492
- 618190 string characters out of 5860601
- 948853 words of memory out of 5000000
- 48882 multiletter control sequences out of 15000+600000
- 416382 words of font info for 86 fonts, out of 8000000 for 9000
+ 29314 strings out of 478492
+ 619962 string characters out of 5860601
+ 948909 words of memory out of 5000000
+ 48940 multiletter control sequences out of 15000+600000
+ 416398 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,13n,171p,1824b,772s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 06-Aufbau_Hintergrund.pdf (13 pages).
+Output written on 06-Aufbau_Hintergrund.pdf (14 pages).

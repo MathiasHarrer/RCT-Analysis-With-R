@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  4 OCT 2021 13:36
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  4 OCT 2021 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**myslides.tex
-(./myslides.tex
+**10-Missing_Data_Annahmen.tex
+(./10-Missing_Data_Annahmen.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-08-27> (/Users/mathiasharrer/Library/TinyTeX/texmf-d
 ist/tex/latex/beamer/beamer.cls
@@ -104,8 +104,8 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen160
 \Gm@layoutvoffset=\dimen161
 \Gm@dimlist=\toks17
-) (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+) (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
 )
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfco
 re.sty
@@ -883,6 +883,124 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 \c@eu@i=\count354
 \c@mkern=\count355
 )
+
+Package fontspec Info: Fira Sans scale = 0.842503424240982.
+
+
+Package fontspec Info: Fira Sans scale = 0.842503424240982.
+
+
+Package fontspec Info: Fira Sans scale = 0.842503424240982.
+
+
+Package fontspec Info: Fira Sans/B scale = 0.8361557457283295.
+
+
+Package fontspec Info: Fira Sans/B scale = 0.8361557457283295.
+
+
+Package fontspec Info: Fira Sans/I scale = 0.842503424240982.
+
+
+Package fontspec Info: Fira Sans/I scale = 0.842503424240982.
+
+
+Package fontspec Info: Fira Sans/BI scale = 0.8361557457283295.
+
+
+Package fontspec Info: Fira Sans/BI scale = 0.8361557457283295.
+
+
+Package fontspec Info: Font family 'FiraSans(0)' created for font 'Fira Sans'
+(fontspec)             with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.842503424240982]"Fira
+(fontspec)             Sans/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.842503424240982]"Fira
+(fontspec)             Sans/OT:script=latn;language=dflt;+smcp;mapping=tex-text
+;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.8361557457283295]"Fira
+(fontspec)             Sans/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8361557457283295]"Fira
+(fontspec)             Sans/B/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.842503424240982]"Fira
+(fontspec)             Sans/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.842503424240982]"Fira
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.8361557457283295]"Fira
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8361557457283295]"Fira
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-t
+ext;"
+
+
+Package fontspec Info: Fira Code scale = 0.8222210753132137.
+
+
+Package fontspec Info: Could not resolve font "Fira Code/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Fira Code scale = 0.8222210753132137.
+
+
+Package fontspec Info: Fira Code/B scale = 0.8175627304521417.
+
+
+Package fontspec Info: Fira Code/BI scale = 0.8175627304521417.
+
+
+Package fontspec Info: Font family 'FiraCode(0)' created for font 'Fira Code'
+(fontspec)             with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,WordSpace={1,0,0},Hy
+phenChar=None,PunctuationSpace=WordSpace,Mapping=tex-ansi].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.8222210753132137]"Fira
+(fontspec)             Code/OT:script=latn;language=dflt;mapping=tex-ansi;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.8175627304521417]"Fira
+(fontspec)             Code/B/OT:script=latn;language=dflt;mapping=tex-ansi;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.8175627304521417]"Fira
+(fontspec)             Code/BI/OT:script=latn;language=dflt;mapping=tex-ansi;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/beamertheme-metropol
 is/beamerthememetropolis.sty
 Package: beamerthememetropolis 2017/01/23 v1.2 Metropolis Beamer theme
@@ -1005,31 +1123,31 @@ is/beamerfontthememetropolis.sty
 Package: beamerfontthememetropolis 2017/01/23 Metropolis font theme
 \c@fontsnotfound=\count365
 
-Package fontspec Info: Fira Sans Light scale = 0.8489466454334375.
+Package fontspec Info: Fira Sans Light scale = 0.8489459548753585.
 
 
-Package fontspec Info: Fira Sans Light scale = 0.8489466454334375.
+Package fontspec Info: Fira Sans Light scale = 0.8489459548753585.
 
 
-Package fontspec Info: Fira Sans Light scale = 0.8489466454334375.
+Package fontspec Info: Fira Sans Light scale = 0.8489459548753585.
 
 
-Package fontspec Info: Fira Sans scale = 0.8425024912474574.
+Package fontspec Info: Fira Sans scale = 0.842503424240982.
 
 
-Package fontspec Info: Fira Sans scale = 0.8425024912474574.
+Package fontspec Info: Fira Sans scale = 0.842503424240982.
 
 
-Package fontspec Info: Fira Sans Light Italic scale = 0.8489466454334375.
+Package fontspec Info: Fira Sans Light Italic scale = 0.8489459548753585.
 
 
-Package fontspec Info: Fira Sans Light Italic scale = 0.8489466454334375.
+Package fontspec Info: Fira Sans Light Italic scale = 0.8489459548753585.
 
 
-Package fontspec Info: Fira Sans Italic scale = 0.8425024912474574.
+Package fontspec Info: Fira Sans Italic scale = 0.842503424240982.
 
 
-Package fontspec Info: Fira Sans Italic scale = 0.8425024912474574.
+Package fontspec Info: Fira Sans Italic scale = 0.842503424240982.
 
 
 Package fontspec Info: Font family 'FiraSansLight(0)' created for font 'Fira
@@ -1043,42 +1161,44 @@ Font={Fira
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.8489466454334375]"Fira Sans
+(fontspec)             <->s*[0.8489459548753585]"Fira Sans
 (fontspec)             Light/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8489466454334375]"Fira Sans
+(fontspec)             <->s*[0.8489459548753585]"Fira Sans
 (fontspec)             Light/OT:script=latn;language=dflt;+smcp;mapping=tex-tex
 t;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.8425024912474574]"Fira
+(fontspec)             <->s*[0.842503424240982]"Fira
 (fontspec)             Sans/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8425024912474574]"Fira
+(fontspec)             <->s*[0.842503424240982]"Fira
 (fontspec)             Sans/OT:script=latn;language=dflt;+smcp;mapping=tex-text
 ;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.8489466454334375]"Fira Sans Light
+(fontspec)             <->s*[0.8489459548753585]"Fira Sans Light
 (fontspec)             Italic/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
-(fontspec)             <->s*[0.8489466454334375]"Fira Sans Light
+(fontspec)             <->s*[0.8489459548753585]"Fira Sans Light
 (fontspec)             Italic/OT:script=latn;language=dflt;+smcp;mapping=tex-te
 xt;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->s*[0.8425024912474574]"Fira Sans
+(fontspec)             <->s*[0.842503424240982]"Fira Sans
 (fontspec)             Italic/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
-(fontspec)             <->s*[0.8425024912474574]"Fira Sans
+(fontspec)             <->s*[0.842503424240982]"Fira Sans
 (fontspec)             Italic/OT:script=latn;language=dflt;+smcp;mapping=tex-te
 xt;"
 
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 10.18744pt on input line 95.
+(Font)              scaled to size 9.29602pt on input line 95.
 
 Package beamerthememetropolis Warning: Could not find Fira Mono fonts on input 
 line 95.
 
 ))
-Package hyperref Info: Option `breaklinks' set `true' on input line 55.
+(/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/beamer/beamerfontthe
+meserif.sty)
+Package hyperref Info: Option `breaklinks' set `true' on input line 58.
 
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.st
 y
@@ -1172,36 +1292,108 @@ Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
 y)
 Package grffile Info: This package is an empty stub for compatibility on input 
 line 40.
+) (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count380
+\mult@box=\box89
+\multicol@leftmargin=\dimen329
+\c@unbalance=\count381
+\c@collectmore=\count382
+\doublecol@number=\count383
+\multicoltolerance=\count384
+\multicolpretolerance=\count385
+\full@width=\dimen330
+\page@free=\dimen331
+\premulticols=\dimen332
+\postmulticols=\dimen333
+\multicolsep=\skip81
+\multicolbaselineskip=\skip82
+\partial@page=\box90
+\last@line=\box91
+\maxbalancingoverflow=\dimen334
+\mult@rightbox=\box92
+\mult@grightbox=\box93
+\mult@gfirstbox=\box94
+\mult@firstbox=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\@tempa=\box105
+\@tempa=\box106
+\@tempa=\box107
+\@tempa=\box108
+\@tempa=\box109
+\@tempa=\box110
+\@tempa=\box111
+\@tempa=\box112
+\@tempa=\box113
+\@tempa=\box114
+\@tempa=\box115
+\@tempa=\box116
+\@tempa=\box117
+\@tempa=\box118
+\@tempa=\box119
+\@tempa=\box120
+\@tempa=\box121
+\@tempa=\box122
+\@tempa=\box123
+\@tempa=\box124
+\@tempa=\box125
+\@tempa=\box126
+\@tempa=\box127
+\@tempa=\box128
+\@tempa=\box129
+\@tempa=\box130
+\@tempa=\box131
+\@tempa=\box132
+\c@minrows=\count386
+\c@columnbadness=\count387
+\c@finalcolumnbadness=\count388
+\last@try=\dimen335
+\multicolovershoot=\dimen336
+\multicolundershoot=\dimen337
+\mult@nat@firstbox=\box133
+\colbreak@box=\box134
+\mc@col@check@num=\count389
 )
-\cslhangindent=\skip81
-(./myslides.aux)
-\openout1 = `myslides.aux'.
+Package hyperref Info: Option `colorlinks' set `true' on input line 165.
+\cslhangindent=\skip83
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 9.22536pt on input line 230.
+(./10-Missing_Data_Annahmen.aux)
+\openout1 = `10-Missing_Data_Annahmen.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 180.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 230.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+30.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1221,12 +1413,12 @@ LaTeX Font Info:    ... okay on input line 180.
 * \topmargin=-72.26999pt
 * \headheight=14.22636pt
 * \headsep=0.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=14.22636pt
 * \marginparwidth=4.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1236,7 +1428,7 @@ LaTeX Font Info:    ... okay on input line 180.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 180.
+Package hyperref Info: Link coloring ON on input line 230.
 
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1249,76 +1441,15 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 titlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count380
+\c@section@level=\count390
 )
-LaTeX Info: Redefining \ref on input line 180.
-LaTeX Info: Redefining \pageref on input line 180.
-LaTeX Info: Redefining \nameref on input line 180.
-(./myslides.out) (./myslides.out)
+LaTeX Info: Redefining \ref on input line 230.
+LaTeX Info: Redefining \pageref on input line 230.
+LaTeX Info: Redefining \nameref on input line 230.
+(./10-Missing_Data_Annahmen.out) (./10-Missing_Data_Annahmen.out)
 \@outlinefile=\write6
-\openout6 = `myslides.out'.
+\openout6 = `10-Missing_Data_Annahmen.out'.
 
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 180.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 180.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/FiraSansLight(0)/m/n on input line
- 180.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/FiraSansLight(0)/b/n on input line
- 180.
-\symnumbers=\mathgroup6
-\sympureletters=\mathgroup7
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/FiraSansLight(0)/m/n --> TU/lmr/m/n on input line 1
-80.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/FiraSansLight(0)/b/n on input line 
-180.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/FiraSansLight(0)/b/n on input line 
-180.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/FiraSansLight(0)/m/n on input line 
-180.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/FiraSansLight(0)/m/n on input line
- 180.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/FiraSansLight(0)/m/it on input line
- 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> TU/FiraSansLight(0)/m/it on input lin
-e 180.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 180.
-LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  TU/FiraSansLight(0)/m/n --> TU/FiraSansLight(0)/b/n on 
-input line 180.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  TU/FiraSansLight(0)/m/it --> TU/FiraSansLight(0)/b/it o
-n input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/FiraSansLight(0)/b/n --> TU/lmr/b/n on input line 1
-80.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  TU/FiraSansLight(0)/b/n --> TU/FiraSansLight(0)/b/n on 
-input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  TU/FiraSansLight(0)/m/n --> TU/FiraSansLight(0)/b/n on 
-input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  TU/FiraSansLight(0)/m/it --> TU/FiraSansLight(0)/b/it o
-n input line 180.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  TU/lmtt/m/n --> TU/lmtt/b/n on input line 180.
 
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/translator/translato
 r-basic-dictionary-English.dict
@@ -1346,163 +1477,208 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-(./myslides.nav)
+(./10-Missing_Data_Annahmen.nav)
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 5.055pt on input line 230.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 6.73999pt on input line 230.
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 5.09372pt on input line 180.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 6.79163pt on input line 180.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 14.6699pt on input line 185.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
-(Font)              scaled to size 14.55836pt on input line 185.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 12.22491pt on input line 185.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 9.29602pt on input line 185.
+(Font)              scaled to size 6.79163pt on input line 230.
+File: logo/tum-lightblue.png Graphic file (type bmp)
+<logo/tum-lightblue.png>
+File: logo/protect.png Graphic file (type bmp)
+<logo/protect.png>
 
-Overfull \vbox (16.67491pt too high) detected at line 185
+Overfull \vbox (42.8368pt too high) detected at line 235
+ []
+
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 12.13197pt on input line 235.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 12.04056pt on input line 235.
+LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
+(Font)              scaled to size 12.13197pt on input line 235.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 10.10999pt on input line 235.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 8.42499pt on input line 235.
+
+Overfull \vbox (15.63992pt too high) detected at line 235
  []
 
 [1
 
 ]
-LaTeX Font Info:    Trying to load font information for OT1+FiraSansLight(0) on
- input line 190.
-LaTeX Font Info:    No file OT1FiraSansLight(0).fd. on input line 190.
-
-LaTeX Font Warning: Font shape `OT1/FiraSansLight(0)/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 190.
-
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-90.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
+40.
+(/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
+40.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-190.
+240.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-190.
+240.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 190.
+(Font)              <10.95> on input line 240.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 190.
+(Font)              <8> on input line 240.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 190.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 190
+(Font)              <6> on input line 240.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 240
 .
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 190
+LaTeX Font Info:    Trying to load font information for U+msb on input line 240
 .
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/it' will be
-(Font)              scaled to size 10.18744pt on input line 190.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/it' will be
-(Font)              scaled to size 6.79163pt on input line 190.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/it' will be
-(Font)              scaled to size 5.09372pt on input line 190.
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 3.39581pt on input line 190.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 3.37pt on input line 240.
 [2
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
-(Font)              scaled to size 12.13197pt on input line 195.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 9.22536pt on input line 265.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 9.15584pt on input line 265.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 10.03381pt on input line 265.
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
 [3
 
-] [4
+]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb
+LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
+(Font)              scaled to size 9.22536pt on input line 3.
+LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
+(Font)              scaled to size 8.2222pt on input line 8.
+Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
+
+Overfull \hbox (21.59807pt too wide) in paragraph at lines 25--25
+[]\TU/FiraCode(0)/m/n/10 ## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.
+’ 0.1 ‘ ’ 1[] 
+ []
+
+)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[4
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
-(Font)              scaled to size 10.10999pt on input line 222.
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
 [5
 
 ] [6
 
 ]
-\openout4 = `myslides.vrb'.
-
-(./myslides.vrb
-Overfull \hbox (32.6101pt too wide) in paragraph at lines 9--9
-[]\TU/lmtt/m/n/12 In Markdown, you can also use _emphasize_ and **bold**.[] 
- []
-
-) [7
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[7
 
 ] [8
 
 ]
-\openout4 = `myslides.vrb'.
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
 
-(./myslides.vrb) [9
+(./10-Missing_Data_Annahmen.vrb
+LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
+(Font)              scaled to size 9.0033pt on input line 3.
+Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.73999pt on input line 21.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.68921pt on input line 21.
+)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[9
 
 ]
-File: myslides_files/figure-beamer/pressureFig-1.pdf Graphic file (type pdf)
-<use myslides_files/figure-beamer/pressureFig-1.pdf>
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
 [10
 
 ]
-\openout4 = `myslides.vrb'.
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
 
-(./myslides.vrb
-LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
-(Font)              scaled to size 9.22536pt on input line 13.
-
-Overfull \hbox (11.73369pt too wide) in alignment at lines 12--17
- [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (11.73369pt too wide) in alignment at lines 17--21
- [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (11.73369pt too wide) in alignment at lines 21--28
- [] [] [] [] [] [] [] [] [] 
- []
-
-)
-Overfull \vbox (16.55042pt too high) detected at line 303
- []
-
+(./10-Missing_Data_Annahmen.vrb)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
 [11
 
-] [12
+]
+File: 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf Graphic fi
+le (type pdf)
+<use 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf>
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[12
+
+]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 8.36151pt on input line 13.
+)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[13
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[14
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[15
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[16
 
 ]
 \tf@nav=\write7
-\openout7 = `myslides.nav'.
+\openout7 = `10-Missing_Data_Annahmen.nav'.
 
 \tf@toc=\write8
-\openout8 = `myslides.toc'.
+\openout8 = `10-Missing_Data_Annahmen.toc'.
 
 \tf@snm=\write9
-\openout9 = `myslides.snm'.
+\openout9 = `10-Missing_Data_Annahmen.snm'.
 
-(./myslides.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package rerunfilecheck Info: File `myslides.out' has not changed.
-(rerunfilecheck)             Checksum: AC39A4BFE25B5F7CF5EE3091202F0209;310.
+(./10-Missing_Data_Annahmen.aux)
+Package rerunfilecheck Info: File `10-Missing_Data_Annahmen.out' has not change
+d.
+(rerunfilecheck)             Checksum: A7DD8028FC30AC668529F18FCB874B65;365.
  ) 
 Here is how much of TeX's memory you used:
- 28932 strings out of 478492
- 609845 string characters out of 5860601
- 940091 words of memory out of 5000000
- 48596 multiletter control sequences out of 15000+600000
- 408347 words of font info for 72 fonts, out of 8000000 for 9000
+ 29323 strings out of 478492
+ 620277 string characters out of 5860601
+ 948972 words of memory out of 5000000
+ 48946 multiletter control sequences out of 15000+600000
+ 416406 words of font info for 89 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,13n,171p,1811b,760s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,13n,171p,1827b,772s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on myslides.pdf (12 pages).
+Output written on 10-Missing_Data_Annahmen.pdf (16 pages).
