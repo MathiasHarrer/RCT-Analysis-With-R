@@ -78,10 +78,29 @@ knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 _"Obviously the best way to treat missing data is not to have them."_
 \newline \scriptsize @orchard1972missing \par \normalsize
 
-Fehlende Werte sind, insbesondere in der medizinischen und psychologischen Forschung, 
+$$~$$
+
+Fehlende Werte sind aber, insbesondere in der medizinischen und psychologischen Forschung, 
 häufig \alert{unvermeidbar}!
 
-**Der Umgang mit fehlenden Werten in der (medizinisch-psychologischen) Forschung ist oftmals mangelhaft:**
+## Unbequeme Wahrheiten ... (II)
+
+\metroset{block=fill} 
+\begin{alertblock}{Taxonomie: Gründe für fehlende Werte in klinischen Studien}
+\begin{itemize}
+  \item \textbf{Instrumente}: Response Burden, zu langes Assessment, ... 
+  \item \textbf{Teilnehmende}: Überforderung, Privatsphäre-Bedenken, Movationsprobleme, ...
+  \item \textbf{Center}: Inadäquate Umsetzung des Studienmethodik, Personalmangel, ...
+  \item \textbf{Personal}: Falsche Datenerfassung, Datenverlust, falsche Dateneingabe, ...
+  \item \textbf{Studie}: Technische Fehler, Zeitverzögerungen bei Follow-Ups, ...
+\end{itemize}
+\end{alertblock}
+
+\scriptsize @palmer2018systematic \par \normalsize
+
+## Unbequeme Wahrheiten ... (III)
+
+**Der Umgang mit fehlenden Werten in der (medizinisch-psychologischen) Forschung ist oftmals mangelhaft:** \scriptsize [@wood2004missing; @akl2015reporting; @vanbuuren, Kapitel 1.1.2] \par \normalsize
 
 - Verteilung fehlender Werte nicht transparent berichtet
 - Unpassendes missing data handling (z.B. \alert{listwise deletion})
@@ -89,9 +108,9 @@ häufig \alert{unvermeidbar}!
 unzureichend berichtet
 
 
-## Unbequeme Wahrheiten ... (II)
+## Unbequeme Wahrheiten ... (IV)
 
-**\textsf{R} macht es nicht (automatisch) "richtig"**
+**\textsf{R} macht es nicht (automatisch) "richtig"!**
 
 \small
 
@@ -114,20 +133,88 @@ summary(lm(y ~ x))
 ```
 \par \normalsize
 
-## Unbequeme Wahrheiten ... (III)
+## Unbequeme Wahrheiten ... (V)
+
+**Was dagegen tun?**
+
+- Umsetzung von \alert{Reporting-Standards}; \scriptsize z.B. `STROBE` [@von2007strengthening] & `CONSORT` [@schulz2010consort], s.a. @sterne2009multiple. \par \normalsize
+- Adäquates \alert{Missing Data Handling}
+  - Basierend auf plausiblen Annahmen, warum fehlende Werte enstanden sind ("Missing Data Mechanism")
+  - ggf. Schätzung (Imputation) fehlender Werte unter Einbezug von deren Unsicherheit
+
+## MCAR, MAR & MNAR (I)
+
+\begin{multicols}{2}
+
+  \null \vfill
+  \includegraphics[width=.3\textwidth]{rubin.jpg}
+  \newline Donald B. Rubin
+  \vfill \null
+
+\columnbreak
+
+  \null \vfill
+  \textbf{Grundannahme}: Das Fehlen oder Vorhandensein von Daten ist Resultat eines probabilistischen Prozesses. \newline \newline
+  Diesem Prozess versucht man sich durch ein Modell (\textbf{\emph{missing data model}}) anzunähern. 
+  \vfill \null
+\end{multicols}
+
+\small [@rubin1976inference] \par \normalsize
+
+## MCAR, MAR & MNAR (II)
+
+\includegraphics[width=1\textwidth]{model_concept_sep.png}
+
+[@harrer2021doing]
+
+
+## MCAR, MAR & MNAR (III)
+
+\small
+
+Nach @rubin1976inference können Missing Data-Mechanismen in 3 Untertypen klassifiziert werden: 
 
 \metroset{block=fill} 
-\begin{alert}{Taxonomie: Gründe für fehlende Werte in klinischen Studien}
-\begin{itemize}
-  \item \textbf{Instrumente}: Response Burden, zu langes Assessment. 
-  \item \textbf{Teilnehmende}: Überforderung, Privatsphäre-Bedenken, Movationsprobleme (Dropout)
-  \item \textbf{Center}: Inadäquate Umsetzung des Studienmethodik, Personalmangel 
-  \item \textbf{Personal}: Falsche Datenerfassung, Datenverlust, falsche Dateneingabe
-  \item \textbf{Studie}: Technische Fehler, Zeitverzögerungen bei Follow-Ups
-\end{itemize}
-\end{block}
 
-\scriptsize @palmer2018systematic \par \normalsize
+\begin{exampleblock}{MCAR}
+  Missing Completely At Random: rein zufällig fehlende Werte einer Variable.
+\end{exampleblock}
+
+\begin{exampleblock}{MAR}
+  Missing At Random: das Fehlen von Werten einer Variable ist abhängig von anderen (observierten) Variablen $\psi$.
+\end{exampleblock}
+
+\begin{exampleblock}{MNAR}
+  Missing Not At Random / "Nonignorable Missing Data": das Fehlen von Werten Variable ist (u.A.) abhängig von der Variable selbst.
+\end{exampleblock}
+
+&rightarrow; Für jede Annahme ergeben sich unterschiedliche Auswirkungen bei der Datenauswertung!
+
+\par \normalsize
+
+## MCAR, MAR & MNAR (IV)
+
+\small
+
+**Beispiele**: 
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{MCAR}
+  Missing Completely At Random: rein zufällig fehlende Werte einer Variable.
+\end{exampleblock}
+
+\begin{exampleblock}{MAR}
+  Missing At Random: das Fehlen von Werten einer Variable ist abhängig von anderen (observierten) Variablen $\psi$.
+\end{exampleblock}
+
+\begin{exampleblock}{MNAR}
+  Missing Not At Random / "Nonignorable Missing Data": das Fehlen von Werten Variable ist (u.A.) abhängig von der Variable selbst.
+\end{exampleblock}
+
+&rightarrow; Für jede Annahme ergeben sich unterschiedliche Auswirkungen bei der Datenauswertung!
+
+\par \normalsize
 
 # Second Section
 
