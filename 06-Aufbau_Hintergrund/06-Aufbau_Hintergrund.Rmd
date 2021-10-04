@@ -1,0 +1,168 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Aufbau & Hintergrund
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: bib.bib
+csl: apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+# First Section
+
+## First Frame
+
+Hello, world!
+
+# Second Section
+
+## Second Frame
+
+### Bulleted Lists
+- Element A
+- Element B
+    - B.1
+    - B.2
+- Element C    
+
+# Elements
+
+## Typography
+
+```
+The theme provides sensible defaults to
+\emph{emphasize} text, \alert{accent} parts
+or show \textbf{bold} results.
+
+In Markdown, you can also use _emphasize_ and **bold**.
+```
+
+\begin{center}becomes\end{center}
+
+The theme provides sensible defaults to \emph{emphasize} text,
+\alert{accent} parts or show \textbf{bold} results [@arendt1989leben; @smit2006costs; @andersson2009internet].
+
+In Markdown, you can also use _emphasize_ and **bold**.
+
+
+## Math
+
+\begin{equation*}
+    e = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right)^n
+\end{equation*}
+
+
+## R Figure Example
+
+The following code generates the plot on the next slide (taken from
+`help(bxp)` and modified slightly):
+
+```{r pressureCode, eval=FALSE}
+library(stats)
+set.seed(753)
+bx.p <- boxplot(split(rt(100, 4),
+                      gl(5, 20)), plot=FALSE)
+bxp(bx.p, notch = FALSE, boxfill = "lightblue",
+    frame = FALSE, outl = TRUE,
+    main = "Example from help(bxp)")
+```  
+
+
+## R Figure Example
+  
+```{r pressureFig, echo=FALSE}
+library(stats)
+set.seed(753)
+bx.p <- boxplot(split(rt(100, 4),
+                      gl(5, 20)), plot=FALSE)
+bxp(bx.p, notch = FALSE, boxfill = "lightblue",
+    frame = FALSE, outl = TRUE,
+    main = "Example from help(bxp)")
+```  
+
+## R Table Example
+  
+A simple `knitr::kable` example:  
+
+```{r kableEx}
+knitr::kable(mtcars[1:5, 1:8],
+             caption="(Parts of) the mtcars dataset")
+```
+
+## Resources
+
+### For more information:
+- See the [Metropolis repository](https://github.com/matze/mtheme) for more on Metropolis
+- See the [RMarkdown repository](https://github.com/rstudio/rmarkdown) for more on RMarkdown
+- See the [binb repository](https://github.com/eddelbuettel/binb) for more on binb 
+- See the [binb vignettes](https://github.com/eddelbuettel/binb/vignettes) for more examples.
+
+## References {.allowframebreaks}
+
+
+
+
+
+
