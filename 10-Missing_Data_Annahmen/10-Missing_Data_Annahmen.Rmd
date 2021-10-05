@@ -137,7 +137,7 @@ summary(lm(y ~ x))
 
 **Was dagegen tun?**
 
-- Umsetzung von \alert{Reporting-Standards}; \scriptsize z.B. `STROBE` [@von2007strengthening] & `CONSORT` [@schulz2010consort], s.a. @sterne2009multiple. \par \normalsize
+- Umsetzung von \alert{Reporting-Standards} \scriptsize z.B. `STROBE` [@von2007strengthening] & `CONSORT` [@schulz2010consort], s.a. @sterne2009multiple. \par \normalsize
 - Adäquates \alert{Missing Data Handling}
   - Basierend auf plausiblen Annahmen, warum fehlende Werte enstanden sind ("Missing Data Mechanism")
   - ggf. Schätzung (Imputation) fehlender Werte unter Einbezug von deren Unsicherheit
@@ -181,11 +181,11 @@ Nach @rubin1976inference können Missing Data-Mechanismen in 3 Untertypen klassi
 \end{exampleblock}
 
 \begin{exampleblock}{MAR}
-  Missing At Random: das Fehlen von Werten einer Variable ist abhängig von anderen (observierten) Variablen $\psi$.
+  Missing At Random: das Fehlen von Werten einer Variable ist abhängig von anderen (observierten) Variablen.
 \end{exampleblock}
 
 \begin{exampleblock}{MNAR}
-  Missing Not At Random / "Nonignorable Missing Data": das Fehlen von Werten Variable ist (u.A.) abhängig von der Variable selbst.
+  Missing Not At Random / "Nonignorable Missing Data": das Fehlen von Werten Variable ist (u.A.) abhängig von den Werten der Variable selbst.
 \end{exampleblock}
 
 &rightarrow; Für jede Annahme ergeben sich unterschiedliche Auswirkungen bei der Datenauswertung!
@@ -194,27 +194,126 @@ Nach @rubin1976inference können Missing Data-Mechanismen in 3 Untertypen klassi
 
 ## MCAR, MAR & MNAR (IV)
 
-\small
+**Notation** \scriptsize [@vanbuuren, Kapitel 2.2.3 & 2.2.4] \par \normalsize
 
-**Beispiele**: 
+- $\mathbf{Y}$: $n\times p$ Matrix mit teils fehlenden Werten ($n$ Personen, $p$ Variablen).
+- $\mathbf{X}$: Matrix mit (vollständig observierten) Kovariaten.
+- $\mathcal{D} = (\mathbf{Y}, \mathbf{X})$: Gesamter Datensatz.
+- $\mathbf{R}$: $n\times p$ Matrix mit 0 (Datenpunkt fehlt) und 1 (Datenpunkt observiert; "response indicator").
+- $\mathbf{Y}_{\text{obs}}$, $\mathbf{Y}_{\text{mis}}$: Observierte Daten, fehlende Daten.
+- $\psi$: Parameter des Missing Data-Modells (typischerweise nicht für die wiss. Fragestellung selbst relevant).
+
+&rightarrow; Missing Data-Modelle treffen Aussagen darüber, \alert{in welcher Beziehung} $\mathbf{Y}_{\text{obs}}$, $\mathbf{Y}_{\text{mis}}$ und $\mathbf{R}$ miteinander stehen. 
+
+
+## MCAR, MAR & MNAR (V)
+
+**MCAR**
+
+$$P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \mathbf{Y}_{\text{mis}}, \psi) \Rightarrow P(\mathbf{R}=0|\psi)$$
+Werte in $\mathbf{Y}$ fehlen "zufällig" (unabhängig von Werten von $\mathbf{Y}$). Das Fehlen von Werten ist nur bestimmt durch die allgemeine Wahrscheinlichkeit, dass Werte fehlen (im Datensatz gab es eher viele oder wenige Missings). \linebreak
+
 
 \metroset{block=fill} 
 
-\begin{exampleblock}{MCAR}
-  Missing Completely At Random: rein zufällig fehlende Werte einer Variable.
+\begin{exampleblock}{Beispiel}
+  Das Fehlen der Variable "Alter" ist weder von der Variable "Neurotizismus", noch vom Alter der Person selbst abhängig.
 \end{exampleblock}
 
-\begin{exampleblock}{MAR}
-  Missing At Random: das Fehlen von Werten einer Variable ist abhängig von anderen (observierten) Variablen $\psi$.
+
+## MCAR, MAR & MNAR (VI)
+
+**MAR**
+
+$$P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \mathbf{Y}_{\text{mis}}, \psi) \Rightarrow P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \psi)$$
+
+Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$ **und** \alert{observierter} Information $\mathbf{Y}_{\text{obs}}$. \linebreak
+
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Beispiel}
+  Personen mit höheren Neurotizismus-Werten geben ihr Alter seltener an als Personen mit niedrigem Neurotizismus, unabhängig ihres Alters.
 \end{exampleblock}
 
-\begin{exampleblock}{MNAR}
-  Missing Not At Random / "Nonignorable Missing Data": das Fehlen von Werten Variable ist (u.A.) abhängig von der Variable selbst.
+
+## MCAR, MAR & MNAR (VII)
+
+**MNAR**
+
+$$P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \mathbf{Y}_{\text{mis}}, \psi) \Rightarrow~?$$
+_Die Formel lässt sich nicht "vereinfachen" !_
+
+Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$, observierter Information $\mathbf{Y}_{\text{obs}}$, **und** der \alert{unobservierten Information} $\mathbf{Y}_{\text{mis}}$ selbst. \linebreak
+
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Beispiel}
+  Das Fehlen der Alters-Variable hängt (u.A.) vom Alter der Person selbst ab. Eventuell geben ältere Personen mit hohem Neurotizismus ihr Alter seltener an. \textbf{Aber das wissen wir nicht}, da die Daten fehlen!
 \end{exampleblock}
 
-&rightarrow; Für jede Annahme ergeben sich unterschiedliche Auswirkungen bei der Datenauswertung!
 
-\par \normalsize
+## MCAR, MAR & MNAR (VIII)
+
+
+**Observierte und unobservierte Werte unter drei Missing Data-Annahmen**
+
+\includegraphics[width=0.8\textwidth]{buuren-mechanisms.png}
+
+aus @vanbuuren, Kapitel 2.2.4
+
+
+## MCAR, MAR & MNAR (IX)
+
+**Implikationen**
+
+- **MCAR**: Da die Werte zufällig fehlen, ist beim Einsatz passender statistischer Verfahren keine Verzerrung der Ergbnisse zu erwarten. Es besteht kein systematischer \alert{Bias}; nur ein Verlust der statistischen Power durch den Datenverlust.
+- **MAR**: Bei der Schätzung von Parametern ergeben sich evtl. Verzerrungen (Bias), wenn die abhängigen Variablen nicht im Modell berücksichtigt werden. Werden die abhängigen Variablen adäquat mit einbezogen, können Verzerrungen vermieden werden.
+
+
+## MCAR, MAR & MNAR (X)
+
+
+- **MNAR**: Bei der Schätzung von Parametern ergeben sich Verzerrungen. Da das Fehlen von Werten von den fehlenden Werten selbst abhängig ist, können nur "best guesses" hinsichtlich des \alert{zugrundeliegenden Selektionsmodells} getroffen werden. Ob diese Selektionsmodelle korrekt sind, kann nicht empirisch überprüft werden. 
+
+## MCAR, MAR & MNAR (XI)
+
+Beim Vorliegen von MNAR spricht man von "nonignorable missing data" [@little2019statistical]. Dies bedeutet, dass \underline{nicht} von der gemeinsamen (Posterior-)**Verteilung der observierten Daten auf die der fehlenden Daten geschlossen werden kann**:
+
+$$P(\mathbf{Y}|\mathbf{Y}_{\text{obs}}, \mathbf{R}=1) \neq P(\mathbf{Y}|\mathbf{Y}_{\text{obs}},\mathbf{R}=0)$$
+
+Das impliziert, dass eine Schätzung (Imputation) auf Basis der vorliegenden Werte nicht ohne weiteres möglich ist. Es müssen Annahmen getroffen werden, die \alert{"über die Daten hinaus gehen"}. 
+
+## MCAR, MAR & MNAR (XII)
+
+**Was bedeutet das für die Analyse von RCT-Daten?**
+
+* **MCAR**: Complete Case-Analysen und andere Ad Hoc-Verfahren führen nicht zu einer systematischen Verzerrung der Ergebnisse (aber durchaus zu einem Verlust statistischer Power/"Effizienz"). Die MCAR-Annahme ist typischerweise für RCT-Daten \alert{nicht sehr plausibel} [@bell2014handling; @mallinckrodt2004choice]. Selbst wenn die MCAR-Annahme zutrifft, können Verfahren wie Multiple Imputation sinnvoll sein, z.B. um Konfidenzintervalle korrekter zu schätzen [vgl. @pedersen2017missing].
+
+## MCAR, MAR & MNAR (XIII)
+
+**Was bedeutet das für die Analyse von RCT-Daten?**
+
+* **MAR**: Complete Case-Analysen führen zu einer Verzerrung der Ergebnisse. Verfahren wie Multiple Imputation, Full Information Maximum Likelihood (FIML) oder Mixed-Effect Models (eingeschränkt) können aber \alert{genutzt werden, um die MAR-Annahme abzubilden}. Werden diese Modelle korrekt angewandt, vermeidet dies gebiaste Ergebnisse und führt zu einem korrekten Miteinbezug der Unsicherheit durch fehlende Werte (&rightarrow; passende Konfidenzintervalle).
+
+## MCAR, MAR & MNAR (XIII)
+
+
+**Was bedeutet das für die Analyse von RCT-Daten?**
+
+* **MNAR**: Auch Verfahren wie Multiple Imputation (denen nur die observierten Daten zugrunde liegen) können zu Verzerrungen in den Ergebnissen führen. Methoden wie Pattern-Mixture () oder Selektionmodelle () können genutzt werden, um die Ergebnisse unter Annahme bestimmter Missing Data-Mechanismen zu analysieren. Diese Annahmen sind jedoch nicht direkt empirisch nachweisbar.
+
+
+
+
+_"[W]e recommend that in trials [...], all data should be used in an analysis that makes a plausible assumption about missing data. Usually this will be a MAR assumption."_
+
+@bell2014handling
+
+_"The assumption of ignorability is often sensible in practice, and generally provides a natural starting point."_
+
+@vanbuuren, Kapitel 2.2.6
 
 # Second Section
 
