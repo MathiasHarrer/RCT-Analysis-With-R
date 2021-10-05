@@ -16,6 +16,7 @@ header-includes: |
   \let\@@magyar@captionfix\relax
   \makeatother
   \usepackage{xcolor}
+  \usepackage{tikz}
   \definecolor{protectBlue}{RGB}{48,124,148}
   \definecolor{protectGreen}{RGB}{161, 198, 66}
   \definecolor{verywhite}{rgb}{1, 1, 1}
@@ -81,12 +82,12 @@ _"Obviously the best way to treat missing data is not to have them."_
 $$~$$
 
 Fehlende Werte sind aber, insbesondere in der medizinischen und psychologischen Forschung, 
-häufig \alert{unvermeidbar}!
+häufig **\alert{unvermeidbar}**!
 
 ## Unbequeme Wahrheiten ... (II)
 
 \metroset{block=fill} 
-\begin{alertblock}{Taxonomie: Gründe für fehlende Werte in klinischen Studien}
+\begin{exampleblock}{Taxonomie: Gründe für fehlende Werte in klinischen Studien}
 \begin{itemize}
   \item \textbf{Instrumente}: Response Burden, zu langes Assessment, ... 
   \item \textbf{Teilnehmende}: Überforderung, Privatsphäre-Bedenken, Movationsprobleme, ...
@@ -94,16 +95,16 @@ häufig \alert{unvermeidbar}!
   \item \textbf{Personal}: Falsche Datenerfassung, Datenverlust, falsche Dateneingabe, ...
   \item \textbf{Studie}: Technische Fehler, Zeitverzögerungen bei Follow-Ups, ...
 \end{itemize}
-\end{alertblock}
+\end{exampleblock}
 
 \scriptsize @palmer2018systematic \par \normalsize
 
 ## Unbequeme Wahrheiten ... (III)
 
-**Der Umgang mit fehlenden Werten in der (medizinisch-psychologischen) Forschung ist oftmals mangelhaft:** \scriptsize [@wood2004missing; @akl2015reporting; @vanbuuren, Kapitel 1.1.2] \par \normalsize
+**Der Umgang mit fehlenden Werten in der (medizinisch-psychologischen) Forschung ist oftmals mangelhaft:** \scriptsize [@wood2004missing; @akl2015reporting; @vanbuuren, Kapitel 1.1.2; @bell2014handling] \par \normalsize
 
 - Verteilung fehlender Werte nicht transparent berichtet
-- Unpassendes missing data handling (z.B. \alert{listwise deletion})
+- Unpassendes missing data handling (z.B. **\alert{listwise deletion}**)
 - Adäquate Imputationsmethoden (z.B. MI, FIML) häufig nicht benutzt, inadäquat angewendet, oder
 unzureichend berichtet
 
@@ -137,10 +138,12 @@ summary(lm(y ~ x))
 
 **Was dagegen tun?**
 
-- Umsetzung von \alert{Reporting-Standards} \scriptsize z.B. `STROBE` [@von2007strengthening] & `CONSORT` [@schulz2010consort], s.a. @sterne2009multiple. \par \normalsize
-- Adäquates \alert{Missing Data Handling}
+- Umsetzung von **\alert{Reporting-Standards}** \scriptsize z.B. `STROBE` [@von2007strengthening] & `CONSORT` [@schulz2010consort], s.a. @sterne2009multiple. \par \normalsize
+- Adäquates **\alert{Missing Data Handling}**
   - Basierend auf plausiblen Annahmen, warum fehlende Werte enstanden sind ("Missing Data Mechanism")
   - ggf. Schätzung (Imputation) fehlender Werte unter Einbezug von deren Unsicherheit
+
+# MCAR, MAR & MNAR
 
 ## MCAR, MAR & MNAR (I)
 
@@ -203,7 +206,7 @@ Nach @rubin1976inference können Missing Data-Mechanismen in 3 Untertypen klassi
 - $\mathbf{Y}_{\text{obs}}$, $\mathbf{Y}_{\text{mis}}$: Observierte Daten, fehlende Daten.
 - $\psi$: Parameter des Missing Data-Modells (typischerweise nicht für die wiss. Fragestellung selbst relevant).
 
-&rightarrow; Missing Data-Modelle treffen Aussagen darüber, \alert{in welcher Beziehung} $\mathbf{Y}_{\text{obs}}$, $\mathbf{Y}_{\text{mis}}$ und $\mathbf{R}$ miteinander stehen. 
+&rightarrow; Missing Data-Modelle treffen Aussagen darüber, **\alert{in welcher Beziehung}** $\mathbf{Y}_{\text{obs}}$, $\mathbf{Y}_{\text{mis}}$ und $\mathbf{R}$ miteinander stehen. 
 
 
 ## MCAR, MAR & MNAR (V)
@@ -227,7 +230,7 @@ Werte in $\mathbf{Y}$ fehlen "zufällig" (unabhängig von Werten von $\mathbf{Y}
 
 $$P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \mathbf{Y}_{\text{mis}}, \psi) \Rightarrow P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \psi)$$
 
-Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$ **und** \alert{observierter} Information $\mathbf{Y}_{\text{obs}}$. \linebreak
+Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$ **und** **\alert{observierter}** Information $\mathbf{Y}_{\text{obs}}$. \linebreak
 
 
 \metroset{block=fill} 
@@ -244,7 +247,7 @@ Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$ **und** \alert{observierter} I
 $$P(\mathbf{R}=0|\mathbf{Y}_{\text{obs}}, \mathbf{Y}_{\text{mis}}, \psi) \Rightarrow~?$$
 _Die Formel lässt sich nicht "vereinfachen" !_
 
-Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$, observierter Information $\mathbf{Y}_{\text{obs}}$, **und** der \alert{unobservierten Information} $\mathbf{Y}_{\text{mis}}$ selbst. \linebreak
+Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$, observierter Information $\mathbf{Y}_{\text{obs}}$, **und** der **\alert{unobservierten Information}** $\mathbf{Y}_{\text{mis}}$ selbst. \linebreak
 
 
 \metroset{block=fill} 
@@ -268,52 +271,134 @@ aus @vanbuuren, Kapitel 2.2.4
 
 **Implikationen**
 
-- **MCAR**: Da die Werte zufällig fehlen, ist beim Einsatz passender statistischer Verfahren keine Verzerrung der Ergbnisse zu erwarten. Es besteht kein systematischer \alert{Bias}; nur ein Verlust der statistischen Power durch den Datenverlust.
+- **MCAR**: Da die Werte zufällig fehlen, ist beim Einsatz passender statistischer Verfahren keine Verzerrung der Ergbnisse zu erwarten. Es besteht kein systematischer **\alert{Bias}**; nur ein Verlust der statistischen Power durch den Datenverlust.
 - **MAR**: Bei der Schätzung von Parametern ergeben sich evtl. Verzerrungen (Bias), wenn die abhängigen Variablen nicht im Modell berücksichtigt werden. Werden die abhängigen Variablen adäquat mit einbezogen, können Verzerrungen vermieden werden.
 
 
 ## MCAR, MAR & MNAR (X)
 
 
-- **MNAR**: Bei der Schätzung von Parametern ergeben sich Verzerrungen. Da das Fehlen von Werten von den fehlenden Werten selbst abhängig ist, können nur "best guesses" hinsichtlich des \alert{zugrundeliegenden Selektionsmodells} getroffen werden. Ob diese Selektionsmodelle korrekt sind, kann nicht empirisch überprüft werden. 
+- **MNAR**: Bei der Schätzung von Parametern ergeben sich Verzerrungen. Da das Fehlen von Werten von den fehlenden Werten selbst abhängig ist, können nur "best guesses" hinsichtlich des **\alert{zugrundeliegenden Dropout-Mechanismus}** getroffen werden. Ob diese korrekt sind, kann nicht empirisch überprüft werden. 
 
 ## MCAR, MAR & MNAR (XI)
 
-Beim Vorliegen von MNAR spricht man von "nonignorable missing data" [@little2019statistical]. Dies bedeutet, dass \underline{nicht} von der gemeinsamen (Posterior-)**Verteilung der observierten Daten auf die der fehlenden Daten geschlossen werden kann**:
+Beim Vorliegen von MNAR spricht man von **\alert{"nonignorable missing data"}** [@little2019statistical]. Dies bedeutet, dass \underline{nicht} von der gemeinsamen (Posterior-)**Verteilung der observierten Daten auf die der fehlenden Daten geschlossen werden kann**:
 
 $$P(\mathbf{Y}|\mathbf{Y}_{\text{obs}}, \mathbf{R}=1) \neq P(\mathbf{Y}|\mathbf{Y}_{\text{obs}},\mathbf{R}=0)$$
 
-Das impliziert, dass eine Schätzung (Imputation) auf Basis der vorliegenden Werte nicht ohne weiteres möglich ist. Es müssen Annahmen getroffen werden, die \alert{"über die Daten hinaus gehen"}. 
+Das impliziert, dass eine Schätzung (Imputation) auf Basis der vorliegenden Werte nicht ohne weiteres möglich ist. Es müssen Annahmen getroffen werden, die **\alert{"über die Daten hinaus gehen"}**. 
 
 ## MCAR, MAR & MNAR (XII)
 
 **Was bedeutet das für die Analyse von RCT-Daten?**
 
-* **MCAR**: Complete Case-Analysen und andere Ad Hoc-Verfahren führen nicht zu einer systematischen Verzerrung der Ergebnisse (aber durchaus zu einem Verlust statistischer Power/"Effizienz"). Die MCAR-Annahme ist typischerweise für RCT-Daten \alert{nicht sehr plausibel} [@bell2014handling; @mallinckrodt2004choice]. Selbst wenn die MCAR-Annahme zutrifft, können Verfahren wie Multiple Imputation sinnvoll sein, z.B. um Konfidenzintervalle korrekter zu schätzen [vgl. @pedersen2017missing].
+\begin{center}
+\alert{\textbf{MCAR}}
+\end{center}
 
-## MCAR, MAR & MNAR (XIII)
+- Complete Case-Analysen und andere Ad Hoc-Verfahren führen nicht zu einer systematischen Verzerrung der Ergebnisse (aber durchaus zu einem Verlust statistischer Power/"Effizienz"). 
+
+- Die MCAR-Annahme ist typischerweise für RCT-Daten **\alert{nicht sehr plausibel}**. \scriptsize [@bell2014handling; @mallinckrodt2004choice] \par \normalsize
+
+- Selbst wenn die MCAR-Annahme zutrifft, können Verfahren wie Multiple Imputation genutzt werden, z.B. um Konfidenzintervalle korrekter zu schätzen. \scriptsize [vgl. @pedersen2017missing] \par \normalsize
+
+
+## MCAR, MAR & MNAR (XIII) {.t}
 
 **Was bedeutet das für die Analyse von RCT-Daten?**
 
-* **MAR**: Complete Case-Analysen führen zu einer Verzerrung der Ergebnisse. Verfahren wie Multiple Imputation, Full Information Maximum Likelihood (FIML) oder Mixed-Effect Models (eingeschränkt) können aber \alert{genutzt werden, um die MAR-Annahme abzubilden}. Werden diese Modelle korrekt angewandt, vermeidet dies gebiaste Ergebnisse und führt zu einem korrekten Miteinbezug der Unsicherheit durch fehlende Werte (&rightarrow; passende Konfidenzintervalle).
+\begin{center}
+\alert{\textbf{MAR}}
+\end{center}
 
-## MCAR, MAR & MNAR (XIII)
+- Complete Case-Analysen führen zu einer Verzerrung der Ergebnisse. 
+- Verfahren wie Multiple Imputation, Full Information Maximum Likelihood (FIML) oder Mixed-Effect Models (eingeschränkt) können aber **\alert{genutzt werden, um die MAR-Annahme abzubilden}**. 
+- Werden diese Modelle korrekt angewandt, vermeidet dies gebiaste Ergebnisse und führt zu einem korrekten Miteinbezug der Unsicherheit durch fehlende Werte (&rightarrow; passende Konfidenzintervalle).
+
+## MCAR, MAR & MNAR (XIV) {.t}
 
 
 **Was bedeutet das für die Analyse von RCT-Daten?**
 
-* **MNAR**: Auch Verfahren wie Multiple Imputation (denen nur die observierten Daten zugrunde liegen) können zu Verzerrungen in den Ergebnissen führen. Methoden wie Pattern-Mixture () oder Selektionmodelle () können genutzt werden, um die Ergebnisse unter Annahme bestimmter Missing Data-Mechanismen zu analysieren. Diese Annahmen sind jedoch nicht direkt empirisch nachweisbar.
+\begin{center}
+\alert{\textbf{MNAR}}
+\end{center}
+
+- Auch Verfahren wie Multiple Imputation (denen nur die observierten Daten zugrunde liegen) können zu **\alert{Verzerrungen in den Ergebnissen führen}**. 
+- Methoden wie Pattern-Mixture oder Selektionmodelle können genutzt werden, um die Ergebnisse unter Annahme bestimmter Dropout-Mechanismen zu analysieren. \scriptsize [@little2019statistical, Kapitel 15; @heckman1976common] \par \normalsize 
+- Diese Annahmen sind jedoch nicht direkt empirisch nachweisbar.
 
 
+## MCAR, MAR & MNAR (XV) 
+
+
+_"MNAR models are [...] typically **\alert{highly dependent on untestable and often implicit assumptions}** regarding the
+distribution of the unobserved measurements given the observed measurements."_
+
+
+\textemdash @molenberghs2004analyzing, S. 447
+
+
+
+
+## MCAR, MAR & MNAR (XVI) 
+
+\alert{\textbf{Was soll ich für meinen Trial annehmen?}}
 
 
 _"[W]e recommend that in trials [...], all data should be used in an analysis that makes a plausible assumption about missing data. Usually this will be a MAR assumption."_
 
-@bell2014handling
+\footnotesize
+\textemdash @bell2014handling \par \normalsize
 
 _"The assumption of ignorability is often sensible in practice, and generally provides a natural starting point."_
 
-@vanbuuren, Kapitel 2.2.6
+\footnotesize
+\textemdash @vanbuuren, Kapitel 2.2.6 \par \normalsize
+
+## Zusammenfassung
+
+- Dropout & Fehlende Daten sind bei RCTs **kaum zu vermeiden**.
+
+- Das Fehlen von Daten kann man sich als **"Produkt" eines wahrscheinlichkeitsbasierten Prozesses** vorstellen, der von einem (realen oder angenommenen) **Missing Data-Mechanismus** gesteuert wird.
+
+- Derartige Mechanismen lassen sich in drei "Archetypen" zusammenfassen: **MCAR**, **MAR** und **MNAR**.
+
+- Wird der zugrundeliegende Missing Data-Mechanismus \underline{nicht} berücksichtigt, kann dies bei der Analyse zu **Verzerrungen** und **falschen Schlußfolgerungen** führen.
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-0.7cm,yshift=-8.7cm] at (current page.north east)
+    {\includegraphics[width=1cm,height=1cm]{summary.png}};
+\end{tikzpicture}
+
+## Zusammenfassung
+
+
+- Ob Daten MAR oder MNAR sind, kann **\underline{nicht} anhand der Daten selbst bestimmt werden**; beide Annahmen sind immer nur mehr oder weniger plausibel.
+
+- Bei RCTs ist die **Annahme von MAR häufig ein guter Startpunkt**; die Ergebnisse im Fall von nonignorable missing data (MNAR) können dann z.B. durch Sensitivitätsanalysen geprüft werden [@bell2014handling].
+
+- Insbesondere **multiple Imputationsverfahren** sind ein gutes Mittel, Verzerrungen der Ergebnisse durch Dropout unter Annahme von MAR vorzubeugen.
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-0.7cm,yshift=-8.7cm] at (current page.north east)
+    {\includegraphics[width=1cm,height=1cm]{summary.png}};
+\end{tikzpicture}
+
+## Zusammenfassung
+
+\small
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Kurze Anmerkung zu Little's MCAR Test}
+  Der $\chi^2$ MCAR Test von Little () findet immer noch häufig bei der Analyse von RCT Verwendung.
+  Die Nullhypothese ist hierbei, dass Missings in den Daten zufällig auftreten (MCAR). 
+  Der praktische Nutzen dieses Tests ist häufig begrenzt: die Fähigkeit des Tests, die Nullhypothese (MCAR) hängt von der Größe des Datensets, und damit der statistischen Power ab. Bei großen Datensets können schon kleine Abweichungen zu einem Wert $p$<0.05 führen. 
+\end{exampleblock}
+
+\par \normalsize
 
 # Second Section
 
