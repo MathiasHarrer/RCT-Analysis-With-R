@@ -12,6 +12,9 @@ monofont: "Fira Code"
 mainfont: "Fira Sans"
 header-includes: |
   ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{amsmath,amsthm}
   \makeatletter
   \let\@@magyar@captionfix\relax
   \makeatother
@@ -325,7 +328,7 @@ Das impliziert, dass eine Schätzung (Imputation) auf Basis der vorliegenden Wer
 \end{center}
 
 - Auch Verfahren wie Multiple Imputation (denen nur die observierten Daten zugrunde liegen) können zu **\alert{Verzerrungen in den Ergebnissen führen}**. 
-- Methoden wie Pattern-Mixture oder Selektionmodelle können genutzt werden, um die Ergebnisse unter Annahme bestimmter Dropout-Mechanismen zu analysieren. \scriptsize [@little2019statistical, Kapitel 15; @heckman1976common] \par \normalsize 
+- Methoden wie **Pattern-Mixture/Selektionmodelle** oder **referenzbasierte Imputation** können genutzt werden, um die Ergebnisse unter Annahme bestimmter Dropout-Mechanismen zu analysieren. \scriptsize [@little2019statistical, Kapitel 15; @heckman1976common; @carpenter2013analysis] \par \normalsize 
 - Diese Annahmen sind jedoch nicht direkt empirisch nachweisbar.
 
 
@@ -388,19 +391,100 @@ _"The assumption of ignorability is often sensible in practice, and generally pr
 
 ## Zusammenfassung
 
-\small
+\footnotesize
 
 \metroset{block=fill} 
 
 \begin{exampleblock}{Kurze Anmerkung zu Little's MCAR Test}
-  Der $\chi^2$ MCAR Test von Little () findet immer noch häufig bei der Analyse von RCT Verwendung.
-  Die Nullhypothese ist hierbei, dass Missings in den Daten zufällig auftreten (MCAR). 
-  Der praktische Nutzen dieses Tests ist häufig begrenzt: die Fähigkeit des Tests, die Nullhypothese (MCAR) hängt von der Größe des Datensets, und damit der statistischen Power ab. Bei großen Datensets können schon kleine Abweichungen zu einem Wert $p$<0.05 führen. 
+\begin{itemize}
+  \item Der $\chi^2$ MCAR Test von Little findet immer noch häufig bei der Analyse von RCT Verwendung.
+  \item Die Nullhypothese ist hierbei, dass Missings in den Daten zufällig auftreten \\ ($\rightarrow$ MCAR). 
+  \item Der \textbf{praktische Nutzen dieses Tests ist häufig begrenzt}: die Fähigkeit des Tests, die Nullhypothese (MCAR) zu verwerfen, hängt von der Größe des Datensets, und damit der statistischen Power ab. Bei großen Datensets können schon kleine Abweichungen zu einem Wert $p$<0.05 führen.
+  \item Ein signifikanter MCAR-Test sagt nichts darüber, ob die Daten MAR oder MNAR sind!
+  \item \alert{\textbf{Tipp:}} stattdessen MAR als plausiblen "first start" annehmen, MNAR-Auswirkungen ggf. durch Sensitivitätsanalysen explorieren.
+  \end{itemize}
 \end{exampleblock}
+
+siehe @little1988test.
 
 \par \normalsize
 
-# Second Section
+# Multiple Imputation
+
+## Multiple Imputation (I)
+
+- Multiple Imputation [**\alert{MI}**, @rubin1987multiple] ist eine der flexibelsten und **gängigsten Methoden** zum Umgang mit fehlenden Werten. \linebreak
+
+- **Ziel von MI**: auf Basis der Verteilung der beobachteten Daten plausible Werte für die fehlenden Werte schätzen ("imputieren"). \linebreak
+
+- Um die Unsicherheit bei der Schätzung fehlender Werte abzubilden, werden **mehrere ("multiple") Imputationen** für jeden fehlenden Datenpunkt erzeugt. \linebreak
+
+- Die so generierten vollständigen Datensätze werden dann **simultan analysiert** (z.B. Berechnung des Stichprobenmittelwerts) und Ergebnisse abschließend **gepoolt**.
+
+
+
+## Multiple Imputation (II)
+
+
+\includegraphics[width=1\textwidth]{mi.png}
+
+\scriptsize
+
+aus @van2011mice.
+
+\par \normalsize
+
+## Multiple Imputation (III)
+
+- MI kann unter **Annahme von MCAR und MAR** (sowie unter bestimmten Voraussetzungen auch MNAR) verwendet werden. \linebreak
+
+- Wenn korrekt angewandt führt MI zur **\alert{verzerrungsfreien Schätzung von Populationsparametern}** (Regressionsgewichte, Populationsmittelwerte, Korrelationen, etc.) sowie deren Varianz ("asymptotically unbiased") --- trotz des Vorliegens fehlender Werte.
+
+
+
+
+## Multiple Imputation (III)
+
+
+The key concept of MI is to use the distribution of the observed data to estimate a set of plausible values for the missing data.
+Royston
+
+-> Unbiased + Effizient
+
+MICE: FCS oder Sequential Regression Multivariate Imputation
+
+Prädiktoren der unvollständigen Variablen einbezogen (Auxiliarvariablen):
+- Reduce bias, make MAR more plausible
+- Improve imputations, reduce variance 
+
+the imputation model should include every variable that both predicts the incomplete variable and predicts whether the incomplete variable is missing.
+
+ Thus, justification of the MICE procedure has rested on empirical studies [10, 49] rather than theoretical arguments.
+ 
+MI, like all missing data procedures that are based around an MAR assumption, is sensitive to departures from MAR, especially with larger fractions of missing data. One way to deal with this is to include many variables in the imputation model in an effort to make MAR more plausible. This approach is well suited to MI since a complex imputation model can be built without affecting the choice of analysis model: for example, post-randomization variables can be included when imputing missing outcomes in a clinical trial, but not included in the analysis model
+
+In principle, a rich imputation structure is desirable, but in practice, fitting such a complex set of imputation models may defeat the software or lead to model instability. For example, we have found it particularly challenging to work with structures including several nominal categorical variables imputed by multinomial logistic regression; convergence of such large models is an issue, tending to make the imputation process unacceptably slow.
+
+It is hard to propose universal solutions, but careful exploration of the data may suggest smaller imputation models that are unlikely to lead to substantial bias. In general, one should try to simplify the imputation structure without damaging it; for example, omit variables that seem on exploratory investigation unlikely to be required in ‘reasonable’ analysis models, but avoid omitting variables that are in the analysis model or variables that clearly contribute towards satisfying the MAR assumption.
+
+## Multiple Imputation
+
+
+
+## Rubin's Rules
+
+\begin{align*}
+\openup 3\jot
+\begin{split}
+T & = \overbrace{ \left(\frac{1}{m}\sum^{m}_{\ell=1}\bar{U}_\ell\right)}^{\bar{U}} + \left(1+\frac{1}{m}\right) \overbrace{ \left(\frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)'\right)}^{B} \\
+& = \bar{U} + \left(1+\frac{1}{m}\right)B \\
+& \Rightarrow \bar{U} + B ~~~~~\text{as}~~~~~m \rightarrow \infty
+\end{split}
+\end{align*}
+
+
+
+
 
 ## Second Frame
 

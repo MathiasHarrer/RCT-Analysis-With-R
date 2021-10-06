@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  5 OCT 2021 18:13
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  6 OCT 2021 17:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,38 +1362,38 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \colbreak@box=\box134
 \mc@col@check@num=\count389
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 166.
+Package hyperref Info: Option `colorlinks' set `true' on input line 169.
 \cslhangindent=\skip83
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 9.22536pt on input line 231.
+(Font)              scaled to size 9.22536pt on input line 234.
 (./10-Missing_Data_Annahmen.aux)
 \openout1 = `10-Missing_Data_Annahmen.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 231.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 234.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
-31.
+34.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 234.
+LaTeX Font Info:    ... okay on input line 234.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1428,7 +1428,7 @@ LaTeX Font Info:    ... okay on input line 231.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 231.
+Package hyperref Info: Link coloring ON on input line 234.
 
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1443,9 +1443,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count390
 )
-LaTeX Info: Redefining \ref on input line 231.
-LaTeX Info: Redefining \pageref on input line 231.
-LaTeX Info: Redefining \nameref on input line 231.
+LaTeX Info: Redefining \ref on input line 234.
+LaTeX Info: Redefining \pageref on input line 234.
+LaTeX Info: Redefining \nameref on input line 234.
 (./10-Missing_Data_Annahmen.out) (./10-Missing_Data_Annahmen.out)
 \@outlinefile=\write6
 \openout6 = `10-Missing_Data_Annahmen.out'.
@@ -1479,83 +1479,83 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 (./10-Missing_Data_Annahmen.nav)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.055pt on input line 231.
+(Font)              scaled to size 5.055pt on input line 234.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 6.73999pt on input line 231.
+(Font)              scaled to size 6.73999pt on input line 234.
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 6.79163pt on input line 231.
+(Font)              scaled to size 6.79163pt on input line 234.
 File: logo/tum-lightblue.png Graphic file (type bmp)
 <logo/tum-lightblue.png>
 File: logo/protect.png Graphic file (type bmp)
 <logo/protect.png>
 
-Overfull \vbox (42.8368pt too high) detected at line 236
+Overfull \vbox (42.8368pt too high) detected at line 239
  []
 
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 12.13197pt on input line 236.
+(Font)              scaled to size 12.13197pt on input line 239.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 12.04056pt on input line 236.
+(Font)              scaled to size 12.04056pt on input line 239.
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/b/n' will be
-(Font)              scaled to size 12.13197pt on input line 236.
+(Font)              scaled to size 12.13197pt on input line 239.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 10.10999pt on input line 236.
+(Font)              scaled to size 10.10999pt on input line 239.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 8.42499pt on input line 236.
+(Font)              scaled to size 8.42499pt on input line 239.
 
-Overfull \vbox (15.63992pt too high) detected at line 236
+Overfull \vbox (15.63992pt too high) detected at line 239
  []
 
 [1
 
 ]
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-41.
+44.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-41.
+44.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-241.
+244.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-241.
+244.
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 241.
+(Font)              <10.95> on input line 244.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 241.
+(Font)              <8> on input line 244.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 241.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 241
+(Font)              <6> on input line 244.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 244
 .
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 241
+LaTeX Font Info:    Trying to load font information for U+msb on input line 244
 .
 (/Users/mathiasharrer/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 3.37pt on input line 241.
+(Font)              scaled to size 3.37pt on input line 244.
 [2
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 9.22536pt on input line 254.
+(Font)              scaled to size 9.22536pt on input line 257.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 9.15584pt on input line 254.
+(Font)              scaled to size 9.15584pt on input line 257.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 10.03381pt on input line 254.
+(Font)              scaled to size 10.03381pt on input line 257.
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [3
@@ -1608,7 +1608,7 @@ File: logo/tum_white.png Graphic file (type bmp)
 File: rubin.jpg Graphic file (type bmp)
 <rubin.jpg>
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/it' will be
-(Font)              scaled to size 9.15584pt on input line 375.
+(Font)              scaled to size 9.15584pt on input line 378.
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [9
@@ -1689,7 +1689,7 @@ File: logo/tum_white.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 7.58249pt on input line 661.
+(Font)              scaled to size 7.58249pt on input line 665.
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [24
@@ -1710,11 +1710,11 @@ File: logo/tum_white.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 725.
+(Font)              <9> on input line 735.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 725.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 725.
+(Font)              <5> on input line 735.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 7.52536pt on input line 735.
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [27
@@ -1726,7 +1726,43 @@ File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [29
 
-] [30
+]
+File: mi.png Graphic file (type bmp)
+<mi.png>
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[30
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[31
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+
+Overfull \vbox (361.9113pt too high) detected at line 834
+ []
+
+[32
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[33
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[34
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[35
+
+] [36
 
 ]
 \openout4 = `10-Missing_Data_Annahmen.vrb'.
@@ -1742,12 +1778,12 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 )
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[31
+[37
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[32
+[38
 
 ]
 \openout4 = `10-Missing_Data_Annahmen.vrb'.
@@ -1755,7 +1791,7 @@ File: logo/tum_white.png Graphic file (type bmp)
 (./10-Missing_Data_Annahmen.vrb)
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[33
+[39
 
 ]
 File: 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf Graphic fi
@@ -1763,7 +1799,7 @@ le (type pdf)
 <use 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf>
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[34
+[40
 
 ]
 \openout4 = `10-Missing_Data_Annahmen.vrb'.
@@ -1774,33 +1810,39 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 )
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[35
+[41
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[36
+[42
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[37
+[43
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[38
+[44
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[39
+[45
 
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[40
+[46
+
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[47
 
 
 ]
@@ -1816,15 +1858,15 @@ File: logo/tum_white.png Graphic file (type bmp)
 (./10-Missing_Data_Annahmen.aux)
 Package rerunfilecheck Info: File `10-Missing_Data_Annahmen.out' has not change
 d.
-(rerunfilecheck)             Checksum: A25F34DA00CBC86BF2848E1B91F17FF9;500.
+(rerunfilecheck)             Checksum: 110A657AEB8DEEC13CC0E75073D3EDE6;525.
  ) 
 Here is how much of TeX's memory you used:
- 29497 strings out of 478492
- 623228 string characters out of 5860601
- 953562 words of memory out of 5000000
- 49097 multiletter control sequences out of 15000+600000
- 446110 words of font info for 113 fonts, out of 8000000 for 9000
+ 29514 strings out of 478492
+ 623418 string characters out of 5860601
+ 956979 words of memory out of 5000000
+ 49112 multiletter control sequences out of 15000+600000
+ 439156 words of font info for 108 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,13n,171p,1827b,772s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,24n,171p,1827b,772s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 10-Missing_Data_Annahmen.pdf (40 pages).
+Output written on 10-Missing_Data_Annahmen.pdf (47 pages).
