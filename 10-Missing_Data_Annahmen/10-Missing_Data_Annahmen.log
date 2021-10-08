@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  6 OCT 2021 17:34
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  8 OCT 2021 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1741,18 +1741,31 @@ File: logo/tum_white.png Graphic file (type bmp)
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-
-Overfull \vbox (361.9113pt too high) detected at line 834
- []
-
 [32
 
 ]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb
+LaTeX Font Info:    Font shape `TU/FiraCode(0)/b/n' will be
+(Font)              scaled to size 8.95233pt on input line 3.
+Font mapping `tex-ansi.tec' for font `Fira Code SemiBold' not found.
+)
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [33
 
 ]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 8.36151pt on input line 5.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 7.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 7.
+)
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [34
@@ -1762,19 +1775,98 @@ File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [35
 
-] [36
-
 ]
 \openout4 = `10-Missing_Data_Annahmen.vrb'.
 
 (./10-Missing_Data_Annahmen.vrb
 LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
-(Font)              scaled to size 9.0033pt on input line 3.
+(Font)              scaled to size 9.0033pt on input line 7.
 Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.73999pt on input line 21.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.68921pt on input line 21.
+)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[36
+
+]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb
+
+Package fontspec Info: Fira Sans scale = 0.8424981358379209.
+
+
+Package fontspec Info: Fira Sans scale = 0.8424981358379209.
+
+
+Package fontspec Info: Fira Sans scale = 0.8424981358379209.
+
+
+Package fontspec Info: Fira Sans/B scale = 0.8361504971697148.
+
+
+Package fontspec Info: Fira Sans/B scale = 0.8361504971697148.
+
+
+Package fontspec Info: Fira Sans/I scale = 0.8424981358379209.
+
+
+Package fontspec Info: Fira Sans/I scale = 0.8424981358379209.
+
+
+Package fontspec Info: Fira Sans/BI scale = 0.8361504971697148.
+
+
+Package fontspec Info: Fira Sans/BI scale = 0.8361504971697148.
+
+
+Package fontspec Info: Font family 'FiraSans(1)' created for font 'Fira Sans'
+(fontspec)             with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,Ligatures=TeX,Number
+s={Monospaced}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.8424981358379209]"Fira
+(fontspec)             Sans/OT:script=latn;language=dflt;+tnum;mapping=tex-text
+;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8424981358379209]"Fira
+(fontspec)             Sans/OT:script=latn;language=dflt;+tnum;+smcp;mapping=te
+x-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.8361504971697148]"Fira
+(fontspec)             Sans/B/OT:script=latn;language=dflt;+tnum;mapping=tex-te
+xt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8361504971697148]"Fira
+(fontspec)             Sans/B/OT:script=latn;language=dflt;+tnum;+smcp;mapping=
+tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.8424981358379209]"Fira
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+tnum;mapping=tex-te
+xt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8424981358379209]"Fira
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+tnum;+smcp;mapping=
+tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.8361504971697148]"Fira
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+tnum;mapping=tex-t
+ext;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8361504971697148]"Fira
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+tnum;+smcp;mapping
+=tex-text;"
+
+LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
+(Font)              scaled to size 9.22536pt on input line 7.
+LaTeX Font Info:    Font shape `TU/FiraSans(1)/b/n' will be
+(Font)              scaled to size 9.15584pt on input line 9.
+LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
+(Font)              scaled to size 7.39998pt on input line 21.
+Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
 )
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
@@ -1786,28 +1878,18 @@ File: logo/tum_white.png Graphic file (type bmp)
 [38
 
 ]
-\openout4 = `10-Missing_Data_Annahmen.vrb'.
-
-(./10-Missing_Data_Annahmen.vrb)
+File: pmm.png Graphic file (type bmp)
+<pmm.png>
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [39
 
 ]
-File: 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf Graphic fi
-le (type pdf)
-<use 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf>
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [40
 
 ]
-\openout4 = `10-Missing_Data_Annahmen.vrb'.
-
-(./10-Missing_Data_Annahmen.vrb
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 8.36151pt on input line 13.
-)
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [41
@@ -1820,6 +1902,10 @@ File: logo/tum_white.png Graphic file (type bmp)
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
+
+Overfull \vbox (361.9113pt too high) detected at line 1045
+ []
+
 [43
 
 ]
@@ -1832,17 +1918,86 @@ File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [45
 
-
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
 [46
 
+] [47
+
+]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.73999pt on input line 21.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.68921pt on input line 21.
+)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[48
 
 ]
 File: logo/tum_white.png Graphic file (type bmp)
 <logo/tum_white.png>
-[47
+[49
+
+]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[50
+
+]
+File: 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf Graphic fi
+le (type pdf)
+<use 10-Missing_Data_Annahmen_files/figure-beamer/pressureFig-1.pdf>
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[51
+
+]
+\openout4 = `10-Missing_Data_Annahmen.vrb'.
+
+(./10-Missing_Data_Annahmen.vrb)
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[52
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[53
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[54
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[55
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[56
+
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[57
+
+
+]
+File: logo/tum_white.png Graphic file (type bmp)
+<logo/tum_white.png>
+[58
 
 
 ]
@@ -1861,12 +2016,12 @@ d.
 (rerunfilecheck)             Checksum: 110A657AEB8DEEC13CC0E75073D3EDE6;525.
  ) 
 Here is how much of TeX's memory you used:
- 29514 strings out of 478492
- 623418 string characters out of 5860601
- 956979 words of memory out of 5000000
- 49112 multiletter control sequences out of 15000+600000
- 439156 words of font info for 108 fonts, out of 8000000 for 9000
+ 29608 strings out of 478492
+ 625753 string characters out of 5860601
+ 959595 words of memory out of 5000000
+ 49188 multiletter control sequences out of 15000+600000
+ 453108 words of font info for 124 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,24n,171p,1827b,772s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,24n,171p,1827b,761s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 10-Missing_Data_Annahmen.pdf (47 pages).
+Output written on 10-Missing_Data_Annahmen.pdf (58 pages).

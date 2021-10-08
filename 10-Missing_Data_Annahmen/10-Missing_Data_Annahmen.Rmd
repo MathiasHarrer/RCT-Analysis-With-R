@@ -438,13 +438,164 @@ aus @van2011mice.
 
 - MI kann unter **Annahme von MCAR und MAR** (sowie unter bestimmten Voraussetzungen auch MNAR) verwendet werden. \linebreak
 
-- Wenn korrekt angewandt führt MI zur **\alert{verzerrungsfreien Schätzung von Populationsparametern}** (Regressionsgewichte, Populationsmittelwerte, Korrelationen, etc.) sowie deren Varianz ("asymptotically unbiased") --- trotz des Vorliegens fehlender Werte.
+- Wenn korrekt angewandt, führt MI zur **\alert{verzerrungsfreien Schätzung von Populationsparametern}** (Regressionsgewichte, Populationsmittelwerte, Korrelationen, etc.) sowie deren Varianz ("asymptotically unbiased") --- trotz des Vorliegens fehlender Werte. \scriptsize [@white2011multiple] \par \normalsize
 
 
 
+## Multiple Imputation (IV)
 
-## Multiple Imputation (III)
+**Es können 2 MI-Ansätze unterschieden werden:**
 
+- **\alert{Joint Modeling (JM)}**: Spezifikation einer multivariaten Verteilung ("joint model") für die fehlenden Daten, auf deren Basis Imputationen mit Markov Chain Monte Carlo (MCMC) gesampelt werden [@schafer1997analysis]. 
+
+- **\alert{Fully Conditional Specification (FCS)}**: unvollständige Variablen werden in einem sequentiell-iterativen Prozess imputiert, eine Variable nach der Anderen. 
+
+Für FCS ist es im Gegensatz zu JM nicht notwendig, eine multivariate Verteilung der fehlenden Daten zu finden. FCS ist in dieser Hinsicht "atheoretisch" [vgl. @white2011multiple]. 
+
+
+## Multiple Imputation (V)
+
+**Der `MICE` Algorithmus**
+
+Der **\alert{`MICE`}** (_Multiple Imputation by Chained Equations_) Algorithmus ist eine der am häufigsten verwendeten und am besten erprobten FCS-Ansätze. \newline
+
+_"The MICE algorithm possesses a touch of magic."_
+
+\scriptsize
+\textemdash @van2011mice \par \normalsize
+
+
+## Multiple Imputation (VI)
+
+
+\small
+
+**Die Idee der "Chained Equations"**
+
+Annahme: unsere Daten $\mathbf{Y} = Y_1, Y_2, ..., Y_p$ (teils vorliegend, teils fehlend) sind das "Produkt" von $\mathbf{\theta}$, einem (unbekannten) Vektor von Populationsparametern. Der multivariaten Verteilung von $\mathbf{\theta}$ wollen wir uns annähern, um korrekte Imputationen zu erzeugen.
+
+Der `MICE` Algorithmus tut dies implizit, indem er iterativ für jede einzelne unvollständige Variable $Y$ aus deren bedingter Verteilung sampelt, in folgender Form [@van2011mice]:
+
+\begin{align*}
+\begin{split}
+& P(Y_1|\mathbf{Y}_{\setminus1}, \mathbf{\theta}_1) \\
+& \vdots \\
+& P(Y_p|\mathbf{Y}_{\setminus p}, \mathbf{\theta}_p)
+\end{split}
+\end{align*}
+
+\par \normalsize
+
+
+## Multiple Imputation (VII)
+
+Dies wird durch sogenanntes **\alert{Gibbs-Sampling}** umgesetzt. Basierend auf Ausgangswerten wird dabei iterativ für jede Variable $j$ jeweils zuerst $\mathbf{\theta}_j$ geschätzt, was wiederum direkt genutzt wird, um imputierte Werte $Y^*_j$ zu erzeugen. Diese Werte bilden dann die Basis für das weitere Sampling. 
+
+**Für eine beliebige Iteration $t$ ergibt sich so:**
+
+
+\begin{align*}
+\begin{split}
+\theta^{*t}_1 &\sim P(\theta_1|Y^{\text{obs}}_1, Y_2^{t-1}, \dots, Y_p^{t-1}) \\
+Y^{*t}_1 &\sim P(Y_1|Y^{\text{obs}}_1, Y_2^{t-1}, \dots, Y_p^{t-1}, \theta_1^{*t}) \\
+&\vdots \\
+\theta^{*t}_p &\sim P(\theta_p|Y^{\text{obs}}_p, Y_1^{t}, \dots, Y_{p-1}^{t}) \\
+Y^{*t}_p &\sim P(Y_p|Y^{\text{obs}}_p, Y_1^{t}, \dots, Y_{p-1}^{t}, \theta_{p}^{*t})
+\end{split}
+\end{align*}
+
+## Multiple Imputation (VIII)
+
+Im Normalfall **\alert{konvergiert}** dieser Prozess nach einer bestimmten Anzahl Iterationen und erreicht Stationarität ("pendelt sich ein"). 
+
+Da in `MICE` die vorherige Imputation $Y_j^{t-1}$ zur Imputation von $Y_j$ nicht direkt einfließt, wird dies **relativ schnell erreicht** (oft schon nach 5-10 Iterationen).
+
+Dieser iterative Prozess wird **parallel mehrfach durchgeführt**, um die $m$ Imputationssets zu erzeugen.
+
+
+
+## Multiple Imputation (IX)
+
+Die genaue Technik, mit der die Imputationen erzeugt werden, kann bei `MICE` **\alert{flexibel für jede Variable festgelegt werden}**:
+
+```{r, echo=F}
+
+df = data.frame(
+  Technik = c("Predictive Mean Matching", 
+              "Bayesian Linear Regression", 
+              "Uncodition Mean Imputation",
+              "Bayesian Logistic Regression", 
+              "Bayesian Polytomous Regression"),
+  Implementierung = c("\\texttt{pmm}", "\\texttt{norm}", "\\texttt{mean}", "\\texttt{logreg}", "\\texttt{polyreg}"),
+  Skala = c("kontinuierlich", "kontinuierlich", "kontinuierlich",
+            "binär", "faktoriell"))
+
+knitr::kable(df, booktabs = TRUE, escape = FALSE) %>% 
+  row_spec(0, bold = TRUE)
+```
+
+\footnotesize
+
+Typische Techniken zur Imputation mit `MICE`, nach Skalentyp. \par \normalsize
+
+## Multiple Imputation (X)
+
+**Predictive Mean Matching (PMM)**
+
+- PMM [@morris2014tuning] ist eine sogenannte "Hot Deck"-Methode.
+
+- Dabei werden fehlende Werte anhand der eines **\alert{"Spenders"}** imputiert.
+
+- Der Spender wird dabei zufällig aus einer Anzahl von Kandidaten ausgewählt, die der Person mit fehlenden Werten **statistisch "ähnlich"** sind (d.h. ähnliche vorhergesagte Werte hat):
+
+$$\text{arg min}_{i}~\left|\hat{y}^{\text{(obs)}}_i-\hat{y}^{\text{(mis)}}_j\right|$$
+
+
+- Eine Anzahl von $d=$ 3-10 Spenderkandidaten ist dabei häufig passend [@morris2014tuning].
+
+## Multiple Imputation (XI)
+
+\includegraphics[width=1\textwidth]{pmm.png}
+
+\footnotesize [@vanbuuren, Kapitel 3.4.1] \par \normalsize
+
+
+## Multiple Imputation (XII) {.t}
+
+
+**Predictive Mean Matching (PMM)**
+
+- PMM ist eine breit einsetzbare und typischerweise **robuste Technik** zur Imputation [@kleinke2017multiple].
+
+- Da alle Werte von beobachteten Spendern stammen, ist das Imputieren **\alert{"unmöglicher" Werte}** (z.B. Alter von -2) **\alert{ausgeschlossen}**.
+
+
+## Multiple Imputation (XIII)
+
+\small
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Multiple Imputation: Praktische Fragen}
+  \begin{itemize}
+  \item \textbf{\alert{Anzahl der Imputationssets?}} $m=$ 20 Sets sind häufig ausreichend bei moderater Menge an Missings. Mehr (z.B. $m \approx$ 50-100) sind notwendig, um schwer zu schätzende Parameter (z.B. Standardfehler, Varianzkomponenten) genau zu schätzen; oder wenn zahlreiche Missings vorliegen (van Buuren, 2018, Kapitel 2.8).  
+  \item \textbf{\alert{Anzahl der Iterationen?}} 20-30 Iterationen häufig bereits ausreichend; dies kann erhöht werden, wenn Konvergenz in Frage steht. 
+  \item \textbf{\alert{Breite des Imputationsmodells?}} "So breit wie möglich, so schmal wie nötig". Eine breite Auswahl von (sinnvollen) "Hilfsvariablen" macht die MAR-Annahme plausibler, kann aber zu Softwareproblemen führen ($\rightarrow$ zu hohe Komplexität). Deshalb: "goldene Mitte" finden, Modellkomplexität reduzieren, ohne die Plausibilität des Modells zu sehr zu vermindern.
+  \end{itemize}
+\end{exampleblock}
+
+\par \normalsize
+
+## Multiple Imputation (XIV)
+
+
+_"In general, one should try to **\alert{simplify the imputation structure without damaging it}**; for example, omit variables that seem on exploratory investigation unlikely to be required in ‘reasonable’ analysis models, but avoid omitting variables that are in the analysis model or variables that clearly contribute towards satisfying the MAR assumption."_
+
+\scriptsize
+
+--- @white2011multiple \par \normalsize
+
+## MU
 
 The key concept of MI is to use the distribution of the observed data to estimate a set of plausible values for the missing data.
 Royston
