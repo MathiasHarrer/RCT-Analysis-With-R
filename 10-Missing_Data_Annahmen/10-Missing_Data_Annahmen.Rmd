@@ -14,6 +14,7 @@ header-includes: |
   ```{=latex}
   \usepackage{calc}
   \usepackage{mathspec}
+  \usepackage{booktabs}
   \usepackage{amsmath,amsthm}
   \makeatletter
   \let\@@magyar@captionfix\relax
@@ -527,7 +528,7 @@ df = data.frame(
               "Bayesian Logistic Regression", 
               "Bayesian Polytomous Regression"),
   Implementierung = c("\\texttt{pmm}", "\\texttt{norm}", "\\texttt{mean}", "\\texttt{logreg}", "\\texttt{polyreg}"),
-  Skala = c("kontinuierlich", "kontinuierlich", "kontinuierlich",
+  Skala = c("sämtliche", "kontinuierlich", "kontinuierlich",
             "binär", "faktoriell"))
 
 knitr::kable(df, booktabs = TRUE, escape = FALSE) %>% 
@@ -555,7 +556,7 @@ $$\text{arg min}_{i}~\left|\hat{y}^{\text{(obs)}}_i-\hat{y}^{\text{(mis)}}_j\rig
 
 ## Multiple Imputation (XI)
 
-\includegraphics[width=1\textwidth]{pmm.png}
+\includegraphics[width=0.68\textwidth]{pmm.png}
 
 \footnotesize [@vanbuuren, Kapitel 3.4.1] \par \normalsize
 
@@ -595,150 +596,28 @@ _"In general, one should try to **\alert{simplify the imputation structure witho
 
 --- @white2011multiple \par \normalsize
 
-## MU
-
-The key concept of MI is to use the distribution of the observed data to estimate a set of plausible values for the missing data.
-Royston
-
--> Unbiased + Effizient
-
-MICE: FCS oder Sequential Regression Multivariate Imputation
-
-Prädiktoren der unvollständigen Variablen einbezogen (Auxiliarvariablen):
-- Reduce bias, make MAR more plausible
-- Improve imputations, reduce variance 
-
-the imputation model should include every variable that both predicts the incomplete variable and predicts whether the incomplete variable is missing.
-
- Thus, justification of the MICE procedure has rested on empirical studies [10, 49] rather than theoretical arguments.
- 
-MI, like all missing data procedures that are based around an MAR assumption, is sensitive to departures from MAR, especially with larger fractions of missing data. One way to deal with this is to include many variables in the imputation model in an effort to make MAR more plausible. This approach is well suited to MI since a complex imputation model can be built without affecting the choice of analysis model: for example, post-randomization variables can be included when imputing missing outcomes in a clinical trial, but not included in the analysis model
-
-In principle, a rich imputation structure is desirable, but in practice, fitting such a complex set of imputation models may defeat the software or lead to model instability. For example, we have found it particularly challenging to work with structures including several nominal categorical variables imputed by multinomial logistic regression; convergence of such large models is an issue, tending to make the imputation process unacceptably slow.
-
-It is hard to propose universal solutions, but careful exploration of the data may suggest smaller imputation models that are unlikely to lead to substantial bias. In general, one should try to simplify the imputation structure without damaging it; for example, omit variables that seem on exploratory investigation unlikely to be required in ‘reasonable’ analysis models, but avoid omitting variables that are in the analysis model or variables that clearly contribute towards satisfying the MAR assumption.
-
-## Multiple Imputation
 
 
 
-## Rubin's Rules
+## $~$
 
-\begin{align*}
-\openup 3\jot
-\begin{split}
-T & = \overbrace{ \left(\frac{1}{m}\sum^{m}_{\ell=1}\bar{U}_\ell\right)}^{\bar{U}} + \left(1+\frac{1}{m}\right) \overbrace{ \left(\frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)'\right)}^{B} \\
-& = \bar{U} + \left(1+\frac{1}{m}\right)B \\
-& \Rightarrow \bar{U} + B ~~~~~\text{as}~~~~~m \rightarrow \infty
-\end{split}
-\end{align*}
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{bg-praxis.jpg}};
+\end{tikzpicture}
 
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
 
+$$~$$
+$$~$$
 
+$$~$$
 
+$$~$$
 
-## Second Frame
+$$~$$
 
-### Bulleted Lists
-- Element A
-- Element B
-    - B.1
-    - B.2
-- Element C    
-
-# Elements
-
-## Typography
-
-```
-The theme provides sensible defaults to
-\emph{emphasize} text, \alert{accent} parts
-or show \textbf{bold} results.
-
-In Markdown, you can also use _emphasize_ and **bold**.
-```
-
-\begin{center}becomes\end{center}
-
-The theme provides sensible defaults to \emph{emphasize} text,
-\alert{accent} parts or show \textbf{bold} results \scriptsize [@arendt1989leben; @smit2006costs; @andersson2009internet] \par.
-
-In Markdown, you can also use _emphasize_ and **bold**.
-
-
-## Math
-
-\begin{equation*}
-    e = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right)^n
-\end{equation*}
-
-
-## R Figure Example
-
-The following code generates the plot on the next slide (taken from
-`help(bxp)` and modified slightly):
-
-```{r pressureCode, eval=FALSE}
-library(stats)
-set.seed(753)
-bx.p <- boxplot(split(rt(100, 4),
-                      gl(5, 20)), plot=FALSE)
-bxp(bx.p, notch = FALSE, boxfill = "lightblue",
-    frame = FALSE, outl = TRUE,
-    main = "Example from help(bxp)")
-```  
-
-
-## R Figure Example
-  
-```{r pressureFig, echo=FALSE}
-library(stats)
-set.seed(753)
-bx.p <- boxplot(split(rt(100, 4),
-                      gl(5, 20)), plot=FALSE)
-bxp(bx.p, notch = FALSE, boxfill = "lightblue",
-    frame = FALSE, outl = TRUE,
-    main = "Example from help(bxp)")
-```  
-
-## R Table Example
-  
-A simple `knitr::kable` example:  
-
-```{r kableEx}
-knitr::kable(mtcars[1:5, 1:8],
-             caption="(Parts of) the mtcars dataset")
-```
-
-## Using LaTeX Parts: Blocks
-
-As one example of falling back into \LaTeX, consider the example of
-three different block environments are pre-defined and may be styled
-with an optional background color.
-
-\metroset{block=fill} 
-
-\begin{block}{Default}
-  Block content.
-\end{block}
-
-\begin{alertblock}{Alert}
-  Block content.
-\end{alertblock}
-
-\begin{exampleblock}{Example}
-  Block content.
-\end{exampleblock}
-
-
-
-## Resources
-
-### For more information:
-- See the [Metropolis repository](https://github.com/matze/mtheme) for more on Metropolis
-- See the [RMarkdown repository](https://github.com/rstudio/rmarkdown) for more on RMarkdown
-- See the [binb repository](https://github.com/eddelbuettel/binb) for more on binb 
-- See the [binb vignettes](https://github.com/eddelbuettel/binb/vignettes) for more examples.
 
 ## References {.allowframebreaks}
 
