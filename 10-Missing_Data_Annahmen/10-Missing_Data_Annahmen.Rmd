@@ -6,8 +6,8 @@ date: Graduiertenseminar TUM-FGZ
 institute: Psychology & Digital Mental Health Care, Technische Universität München
 output: binb::metropolis
 fontsize: 11pt
-bibliography: bib.bib
-csl: apa.csl
+bibliography: assets/bib.bib
+csl: assets/apa.csl
 monofont: "Fira Code"
 mainfont: "Fira Sans"
 header-includes: |
@@ -33,9 +33,9 @@ header-includes: |
   \setbeamercolor{normal text}{fg=protectBlue}
   \titlegraphic{%
   \hspace*{6cm}~%
-  \includegraphics[width=2cm]{logo/tum-lightblue}
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
   \hspace*{0.3cm}~%
-  \includegraphics[width=2cm]{logo/protect}}
+  \includegraphics[width=2cm]{assets/logo/protect}}
   \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
   \makeatletter
   \setlength{\metropolis@frametitle@padding}{2.2ex}
@@ -60,7 +60,7 @@ header-includes: |
     \nolinebreak%
     \metropolis@frametitlestrut@end%
     \hfill
-    \includegraphics[height=2ex,keepaspectratio]{logo/tum_white}
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
     \end{beamercolorbox}%
   }
   \newlength{\cslhangindent}
@@ -154,7 +154,7 @@ summary(lm(y ~ x))
 \begin{multicols}{2}
 
   \null \vfill
-  \includegraphics[width=.3\textwidth]{rubin.jpg}
+  \includegraphics[width=.3\textwidth]{assets/rubin.jpg}
   \newline Donald B. Rubin
   \vfill \null
 
@@ -170,7 +170,7 @@ summary(lm(y ~ x))
 
 ## MCAR, MAR & MNAR (II)
 
-\includegraphics[width=1\textwidth]{model_concept_sep.png}
+\includegraphics[width=1\textwidth]{assets/model_concept_sep.png}
 
 [@harrer2021doing]
 
@@ -266,7 +266,7 @@ Werte in $\mathbf{Y}$ fehlen abhängig von $\psi$, observierter Information $\ma
 
 **Observierte und unobservierte Werte unter drei Missing Data-Annahmen**
 
-\includegraphics[width=0.8\textwidth]{buuren-mechanisms.png}
+\includegraphics[width=0.8\textwidth]{assets/buuren-mechanisms.png}
 
 aus @vanbuuren, Kapitel 2.2.4
 
@@ -372,7 +372,7 @@ _"The assumption of ignorability is often sensible in practice, and generally pr
 
 \begin{tikzpicture}[remember picture,overlay]  
   \node [xshift=-0.7cm,yshift=-8.7cm] at (current page.north east)
-    {\includegraphics[width=1cm,height=1cm]{summary.png}};
+    {\includegraphics[width=1cm,height=1cm]{assets/summary.png}};
 \end{tikzpicture}
 
 ## Zusammenfassung
@@ -387,7 +387,7 @@ _"The assumption of ignorability is often sensible in practice, and generally pr
 
 \begin{tikzpicture}[remember picture,overlay]  
   \node [xshift=-0.7cm,yshift=-8.7cm] at (current page.north east)
-    {\includegraphics[width=1cm,height=1cm]{summary.png}};
+    {\includegraphics[width=1cm,height=1cm]{assets/summary.png}};
 \end{tikzpicture}
 
 ## Zusammenfassung
@@ -427,7 +427,7 @@ siehe @little1988test.
 ## Multiple Imputation (II)
 
 
-\includegraphics[width=1\textwidth]{mi.png}
+\includegraphics[width=1\textwidth]{assets/mi.png}
 
 \scriptsize
 
@@ -556,7 +556,7 @@ $$\text{arg min}_{i}~\left|\hat{y}^{\text{(obs)}}_i-\hat{y}^{\text{(mis)}}_j\rig
 
 ## Multiple Imputation (XI)
 
-\includegraphics[width=0.68\textwidth]{pmm.png}
+\includegraphics[width=0.68\textwidth]{assets/pmm.png}
 
 \footnotesize [@vanbuuren, Kapitel 3.4.1] \par \normalsize
 
@@ -603,7 +603,7 @@ _"In general, one should try to **\alert{simplify the imputation structure witho
 
 \begin{tikzpicture}[remember picture,overlay]  
   \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
-    {\includegraphics[width=1.05\paperwidth]{bg-praxis.jpg}};
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
 \end{tikzpicture}
 
 \Huge

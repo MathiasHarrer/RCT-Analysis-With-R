@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  8 OCT 2021 16:53
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.10.4)  8 OCT 2021 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1426,10 +1426,10 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 6.73999pt on input line 220.
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
 (Font)              scaled to size 6.79163pt on input line 220.
-File: logo/tum-lightblue.png Graphic file (type bmp)
-<logo/tum-lightblue.png>
-File: logo/protect.png Graphic file (type bmp)
-<logo/protect.png>
+File: assets/logo/tum-lightblue.png Graphic file (type bmp)
+<assets/logo/tum-lightblue.png>
+File: assets/logo/protect.png Graphic file (type bmp)
+<assets/logo/protect.png>
 
 Overfull \vbox (42.8368pt too high) detected at line 225
  []
@@ -1498,18 +1498,18 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 (Font)              scaled to size 9.15584pt on input line 243.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 (Font)              scaled to size 10.03381pt on input line 243.
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [3
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [4
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [5
 
 ]
@@ -1528,8 +1528,8 @@ Overfull \hbox (21.59807pt too wide) in paragraph at lines 25--25
  []
 
 )
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [6
 
 ]
@@ -1540,114 +1540,114 @@ LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
 (Font)              scaled to size 6.57776pt on input line 9.
 Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
 )
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [7
 
 ] [8
 
 ]
-File: rubin.jpg Graphic file (type bmp)
-<rubin.jpg>
+File: assets/rubin.jpg Graphic file (type bmp)
+<assets/rubin.jpg>
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/it' will be
 (Font)              scaled to size 9.15584pt on input line 364.
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [9
 
 ]
-File: model_concept_sep.png Graphic file (type bmp)
-<model_concept_sep.png>
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/model_concept_sep.png Graphic file (type bmp)
+<assets/model_concept_sep.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [10
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [11
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [12
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [13
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [14
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [15
 
 ]
-File: buuren-mechanisms.png Graphic file (type bmp)
-<buuren-mechanisms.png>
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/buuren-mechanisms.png Graphic file (type bmp)
+<assets/buuren-mechanisms.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [16
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [17
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [18
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [19
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [20
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [21
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [22
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [23
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 7.58249pt on input line 651.
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [24
 
 ]
-File: summary.png Graphic file (type bmp)
-<summary.png>
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/summary.png Graphic file (type bmp)
+<assets/summary.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [25
 
 ]
-File: summary.png Graphic file (type bmp)
-<summary.png>
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/summary.png Graphic file (type bmp)
+<assets/summary.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [26
 
 ]
@@ -1657,32 +1657,32 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 721.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 (Font)              scaled to size 7.52536pt on input line 721.
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [27
 
 ] [28
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [29
 
 ]
-File: mi.png Graphic file (type bmp)
-<mi.png>
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/mi.png Graphic file (type bmp)
+<assets/mi.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [30
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [31
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [32
 
 ]
@@ -1693,8 +1693,8 @@ LaTeX Font Info:    Font shape `TU/FiraCode(0)/b/n' will be
 (Font)              scaled to size 8.95233pt on input line 3.
 Font mapping `tex-ansi.tec' for font `Fira Code SemiBold' not found.
 )
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [33
 
 ]
@@ -1708,13 +1708,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 7.
 )
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [34
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [35
 
 ]
@@ -1725,8 +1725,8 @@ LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
 (Font)              scaled to size 9.0033pt on input line 7.
 Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
 )
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [36
 
 ]
@@ -1810,48 +1810,48 @@ LaTeX Font Info:    Font shape `TU/FiraCode(0)/m/n' will be
 (Font)              scaled to size 7.39998pt on input line 21.
 Font mapping `tex-ansi.tec' for font `Fira Code Regular' not found.
 )
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [37
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [38
 
 ]
-File: pmm.png Graphic file (type bmp)
-<pmm.png>
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/pmm.png Graphic file (type bmp)
+<assets/pmm.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [39
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [40
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [41
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [42
 
 ]
-File: bg-praxis.jpg Graphic file (type bmp)
-<bg-praxis.jpg>
+File: assets/bg-praxis.jpg Graphic file (type bmp)
+<assets/bg-praxis.jpg>
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 20.96136pt on input line 1005.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 (Font)              scaled to size 20.80344pt on input line 1005.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <12> on input line 1005.
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 
 Overfull \vbox (5.94806pt too high) detected at line 1005
  []
@@ -1861,25 +1861,25 @@ Overfull \vbox (5.94806pt too high) detected at line 1005
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
 (Font)              scaled to size 6.73999pt on input line 1145.
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [44
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [45
 
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [46
 
 
 ]
-File: logo/tum_white.png Graphic file (type bmp)
-<logo/tum_white.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
 [47
 
 
@@ -1899,9 +1899,9 @@ d.
 (rerunfilecheck)             Checksum: DFA6D5DD05C17A72C7D57C84C1380F86;442.
  ) 
 Here is how much of TeX's memory you used:
- 28139 strings out of 478492
- 596922 string characters out of 5860601
- 938056 words of memory out of 5000000
+ 28140 strings out of 478492
+ 597636 string characters out of 5860601
+ 938108 words of memory out of 5000000
  47742 multiletter control sequences out of 15000+600000
  460079 words of font info for 131 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
