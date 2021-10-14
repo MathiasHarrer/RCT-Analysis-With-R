@@ -65,7 +65,7 @@ header-includes: |
   }
   \newlength{\cslhangindent}
   \setlength{\cslhangindent}{1.5em}
-  \newenvironment{CSLReferences}[3]%
+  \newenvironment{CSLReferences}[3][0]%
   {\setlength{\parindent}{0pt}%
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
   ```
@@ -92,13 +92,15 @@ häufig **\alert{unvermeidbar}**!
 
 \metroset{block=fill} 
 \begin{exampleblock}{Taxonomie: Gründe für fehlende Werte in klinischen Studien}
+\small
 \begin{itemize}
   \item \textbf{Instrumente}: Response Burden, zu langes Assessment, ... 
-  \item \textbf{Teilnehmende}: Überforderung, Privatsphäre-Bedenken, Movationsprobleme, ...
+  \item \textbf{Teilnehmende}: Überforderung, Privatsphäre, Movationsprobleme, ...
   \item \textbf{Center}: Inadäquate Umsetzung des Studienmethodik, Personalmangel, ...
   \item \textbf{Personal}: Falsche Datenerfassung, Datenverlust, falsche Dateneingabe, ...
   \item \textbf{Studie}: Technische Fehler, Zeitverzögerungen bei Follow-Ups, ...
 \end{itemize}
+\par \normalsize
 \end{exampleblock}
 
 \scriptsize @palmer2018systematic \par \normalsize
@@ -618,8 +620,71 @@ $$~$$
 
 $$~$$
 
+## Influx & Outflux (I)
 
-## References {.allowframebreaks}
+Der **\alert{Influx-}** & **\alert{Outflux-Koeffizient}** kann genutzt werden, um potenziell (un-)relevante Prädiktoren für das Imputationsmodell zu identifizieren.
+
+Bei gleicher Anzahl von Missings zeigen diese Koeffizienten an, welche Variablen besser mit dem Rest der (beobachteten) Daten "verbunden" sind.
+
+Bei RCTs ist der heuristische Werte der Koeffizienten oft begrenzt, da Daten Zeitpunkt-abhängig fehlen (z.B. fehlen für Person $i$ durch Dropout sämtliche Daten zum Postzeitpunkt).
+
+\scriptsize [@vanbuuren, Kapitel 4.1.3] \par \normalsize
+
+## Influx & Outflux (II)
+
+Der **\alert{Influx-Koeffizient}** $I_j$ einer Variable $j$ gibt an, wie gut _fehlende_ Werte in $j$ durch _beobachtete_ Werte in anderen Variablen abgedeckt werden.
+
+\small
+Es sei $R_{ij}$ der Responseindikator (beobachtet = 1; fehlend = 0) für Person $i$ bei Variable $j$. $R_{ik}$ sei der Indikator für selbige Person bei einer beliebigen anderen Variable $k$. \par \normalsize
+
+**Für den Influx-Koeffizienten von $j$ ergibt sich so:**
+
+$$I_j = \frac{\sum_j^p\sum_k^p\sum_i^n (1-R_{ij})R_{ik}}{\sum_k^p\sum_i^n R_{ik}}$$
+
+\scriptsize [@vanbuuren, Kapitel 4.1.3] \par \normalsize
+
+
+## Influx & Outflux (III)
+
+Der **\alert{Outflux-Koeffizient}** $O_j$ einer Variable $j$ gibt an, wie gut _beobachtete_ Werte in $j$ zur Abeckung _fehlender_ Werte in anderen Variablen genutzt werden können.
+
+**Für Variable $j$ ergibt sich so:**
+
+$$O_j = \frac{\sum_j^p\sum_k^p\sum_i^n R_{ij}(1-R_{ik})}{\sum_k^p\sum_i^n 1-R_{ij}}$$
+
+## Der "Fluxplot"
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=5, fig.height=5.5, out.width= "50%", fig.align='center'}
+library(mice)
+read.csv("data/data.csv") -> data
+fluxplot(data, main = "")
+
+```
+
+\scriptsize
+Werte im **\alert{oberen Bereich}** sowie nah an der Diagonalen sind eher hilfreich als Prädiktoren. Werte im **\alert{unteren linken Bereich}** können eher entfernt werden (insofern inhaltlich nicht/wenig relevant). \newline \textbf{CAVE: Der Flux-Koeffizient sagt nichts über die tatsächliche Vorhersagekraft der Variable aus!} \par \normalsize
+
+
+## Diagnostik des Imputationsmodells (I)
+
+**\alert{Beispiel für Nonkonvergenz:}** Chains vermischen sich kaum & zeitlicher Trend ersichtlich!
+
+\includegraphics[width=0.68\textwidth]{assets/nonconvergence.png}
+
+\footnotesize [@vanbuuren, Kapitel 6.5.2] \par \normalsize
+
+## Diagnostik des Imputationsmodells (II)
+
+- Typischerweise sollte ein plausibles Imputationsmodell Werte $\dot{\mathbf{Y}}_{\text{mis}}$ erzeugen, die in ihrer Verteilung denen von $\mathbf{Y}_{\text{obs}}$ ähneln.
+
+- Unter MAR sind jedoch auch **\alert{systematische Unterschiede}** zwischen $\dot{\mathbf{Y}}_{\text{mis}}$ und $\mathbf{Y}_{\text{obs}}$ plausibel (z.B. Mittelwerts- oder Streuungsunterschiede)!
+
+- Besonders **\alert{starke Divergenzen}** sowie ausgesprochen unplausible/extreme Ergebnisse können jedoch auf Probleme des Imputationsmodells hinweisen.
+
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
 
 \scriptsize
 
