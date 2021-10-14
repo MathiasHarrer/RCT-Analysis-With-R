@@ -1,0 +1,211 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Randomisiert-Kontrollierte Studien: Aufbau & Hintergrund"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{bm}
+  \usepackage{tikz}
+  \usetikzlibrary{shapes.geometric, arrows, decorations.pathreplacing, calligraphy}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+# Randomisiert-Kontrollierte Studien: Kernmerkmale
+
+## Definition (I)
+
+\emph{"Randomized controlled trials are the \textbf{\alert{most rigorous}} way of determining whether
+a \textbf{\alert{cause-effect relation}} exists between \textbf{\alert{treatment and outcome}} and for assessing the
+\textbf{\alert{cost effectiveness}} [sic] of a treatment."} 
+
+-- @sibbald1998understanding
+
+## Definition (II) {.t}
+
+\vspace{0.5cm}
+
+Randomisiert-kontrollierte Studien werden häufig als \alert{\textbf{"Goldstandard"}} zum Nachweis der Wirksamkeit einer Intervention angesehen. \newline
+\footnotesize[@hariton2018randomised; @akobeng2005understanding; @backmann2017s; @lilienfeld2018randomised] \normalsize
+
+\vspace{0.5cm}
+
+Dieser Status wird auch \alert{\textbf{teils hinterfragt und relativiert}}. \newline \footnotesize [z.B. @cartwright2007rcts; @cartwright2011predicting; @kaptchuk2001double; @grossman2005randomized; @why, Kapitel 4]. \normalsize
+
+
+## Definition (III)
+
+\metroset{block=fill} 
+\begin{block}{Kernmerkmale Randomisiert-Kontrollierter Studien}
+\footnotesize
+\begin{itemize}
+  \item Zufällige Zuordnung zu Experimental- und Kontrollbedingungen.
+  \item Teilnehmende und Studienpersonal wissen nicht, wem welche Bedingung zugeordnet
+  wurde ("double-blind study"). Dies ist oftmals aber nicht möglich!
+  \item Alle Gruppen erhalten die gleiche Behandlung, bis auf die Experimentalgruppe
+  \item Teilnehmende werden als Teil der Gruppe analysiert, zu der sie zugeordnet wurden; 
+  unabhängig davon, ob sie diese Behandlung tatsächlich (vollständig) erhalten haben ("once randomized, alyways analyzed"; Intention-to-treat-Ansatz)
+  \item Die Analyse fokussiert auf die Schätzung der Größe der Unterschiede zwischen den Gruppen bezüglich eines vordefinierten Outcomes ab. Dieses Outcome ist zeitlich und hinsichtlich des genutzten Instruments genau definiert.
+\end{itemize} \par \normalsize
+\end{block}
+
+
+## RCTs & Kausale Inferenz (I) {.t}
+
+**Konfundierung**
+
+Ziel eines Experimentes ist es, **\alert{kausale Schussfolgerungen}** ziehen zu können (z.B. "Behandlung $X$ führt zu Outcome $Y$"). 
+
+Das Experimentaldesign soll es erlauben, von beobachteten Zusammenhängen ausgehend ($X \leftrightarrow Y$) Ursache-Wirkungs-Beziehungen abzuleiten ($X \rightarrow Y$; "kausale Inferenz").
+
+Dieser Inferenzschluss ist gefährdet wenn die Wirkungsbeziehung $X \rightarrow Y$ durch Drittfaktoren $Z$ **\alert{konfundiert}** wird. 
+
+
+
+## RCTs & Kausale Inferenz (II)
+
+Kausalmechanismen können durch **\alert{Kausaldiagramme}** ("directed acyclic graphs"; DAGs) formalisiert werden [@pearl2009causality, Kapitel 1.2.1; @greenland1999causal]:
+
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+
+\node(Z){$Z$};
+\node(X)[below of=Z, xshift = -2cm]{$X$};
+\node(Y)[right of=X, xshift = 2cm]{$Y$};
+
+\draw [-stealth] (X) -- (Y);
+\draw [-stealth] (Z) -- (Y);
+\draw [-stealth] (Z) -- (X);
+
+\end{tikzpicture}
+\end{center}
+
+## RCTs & Kausale Inferenz (III)
+
+**\alert{Potential Outcomes Model of Causation}** \scriptsize [@rubin1974estimating] \par \normalsize
+
+\footnotesize
+
+Der **kausale Effekt einer Behandlung** $\tau$ auf Person $i$ ist die **Differenz** zum Messzeitpunkt $t$ zwischen 
+
+- $Y$, vorausgesetzt, dass $i$ die Behandlung erhält ($X_1$); und
+- $Y$, vorausgesetzt, dass $i$ die Behandlung \underline{nicht} erhält ($X_0$):
+
+$$\tau_{i,t} = Y_{i,t} (X_1) - Y_{i,t}(X_0) $$
+**Problem**: Ein Individuum $i$ kann nie gleichzeitig $X_1$ und $X_0$ erhalten; es basiert also gewissermaßen auf **\alert{"kontrafaktischen"}** (_counterfactual_) Zuständen. Die Schätzung von $\tau_i$ setzt daher die **\alert{"Austauschbarkeit"}** (Exchangeability) von $i$ voraus [@greenland1986identifiability; @greenland2009identifiability]. 
+
+
+**$\rightarrow$ Wie kann "Austauschbarkeit" erreicht werden, insbesondere wenn unbekannte Einflussfaktoren $Z$ das Outcome $Y$ ebenfalls beeinflussen?**
+
+\par \normalsize
+
+## RCTs & Kausale Inferenz (IV) {.t}
+
+\begin{multicols}{2}
+
+  \null \vfill
+  \includegraphics[width=.45\textwidth]{assets/fisher.png} \newline
+  \scriptsize aus Pearl \& MacKenzie (2018), Kapitel 4 \par \normalsize
+  \vfill \null
+
+\columnbreak
+
+  \null \vfill
+  \textbf{Grundannahme}: Das Fehlen oder Vorhandensein von Daten ist Resultat eines probabilistischen Prozesses. \newline \newline
+  Diesem Prozess versucht man sich durch ein Modell (\textbf{\emph{missing data model}}) anzunähern. 
+  \vfill \null
+\end{multicols}
+
+
+## M
+
+\metroset{block=fill} 
+\begin{block}
+X
+\end{block}
+
+LEHMAN, CHAP5.
+
+Hypothesen
+
+equivalence, non-inferiority
+
+randomisierungstests
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

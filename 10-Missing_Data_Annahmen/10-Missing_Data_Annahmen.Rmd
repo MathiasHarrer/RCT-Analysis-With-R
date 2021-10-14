@@ -1,6 +1,6 @@
 ---
 title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
-subtitle: Missing Data
+subtitle: Missing Data & Multiple Imputation
 author: Prof. Dr. David Ebert & Mathias Harrer
 date: Graduiertenseminar TUM-FGZ
 institute: Psychology & Digital Mental Health Care, Technische Universität München
