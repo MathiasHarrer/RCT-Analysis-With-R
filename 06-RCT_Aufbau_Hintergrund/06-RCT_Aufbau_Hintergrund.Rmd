@@ -159,7 +159,7 @@ Der **kausale Effekt einer Behandlung** $\tau$ auf Person $i$ ist die **Differen
 - $Y$, vorausgesetzt, dass $i$ die Behandlung \underline{nicht} erhält ($X_0$):
 
 $$\tau_{i,t} = Y_{i,t} (X_1) - Y_{i,t}(X_0) $$
-**Problem**: Ein Individuum $i$ kann nie gleichzeitig $X_1$ und $X_0$ erhalten; es basiert also gewissermaßen auf **\alert{"kontrafaktischen"}** (_counterfactual_) Zuständen. Die Schätzung von $\tau_i$ setzt daher die **\alert{"Austauschbarkeit"}** (Exchangeability) von $i$ voraus [@greenland1986identifiability; @greenland2009identifiability]. 
+**Problem**: Ein Individuum $i$ kann nie gleichzeitig $X_1$ und $X_0$ erhalten; $\tau_{i,t}$ basiert also gewissermaßen auf **\alert{"kontrafaktischen"}** (_counterfactual_) Zuständen. Die Schätzung von $\tau_{i,t}$ setzt daher die **\alert{"Austauschbarkeit"}** (Exchangeability) von $i$ voraus [@greenland1986identifiability; @greenland2009identifiability]. 
 
 
 **$\rightarrow$ Wie kann "Austauschbarkeit" erreicht werden, insbesondere wenn unbekannte Einflussfaktoren $Z$ das Outcome $Y$ ebenfalls beeinflussen?**
@@ -168,23 +168,127 @@ $$\tau_{i,t} = Y_{i,t} (X_1) - Y_{i,t}(X_0) $$
 
 ## RCTs & Kausale Inferenz (IV) {.t}
 
+**\alert{"The Skillful Interrogation of Nature": R. A. Fisher \& die Erfindung des randomisierten Experiments}** \scriptsize [@lehmann2011fisher, Kapitel 5] \par \normalsize
+
 \begin{multicols}{2}
 
   \null \vfill
   \includegraphics[width=.45\textwidth]{assets/fisher.png} \newline
-  \scriptsize aus Pearl \& MacKenzie (2018), Kapitel 4 \par \normalsize
+  \scriptsize aus Pearl \& MacKenzie (2018), Kapitel 4. \par \normalsize
   \vfill \null
 
 \columnbreak
 
+  \footnotesize
   \null \vfill
-  \textbf{Grundannahme}: Das Fehlen oder Vorhandensein von Daten ist Resultat eines probabilistischen Prozesses. \newline \newline
-  Diesem Prozess versucht man sich durch ein Modell (\textbf{\emph{missing data model}}) anzunähern. 
+  In den 1920er Jahren beginnt Fisher in der Rothamsted Forschungsstation mit randomisierten Experimenten zum Effekt von Düngemitteln. \newline \newline
+  Seine Einsicht: durch die Randomisierung wird der \textbf{systematische} Einfluss \textbf{sämtlicher} Konfundierungsvariablen ausgeschaltet; Unterschiede in den Gruppen kommen nur \textbf{zufällig} zustande.
   \vfill \null
+  \par \normalsize
 \end{multicols}
 
 
+## RCTs & Kausale Inferenz (V) {.t}
+
+**\alert{"The Skillful Interrogation of Nature": R. A. Fisher \& die Erfindung des randomisierten Experiments}** \scriptsize [@lehmann2011fisher, Kapitel 5] \par \normalsize
+
+\small
+
+- Wird ein randomisiertes Experiment unendlich oft wiederholt, **"canceln" sich die Zufallseffekte gegenseitig aus**. Es entstehen dadurch zwei (hypothetische) Kollektive, die mit Blick auf \underline{alle} (bekannten und unbekannten) Einflussfaktoren **"austauschbar"** sind. 
+
+- Die Randomisierung **ersetzt** zahllose **unbekannte und bekannte Einflussvariablen** durch eine **einzige**: den unsystematischen Einfluss des **Zufalls**, der sich statistisch **quantifizieren** lässt (z.B. durch Konfidenzintervalle).
+
+\par \normalsize
+
+## RCTs & Kausale Inferenz (VI) {.t}
+
+**\alert{"The Skillful Interrogation of Nature": R. A. Fisher \& die Erfindung des randomisierten Experiments}** \scriptsize [@lehmann2011fisher, Kapitel 5] \par \normalsize
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+
+\node(Z1){Symptomschwere};
+\node(Z2)[right of=Z1]{?};
+\node(Z3)[left of=Z1]{Alter};
+\node(Z4)[left of=Z3, xshift=0.5cm]{Einstellungen};
+\node(Z5)[left of=Z4]{Geschlecht};
+\node(X)[below of=Z1, xshift = -5.5cm, yshift = -2cm]{$X$};
+\node(Y)[right of=X, xshift = 5.5cm]{$Y$};
+
+\draw [-stealth] (X) -- (Y);
+\draw [-stealth] (Z1) -- (Y);
+\draw [-stealth] (Z1) -- (X);
+\draw [-stealth] (Z2) -- (Y);
+\draw [-stealth] (Z2) -- (X);
+\draw [-stealth] (Z3) -- (Y);
+\draw [-stealth] (Z3) -- (X);
+\draw [-stealth] (Z4) -- (Y);
+\draw [-stealth] (Z4) -- (X);
+\draw [-stealth] (Z5) -- (Y);
+\draw [-stealth] (Z5) -- (X);
+
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+**Vor Randomisierung von $X$.** \par \normalsize
+
+## RCTs & Kausale Inferenz (VII) {.t}
+
+**\alert{"The Skillful Interrogation of Nature": R. A. Fisher \& die Erfindung des randomisierten Experiments}** \scriptsize [@lehmann2011fisher, Kapitel 5] \par \normalsize
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+
+\node(Z1){Symptomschwere};
+\node(Z2)[right of=Z1]{?};
+\node(Z3)[left of=Z1]{Alter};
+\node(Z4)[left of=Z3, xshift=0.5cm]{Einstellungen};
+\node(Z5)[left of=Z4]{Geschlecht};
+\node(X)[below of=Z1, xshift = -5.5cm, yshift = -2cm]{$X$};
+\node(Y)[right of=X, xshift = 5.5cm]{$Y$};
+
+\draw [-stealth] (X) -- (Y);
+\draw [-stealth] (Z1) -- (Y);
+\draw [-stealth] (Z2) -- (Y);
+\draw [-stealth] (Z3) -- (Y);
+\draw [-stealth] (Z4) -- (Y);
+\draw [-stealth] (Z5) -- (Y);
+
+\end{tikzpicture}
+\end{center}
+
+\footnotesize
+**Nach Randomisierung von $X$**: confounders bleiben als **\alert{prognostische}** Variablen erhalten. \par \normalsize
+
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
+## Randomization Tests
+
+
 ## M
+
+‘over all the random-izations the groups are balanced; and that for a particularrandomization they are unbalanced’
+
+SENN
 
 \metroset{block=fill} 
 \begin{block}
