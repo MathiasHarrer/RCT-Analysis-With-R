@@ -105,16 +105,20 @@ Dieser Status wird auch \alert{\textbf{teils hinterfragt und relativiert}}. \new
 \begin{block}{Kernmerkmale Randomisiert-Kontrollierter Studien}
 \footnotesize
 \begin{itemize}
-  \item Zufällige Zuordnung zu Experimental- und Kontrollbedingungen.
+  \item \textbf{\alert{Zufällige Zuordnung}} zu Experimental- und Kontrollbedingungen.
   \item Teilnehmende und Studienpersonal wissen nicht, wem welche Bedingung zugeordnet
-  wurde ("double-blind study"). Dies ist oftmals aber nicht möglich!
+  wurde (\textbf{\alert{"doppelte Verblindung"})}. Dies ist oftmals aber nicht möglich!
   \item Alle Gruppen erhalten die gleiche Behandlung, bis auf die Experimentalgruppe
   \item Teilnehmende werden als Teil der Gruppe analysiert, zu der sie zugeordnet wurden; 
-  unabhängig davon, ob sie diese Behandlung tatsächlich (vollständig) erhalten haben ("once randomized, alyways analyzed"; Intention-to-treat-Ansatz)
-  \item Die Analyse fokussiert auf die Schätzung der Größe der Unterschiede zwischen den Gruppen bezüglich eines vordefinierten Outcomes ab. Dieses Outcome ist zeitlich und hinsichtlich des genutzten Instruments genau definiert.
+  unabhängig davon, ob sie diese Behandlung tatsächlich (vollständig) erhalten haben ("once randomized, alyways analyzed"; \textbf{\alert{Intention-to-treat-Ansatz}})
+  \item Die Analyse fokussiert auf die Schätzung der \textbf{\alert{Größe der Unterschiede zwischen den Gruppen}} bezüglich eines vordefinierten Outcomes ab. Dieses Outcome ist zeitlich und hinsichtlich des genutzten Instruments genau definiert.
 \end{itemize} \par \normalsize
 \end{block}
 
+\scriptsize siehe @sibbald1998understanding. \par \normalsize
+
+
+# RCTs & Kausale Inferenz
 
 ## RCTs & Kausale Inferenz (I) {.t}
 
@@ -124,13 +128,13 @@ Ziel eines Experimentes ist es, **\alert{kausale Schussfolgerungen}** ziehen zu 
 
 Das Experimentaldesign soll es erlauben, von beobachteten Zusammenhängen ausgehend ($X \leftrightarrow Y$) Ursache-Wirkungs-Beziehungen abzuleiten ($X \rightarrow Y$; "kausale Inferenz").
 
-Dieser Inferenzschluss ist gefährdet wenn die Wirkungsbeziehung $X \rightarrow Y$ durch Drittfaktoren $Z$ **\alert{konfundiert}** wird. 
+Dieser Inferenzschluss ist gefährdet, wenn die Wirkungsbeziehung $X \rightarrow Y$ durch Drittfaktoren $Z$ **\alert{konfundiert}** wird. 
 
 
 
-## RCTs & Kausale Inferenz (II)
+## RCTs & Kausale Inferenz (II) 
 
-Kausalmechanismen können durch **\alert{Kausaldiagramme}** ("directed acyclic graphs"; DAGs) formalisiert werden [@pearl2009causality, Kapitel 1.2.1; @greenland1999causal]:
+Kausalmechanismen können durch **\alert{Kausaldiagramme}** ("directed acyclic graphs"; DAGs) formalisiert werden: 
 
 
 \begin{center}
@@ -146,6 +150,8 @@ Kausalmechanismen können durch **\alert{Kausaldiagramme}** ("directed acyclic g
 
 \end{tikzpicture}
 \end{center}
+
+\scriptsize siehe @pearl2009causality, Kapitel 1.2.1; @greenland1999causal. \par \normalsize
 
 ## RCTs & Kausale Inferenz (III)
 
@@ -259,7 +265,7 @@ $$\tau_{i,t} = Y_{i,t} (X_1) - Y_{i,t}(X_0) $$
 \end{center}
 
 \footnotesize
-**Nach Randomisierung von $X$**: confounders bleiben als **\alert{prognostische}** Variablen erhalten. \par \normalsize
+**Nach Randomisierung von $X$**: Confounders bleiben als **\alert{prognostische}** Variablen erhalten. \par \normalsize
 
 
 ## $~$
@@ -281,27 +287,92 @@ $$~$$
 
 $$~$$
 
-## Randomization Tests
-
-
-## M
-
-‘over all the random-izations the groups are balanced; and that for a particularrandomization they are unbalanced’
-
-SENN
+## RCTs & Kausale Inferenz (VIII) {.t}
 
 \metroset{block=fill} 
-\begin{block}
-X
+\begin{block}{Anmerkung zu Randomisierungstests}
+\footnotesize
+\begin{itemize}
+  \item Zur Überprüfung, ob die Randomisierung "funktioniert" hat, werden immer noch häufig Randomisierungstests durchgeführt (z.B. ein $t$-Test zeim Vergleich der Gruppen zu Baseline).
+  \item Von solchen Tests wird in der methodischen Literatur weithin abgeraten ("\emph{an unhealthy research behavior that is hard to eradicate}").
+  \item \textbf{\alert{Grund}}: die Idee von Randomisierung ist nicht, jedes mal perfekt balancierte Gruppen zu erhalten, sondern über alle Randomisierungen hinweg $\rightarrow$ zufällige Gruppenunterschiede sind im Einzelfall selbst bei perfekter Randomisierung erwartbar!
+  \item A priori für wichtig angesehene prognostische Variablen sollten ohnehin in der späteren Analyse kontrolliert werden.
+\end{itemize} \par \normalsize
 \end{block}
 
-LEHMAN, CHAP5.
+\scriptsize [@de2015testing; @austin2010substantial] \par \normalsize
 
-Hypothesen
+## RCTs & Kausale Inferenz (IX) {.t}
 
-equivalence, non-inferiority
+\small
+_"[S]ignificance testing of baseline differences in randomized controlled trials (RCTs) should not be performed, because it is **\alert{superfluous}** and can **\alert{mislead investigators}** and their readers.”_
+\normalsize
 
-randomisierungstests
+\footnotesize
+-- @moher2012consort, CONSORT 2010 statement \linebreak \par \normalsize 
+
+
+\small
+_"[T]he test actually assesses the probability (the '_P_ value') that the observed difference [...] could have occurred by chance when in reality there was no difference. [...] [P]erforming a significance test to compare baseline variables is to assess the **\alert{probability of something having occurred by chance}** when we know that it **\alert{did occur by chance}**. Such a procedure is **\alert{clearly absurd}**."_
+\normalsize
+
+\footnotesize
+-- @altman1985comparability \par \normalsize
+
+
+# Studienhypothesen in RCTs
+
+## Studienhypothesen in RCTs (I) {.t}
+
+**Konfirmatorische Hypothesen**
+
+\scriptsize
+
+**\alert{Superiority Trial (Einseitige Testung)}**: ist die Experimentalgruppe der Kontrollgruppe _überlegen_?
+
+\begin{align*}
+\begin{split}
+\text{H}_{\text{0}}: & ~~~\mu_1 \leq \mu_0 ~~~ \Rightarrow ~~~ \tau > 0 \\
+\text{H}_{\text{1}}: & ~~~\mu_1 > \mu_0 ~~~ \Rightarrow ~~~ \tau > 0
+\end{split}
+\end{align*}
+
+
+**\alert{Non-Inferiority Trial}**: ist die Experimentalgruppe _nicht unakzeptabel schlechter_ als die Kontrollgruppe?
+
+\begin{align*}
+\begin{split}
+\text{H}_{\text{0}}: & ~~~\mu_1 < \mu_0 -\Delta ~~~ \Rightarrow ~~~ \tau < 0 - \Delta \\
+\text{H}_{\text{1}}: & ~~~\mu_1 \geq \mu_0 -\Delta ~~~ \Rightarrow ~~~ \tau \geq 0 - \Delta
+\end{split}
+\end{align*}
+
+
+
+**\alert{Equivalence Trial}**: ist die Experimentalgruppe mit der Kontrollgruppe _vergleichbar_?
+
+\begin{align*}
+\begin{split}
+\text{H}_{\text{0}}: & ~~~ | \mu_1 - \mu_2| > \Delta ~~~ \Rightarrow ~~~ |\tau| > \Delta \\
+\text{H}_{\text{1}}: & ~~~ | \mu_1 - \mu_2| \leq \Delta ~~~ \Rightarrow ~~~ |\tau| \leq \Delta
+\end{split}
+\end{align*}
+
+\par \normalsize
+
+$$ ~ $$
+
+$$ ~ $$
+
+$$ ~ $$
+
+
+## Studienhypothesen in RCTs (II)
+
+\includegraphics[width=1\textwidth]{assets/inferiority.png}
+
+\scriptsize adaptiert nach @schumi2011through. \par \normalsize
+
 
 # Referenzen
 
