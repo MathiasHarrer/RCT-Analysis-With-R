@@ -133,7 +133,7 @@ $$\bar Q = \frac{1}{m}\sum_{\ell=1}^m \hat Q_\ell$$
 \metroset{block=fill} 
 
 \begin{exampleblock}{Aggregation von Punktschätzungen bei MI}
-  Um Punktschätzungen (z.B. Parameter der Wahrscheinlichkeitsverteilung wie Mittelwert \& Standardabweichung; Regressionsgewichte, Korrelationen, etc.) zu poolen, wird in \textbf{jedem Imputationsset} der Wert des Punktschätzers \textbf{berechnet}, und daraufhin der \textbf{Mittelwert über alle Imputationsets} gebildet.
+  Um Punktschätzungen (z.B. Parameter der Wahrscheinlichkeitsverteilung wie Mittelwert \& Standardabweichung; Regressionsgewichte, etc.) zu poolen, wird in \textbf{jedem Imputationsset} der Wert des Punktschätzers \textbf{berechnet}, und daraufhin der \textbf{Mittelwert über alle Imputationsets} gebildet.
 \end{exampleblock}
 
 \par \normalsize
@@ -201,9 +201,51 @@ Die Rubin-Formeln beziehen auch mit ein, dass immer nur eine finite Anzahl an Im
 $\rightarrow$ Je größer $m$, desto **geringer fällt diese Komponente ins Gewicht**. Insbesondere, wenn \underline{besonders} genaue Varianzschätzungen notwendig sind, empfiehlt sich daher eine **hohe Anzahl an Imputationssets**. \linebreak
 
 
-Ein niedriges $m$ führt zu **Konfidenzintervallen**, die **\alert{etwas breiter}** sind als wenn $m \rightarrow \infty$. Dieser Unterschied ist in der Praxis jedoch typischerweise **überschaubar**.
+Ein niedriges $m$ führt zu **Konfidenzintervallen**, die **\alert{etwas breiter}** sind als wenn $m \rightarrow \infty$ (niedrigere Effizienz). Dieser Unterschied ist in der Praxis jedoch typischerweise **überschaubar**.
 
-## M
+
+# Metriken & Freiheitsgrade bei MI-Analysen
+
+## Metriken & Freiheitsgrade bei MI-Analysen (I)
+
+**\alert{Metriken für Parameterschätzungen in MI}** \scriptsize [@vanbuuren, Kapitel 2.3.5] \par \normalsize
+
+\small
+
+**_Relative Increase in Variance Due to Nonresponse_** (RIV): Relativer Anstieg der Varianz aufgrund der Imputationsunsicherheit (wenn RIV > 1: Imputationsvarianz größer als "echte" Varianz in $Y$):
+
+$$r_Q = \frac{B_Q/m +B_Q}{\bar{U}_Q} $$
+**_Fraction of Missing Information Due to Nonresponse_** (FMI): Anteil der Information über $Q$, die durch die Imputationsunsicherheit "verloren geht":
+
+$$\gamma_Q = \frac{(r_Q+2)/(\nu_Q+3)}{1+r_Q} $$
+
+Wobei $\nu$ ("nu") für die Freiheitsgrade bei der Schätzung von $Q$ steht. \par \normalsize
+
+## Metriken & Freiheitsgrade bei MI-Analysen (II)
+
+**\alert{Freiheitsgrade bei MI-Analysen}** \scriptsize [@vanbuuren, Kapitel 2.3.6] \par \normalsize
+
+\small
+Die Freiheitsgrade eines Modells sind definiert als Anzahl der Beobachtungen nach Abzug der Modellparameter: $\nu = n - k$ (für Mittelwert z.B. $\nu = n-1$).
+
+Bei MI sind manche Elemente von $n$ nur Schätzungen von Beobachtungen, daher muss $\nu$ dafür korrigiert werden [@rubin1987multiple]:
+
+
+$$\nu_{\text{(MI)}} = (m-1)\left(1+ \frac{1}{r^2}\right)$$
+$$\lim_{r \rightarrow 0}~\nu_{\text{(MI)}} = \infty~~~~~~\text{sowie}~~~~~~\lim_{r \rightarrow \infty} \nu_{\text{(MI)}} = m-1$$
+
+Diese Formel basiert auf der Annahme, dass die Freiheitsgrade des vollständigen Datensatzes (den MI zu schätzen versucht) unendlich groß sind! Diese Approximation ist aber erst sinnvoll, wenn ein relativ großes Sample vorliegt. \par \normalsize
+
+## Metriken & Freiheitsgrade bei MI-Analysen (III)
+
+$$\nu_\text{obs} = \frac{\nu_\text{com}+1}{\nu_\text{com}+3}\nu_\text{com}\left(1-\frac{r}{r+1}\right)$$
+$$\nu^*_{\text{(MI)}} =
+  \frac{\nu_{\text{(MI)}} \nu_\text{obs}}
+  {\nu_{\text{(MI)}}+\nu_\text{obs}}$$
+
+
+
+## MI
 
 5.1.2
 Researchers are often tempted to average the multiply imputed data, and analyze the averaged data as if it were complete. This method yields incorrect standard errors, confidence intervals and $p$-values, and thus should not be used if any form of statistical testing or uncertainty analysis is to be done on the imputed data. The reason is that the procedure ignores the between-imputation variability, and hence shares all the drawbacks of single imputation.

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  20 OCT 2021 13:33
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  20 OCT 2021 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1906,23 +1906,40 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [11
 
+] [12
+
 ]
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-
-Overfull \vbox (57.31458pt too high) detected at line 378
- []
-
-[12
-
-] [13
+[13
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.54272pt on input line 403.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [14
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[15
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+
+Overfull \vbox (57.31458pt too high) detected at line 443
+ []
+
+[16
+
+] [17
+
+]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.54272pt on input line 468.
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[18
 
 ]
 \tf@nav=\write6
@@ -1934,22 +1951,22 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 \tf@snm=\write8
 \openout8 = `11-Auswertung_Multipel_Imputierter_Daten.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 473.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 473.
 (./11-Auswertung_Multipel_Imputierter_Daten.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 408.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 473.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 473.
 Package rerunfilecheck Info: File `11-Auswertung_Multipel_Imputierter_Daten.out
 ' has not changed.
-(rerunfilecheck)             Checksum: C6F99AEFB8661C7332A06016FD63EDFD.
+(rerunfilecheck)             Checksum: CAF40BF551F01382EEDBB746D0B0B040.
  ) 
 Here is how much of TeX's memory you used:
- 35862 strings out of 492970
- 735226 string characters out of 6133938
- 840666 words of memory out of 5000000
- 39212 multiletter control sequences out of 15000+600000
+ 35873 strings out of 492970
+ 735314 string characters out of 6133938
+ 841047 words of memory out of 5000000
+ 39223 multiletter control sequences out of 15000+600000
  555279 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  71i,24n,145p,10481b,686s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 11-Auswertung_Multipel_Imputierter_Daten.pdf (14 pages).
+Output written on 11-Auswertung_Multipel_Imputierter_Daten.pdf (18 pages).
