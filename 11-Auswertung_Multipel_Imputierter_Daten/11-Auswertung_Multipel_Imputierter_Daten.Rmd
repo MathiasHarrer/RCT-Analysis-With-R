@@ -1,0 +1,232 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Auswertung Multipel Imputierter Daten: Die Rubin-Regeln"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Die 3 Variationsquellen
+
+## Die 3 Variationsquellen (I)
+
+Wie komme ich mit $m$ Imputationssets zu **\underline{einem} gemeinsamen Analyseergebnis**?
+
+\includegraphics[width=1\textwidth]{assets/mi2.png}
+
+\scriptsize adaptiert von @van2011mice. \par \normalsize
+
+
+## Die 3 Variationsquellen (II)
+
+\small
+
+$\rightarrow$ **\alert{Lösung}**: Durchführung der selben Analyse in allen $m$ imputierten Datensets
+parallel, dann werden alle $m$ relevanten Parameter/Schätzwerte zu einem Wert aggregiert (**"gepoolt"**).
+
+Dabei müssen wir miteinbeziehen, dass unsere Schätzwerte **mit Unsicherheit behaftet** sind. Diese Unsicherheit hat bei MI mindestens zwei Gründe:
+
+1. Die Teilnehmenden der Studie stellen nur eine Stichprobe der untersuchten Studienpopulation dar, sind also mit Stichprobenfehler (**"sampling error"**) behaftet.
+
+2. Die Daten enthalten **fehlende Werte**, deren Schätzung **unsicher** ist. Diese Unsicherheit wird dadurch reflektiert, dass multipel imputierte Werte sich zwischen Imputationssets unterscheiden (können).
+
+\par \normalsize
+
+
+## Die 3 Variationsquellen (III)
+
+\small
+
+Es sei $Q$ ein zu schätzender wahrer Wert (oder ein Vektor von Werten) der Population (z.B. Populationsmittelwert, Regressionskoeffizienten, ...). 
+
+Aufgrund der zuvor genannten Gründe ist $Q$ unbekannt und muss durch einen Schätzer $\hat{Q}$ angenähert werden. Dies ist nur durch die beobachteten Werte $Y_{\text{obs}}$ möglich.
+
+Der Erwartungswert (d.h. die bestmögliche Annäherung) von $Q$ gegeben $Y_{\text{obs}}$ ist [@vanbuuren, Kapitel 2.3.2]:
+
+$$E(Q|Y_{\text{obs}})=E\bigg(E(Q|Y_{\text{obs}}, Y_{\text{mis}})~\bigg|~Y_{\text{obs}}\bigg)$$
+d.h. der Durchschnittswert der (imputierten) Schätzungen des Mittelwerts von $Q$ über alle multiplen Imputationen hinweg.
+
+\par \normalsize
+
+## Die 3 Variationsquellen (IV)
+
+**Kombination von Punktschätzungen**:
+
+
+\small
+
+Es sei $\hat{Q}_{\ell}$ die Schätzung von $Q$ im $\ell$-ten von $m$ Imputationssets. Der "gepoolte" Schätzwert von $Q$ ist damit:
+
+
+$$\bar Q = \frac{1}{m}\sum_{\ell=1}^m \hat Q_\ell$$
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Aggregation von Punktschätzungen bei MI}
+  Um Punktschätzungen (z.B. Parameter der Wahrscheinlichkeitsverteilung wie Mittelwert \& Standardabweichung; Regressionsgewichte, Korrelationen, etc.) zu poolen, wird in \textbf{jedem Imputationsset} der Wert des Punktschätzers \textbf{berechnet}, und daraufhin der \textbf{Mittelwert über alle Imputationsets} gebildet.
+\end{exampleblock}
+
+\par \normalsize
+
+
+## Die 3 Variationsquellen (V)
+
+\small
+
+Aber wie kann die **_Unsicherheit_** (Varianz) von $Q$ in MI-Daten geschätzt werden? Die Varianz von $Q$ gegeben $Y_{\text{obs}}$ besteht aus **zwei Komponenten**:
+
+$$V(Q|Y_{\text{obs}}) = \underbrace{E\bigg(V(Q|Y_{\text{obs}}, Y_{\text{mis}})~ \bigg| ~ Y_{\text{obs}} \bigg)}_{\scriptsize \begin{split} &\text{Mittelwert d. Varianzen über alle MI-Sets} \\ & \alert{\rightarrow \textbf{Within-Variance}~(\bar{{U}})} \end{split}} + \underbrace{V\bigg( E(Q|Y_{\text{obs}}, Y_{\text{mis}})~\bigg|~ Y_{\text{obs}}\bigg)}_{\scriptsize \begin{split} &\text{Varianz d. Mittelwerte über alle MI-Sets} \\ & \alert{\rightarrow \textbf{Between-Variance}~(B)} \end{split}}$$
+\metroset{block=fill} 
+
+\begin{exampleblock}{Bestimmung der gepoolten Varianz von Parametern bei MI}
+  Um die Varianz eines Parameters $Q$ zu bestimmen (z.B. für Konfidenzintervalle), muss bei MI sowohl die (gemittelte) Varianz durch den Stichprobenfehler $\bar{U}$, als auch die Imputationsunsicherheit $B$ mit berücksichtigt werden. Die Berechnung der gepoolten Varianz erfolgt durch die sog. \textbf{"Rubin-Regeln"} (s. n. Folie). 
+\end{exampleblock}
+
+\par \normalsize
+
+
+## Die 3 Variationsquellen (VI)
+
+**\alert{"Rubin's Rules" - Die Kombinationsregeln nach Rubin}** \scriptsize [@rubin1987multiple] \par \normalsize
+
+\small Die Rubin-Regeln stellen eine allgemeine Formel dar, nach der die MI-Varianz eines 
+Punktschätzers $Q$ im konkreten Fall berechnet werden kann: \par \normalsize
+
+\begin{align*}
+\openup 3\jot
+\begin{split}
+\hat{V} & = \overbrace{ \left(\frac{1}{m}\sum^{m}_{\ell=1}\bar{U}_\ell\right)}^{\bar{U}} + \left(1+\frac{1}{m}\right) \overbrace{ \left(\frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)'\right)}^{B} \\
+& = \bar{U} + \left(1+\frac{1}{m}\right)B \\
+& \Rightarrow \bar{U} + B ~~~~~\text{as}~~~~~m \rightarrow \infty
+\end{split}
+\end{align*}
+
+## Die 3 Variationsquellen (VII)
+
+\begin{center}
+
+\textbf{...aber warum \emph{drei} Variationsquellen?}
+
+\includegraphics[width=0.7\textwidth]{assets/third-kind.png}
+
+\end{center}
+
+## Die 3 Variationsquellen (VIII)
+
+Die Rubin-Formeln beziehen auch mit ein, dass immer nur eine finite Anzahl an Imputationssets generiert werden ($\rightarrow$ Einbezug der **\alert{Simulationsvarianz}**).
+
+\begin{align*}
+\openup 3\jot
+\begin{split}
+\hat{V} & = \overbrace{ \left(\frac{1}{m}\sum^{m}_{\ell=1}\bar{U}_\ell\right)}^{\bar{U}} + \alert{\left(1+\frac{1}{m}\right) }\overbrace{ \left(\frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)'\right)}^{B} \\
+& = \bar{U} + \alert{\left(1+\frac{1}{m}\right)}B \\
+& \Rightarrow \bar{U} + B ~~~~~\text{as}~~~~~m \rightarrow \infty
+\end{split}
+\end{align*}
+
+
+
+## Die 3 Variationsquellen (IX) {.t}
+
+$\rightarrow$ Je größer $m$, desto **geringer fällt diese Komponente ins Gewicht**. Insbesondere, wenn \underline{besonders} genaue Varianzschätzungen notwendig sind, empfiehlt sich daher eine **hohe Anzahl an Imputationssets**. \linebreak
+
+
+Ein niedriges $m$ führt zu **Konfidenzintervallen**, die **\alert{etwas breiter}** sind als wenn $m \rightarrow \infty$. Dieser Unterschied ist in der Praxis jedoch typischerweise **überschaubar**.
+
+## M
+
+5.1.2
+Researchers are often tempted to average the multiply imputed data, and analyze the averaged data as if it were complete. This method yields incorrect standard errors, confidence intervals and $p$-values, and thus should not be used if any form of statistical testing or uncertainty analysis is to be done on the imputed data. The reason is that the procedure ignores the between-imputation variability, and hence shares all the drawbacks of single imputation.
+
+
+Dempster and Rubin (1983), this workflow is
+
+… seductive because it can lull the user into the pleasurable state of believing that the data are complete after all.
+
+The ensuing statistical analysis does not know which data are observed and which are missing, and treats all data values as real, which will underestimate the uncertainty of the parameters. The reported standard errors and  
+p
+ -values after data-averaging are generally too low. The correlations between the variables of the averaged data will be too high.
+
+
+AGGREGATION VON TESTSTATISTIKEN
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+
