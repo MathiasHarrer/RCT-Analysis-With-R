@@ -221,46 +221,499 @@ $$\gamma_Q = \frac{(r_Q+2)/(\nu_Q+3)}{1+r_Q} $$
 
 Wobei $\nu$ ("nu") für die Freiheitsgrade bei der Schätzung von $Q$ steht. \par \normalsize
 
-## Metriken & Freiheitsgrade bei MI-Analysen (II)
+## Metriken & Freiheitsgrade bei MI-Analysen (II) {.t}
 
 **\alert{Freiheitsgrade bei MI-Analysen}** \scriptsize [@vanbuuren, Kapitel 2.3.6] \par \normalsize
 
 \small
-Die Freiheitsgrade eines Modells sind definiert als Anzahl der Beobachtungen nach Abzug der Modellparameter: $\nu = n - k$ (für Mittelwert z.B. $\nu = n-1$).
+Die Freiheitsgrade eines Modells sind definiert als **Anzahl der Beobachtungen** nach Abzug der **Modellparameter**: $\nu = n - k$ (für Mittelwert z.B. $\nu = n-1$).
 
-Bei MI sind manche Elemente von $n$ nur Schätzungen von Beobachtungen, daher muss $\nu$ dafür korrigiert werden [@rubin1987multiple]:
+Bei MI sind manche Elemente von $n$ nur **Schätzungen von Beobachtungen**, daher muss $\nu$ dafür **korrigiert** werden [@rubin1987multiple]:
 
 
 $$\nu_{\text{(MI)}} = (m-1)\left(1+ \frac{1}{r^2}\right)$$
 $$\lim_{r \rightarrow 0}~\nu_{\text{(MI)}} = \infty~~~~~~\text{sowie}~~~~~~\lim_{r \rightarrow \infty} \nu_{\text{(MI)}} = m-1$$
 
-Diese Formel basiert auf der Annahme, dass die Freiheitsgrade des vollständigen Datensatzes (den MI zu schätzen versucht) unendlich groß sind! Diese Approximation ist aber erst sinnvoll, wenn ein relativ großes Sample vorliegt. \par \normalsize
+Diese Formel basiert auf der Annahme, dass die **Freiheitsgrade des vollständigen Datensatzes** (den MI zu schätzen versucht) **unendlich groß** sind! Diese Approximation ist aber erst sinnvoll, wenn ein **relativ großes Sample** vorliegt. \par \normalsize
 
-## Metriken & Freiheitsgrade bei MI-Analysen (III)
+## Metriken & Freiheitsgrade bei MI-Analysen (III) {.t}
+
+**\alert{Freiheitsgrade bei MI-Analysen}** \scriptsize [@vanbuuren, Kapitel 2.3.6] \par \footnotesize
+
+Für kleine Stichproben kann eine adaptierte Formel genutzt werden [@barnard1999miscellanea]. Dafür müssen zuerst die **"hypothetischen" Freiheitsgrade** bestimmt werden, wenn die Daten komplett wären ("complete data degress of freedom; $\nu_{\text{com}}$). Es sei $n$ die Anzahl der Beobachtungen und $k$ die Anzahl der Parameter:
+
+
+$$\nu_{\text{com}} = n-k $$
+Daraus lassen sich die Freiheitsgrade der **beobachteten Werte** ($\nu_{\text{obs}}$) bestimmen:
 
 $$\nu_\text{obs} = \frac{\nu_\text{com}+1}{\nu_\text{com}+3}\nu_\text{com}\left(1-\frac{r}{r+1}\right)$$
+
+Diese können wiederum zur **Korrektur** von $\nu_{\text{(MI)}}$ verwendet werden:
+
 $$\nu^*_{\text{(MI)}} =
   \frac{\nu_{\text{(MI)}} \nu_\text{obs}}
   {\nu_{\text{(MI)}}+\nu_\text{obs}}$$
 
 
+\par \normalsize
 
-## MI
+## Metriken & Freiheitsgrade bei MI-Analysen (IV) {.t}
 
-5.1.2
-Researchers are often tempted to average the multiply imputed data, and analyze the averaged data as if it were complete. This method yields incorrect standard errors, confidence intervals and $p$-values, and thus should not be used if any form of statistical testing or uncertainty analysis is to be done on the imputed data. The reason is that the procedure ignores the between-imputation variability, and hence shares all the drawbacks of single imputation.
+**\alert{Freiheitsgrade bei MI-Analysen}** \scriptsize [@vanbuuren, Kapitel 2.3.6] \par \normalsize
 
+**Praktische Anmerkungen**
 
-Dempster and Rubin (1983), this workflow is
+- Wird die unkorrigierte Formel verwendet (default bei _{mitml}_), können die **angezeigten Freiheitsgrade** eines Modells/Parameters **größer als $n$ sein**!
 
-… seductive because it can lull the user into the pleasurable state of believing that the data are complete after all.
-
-The ensuing statistical analysis does not know which data are observed and which are missing, and treats all data values as real, which will underestimate the uncertainty of the parameters. The reported standard errors and  
-p
- -values after data-averaging are generally too low. The correlations between the variables of the averaged data will be too high.
+- Da die Anzahl der Freiheitsgrade bei MI anhand der obigen Formeln angenähert wird, muss $\nu$ im konkreten Fall **\underline{keine} natürliche Zahl** sein (z.B. $\nu$ = 226.6559)!
 
 
-AGGREGATION VON TESTSTATISTIKEN
+## Metriken & Freiheitsgrade bei MI-Analysen (V) {.t}
+
+
+**\alert{Konfidenzintervalle}** \scriptsize [@vanbuuren, Kapitel 2.4.2] \par \footnotesize
+
+Die berechneten Freiheitsgrade können zur Berechnung von **Konfidenzintervallen** genutzt werden. Zur Inferenz von Skalaren (= $\bar{Q}$ ist ein einziger Wert) wird dabei häufig eine $t$-Verteilung angenommen. 
+
+$\bar{Q}$ sei ein aggregierter Parameter (z.B. ein Regressionsgewicht $b$), und $Q_0$ der Referenzwert der Nullhypothese (typischerweise 0):
+
+$$\frac{\bar{Q}-Q_0}{\sqrt{\hat{V}}} \sim t_\nu $$
+
+Zusammen mit den berechneten MI-Freiheitsgraden lässt sich so ein passendes 95% Konfidenzintervall berechnen, dass die Imputationsunsicherheit berücksichtigt:
+
+$$\bar{Q}~\pm~t_{\nu^{(*)}_{\text{(MI)}}, \text{0.975}} \times \sqrt{\hat{V}}$$
+
+\par \normalsize
+
+
+# Wichtige Anmerkungen zur Analyse von MI-Daten
+
+## Wichtige Anmerkungen zur Analyse von MI-Daten (I) {.t}
+
+\footnotesize
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Cave I: Aggregation von Teststatistiken}
+  \begin{itemize}
+    \item In der Praxis ist es häufig notwendig, Teststatistiken (z.B. $\chi^2$ oder $F$-Werte) in \textbf{jedem Imputationsset zu berechnen}, und \textbf{daraufhin zu poolen}.
+    \item Teststatistiken können aber typischerweise nicht einfach wie bei $\bar{Q}$ durch das \textbf{arithmetische Mittel} gepoolt werden!
+    \item Hintergrund dafür ist, dass die \textbf{Größe der Teststatistiken} von \textbf{Varianz} \& \textbf{Freiheitsgraden} abhängig ist. Diese ist/sind \textbf{bei MI größer bzw. kleiner} aufgrund der \textbf{Imputationsunsicherheit}.
+    \item Um Teststatistiken nicht zu \textbf{überschätzen}, müssen daher \textbf{besondere Formeln} zur Aggregation eingesetzt werden. 
+    \item Implementationen in R sind beispielsweise die \texttt{micombine.chisquare} und \texttt{micombine.F} function im \emph{\{miceadds\}} package.
+  \end{itemize}
+\end{exampleblock}
+
+\par \scriptsize
+
+$\rightarrow$ Methoden zur Aggregation von Test(statistiken) sind ein **aktives Forschungsfeld**, und weitere Implementierungen in R sind zu erwarten [s. z.B. @grund2021pooling].
+
+\par \normalsize
+
+## Wichtige Anmerkungen zur Analyse von MI-Daten (II) {.t}
+
+\footnotesize
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Cave II: Aggregation von Korrelationen}
+  \begin{itemize}
+    \item Der Wert einer Korrelation $\rho$ kann die \textbf{Maximalwerte} $[-1;1]$ \textbf{nicht überschreiten}; dies bedeutet, dass die \textbf{Varianz} von $\rho$ \textbf{eingeschränkt} wird, je weiter $|\rho|$ gegen 1 geht. 
+    \item Dies führt dazu, dass für $\rho$ \textbf{keine asymptomtische Normalverteilung} angenommen werden kann.
+    \item Dadurch kann zur Aggregation von Korrelationen \textbf{\underline{nicht} einfach der Mittelwert} berechnet werden. Korrelationen sollten vorher einer \textbf{varianzstabilisierenden Transformation} unterzogen werden, der \textbf{Fisher $z$-Transformation}. 
+    \item In R können Korrelationen komfortabel mit der \texttt{micombine.cor} function im \emph{\{miceadds\}} package aggregiert werden.
+  \end{itemize}
+\end{exampleblock}
+
+vgl. @marshall2010comparison. 
+
+\par \normalsize
+
+
+## Wichtige Anmerkungen zur Analyse von MI-Daten (III) {.t}
+
+\footnotesize
+
+\metroset{block=fill} 
+
+\begin{exampleblock}{Cave III: Analyse in aggregierten Daten}
+  \begin{itemize}
+    \item In der Praxis findet man häufig das Vorgehen, \textbf{alle MI-Sets} zu \textbf{\underline{einem} vollständigen Datensatz} zu aggregieren, und dann Analysen in diesem (einen) Datensatz durchzuführen.
+    \item Dies erleichtert zwar die Auswertung mit gängiger Statistiksoftware enorm, ist aber aus \textbf{statistischer Sicht \underline{unbedingt} zu vermeiden}!
+    \item Durch die Aggregation zu einem Datenset wird \textbf{"vorgegaukelt", dass keine Imputationsunsicherheit existiert}; dies führt zu inkorrekten, weil antikonservativen $p$-Werten, Konfidenzintervallen, Teststatistiken, etc.   
+    \item Eine Analyse in aggregierten Daten sollte daher höchstens dann durchgeführt werden, wenn keinerlei statistische Tests oder Quantifizierung der Parameterunsicherheit angestrebt wird; dies ist jedoch in der Praxis selten der Fall.
+  \end{itemize}
+\end{exampleblock}
+
+vgl. @vanbuuren, Kapitel 5.1.2.
+
+
+\par \normalsize
+
+
+## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.25cm] at (current page.center)
+    {\includegraphics[height=7cm]{assets/loop.png}};
+\end{tikzpicture}
+
+## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen (I)
+
+\small
+
+Bei der Auswertung von multipel imputierten Daten in R müssen häufig **Operationen in allen $m$ Sets gleichzeitig durchgeführt** werden. Dies führt oft dazu, dass selbst einfache Analyseschritte **deutlich komplizierter** werden.
+
+**\alert{Eine mögliche Implementierung sind \texttt{for} Loops:}**
+
+
+```{r, eval=FALSE, comment="##>", background="green"}
+# Berechne aggregierten Mittelwert über alle Sets
+means = vector()
+for (i in 1:25){
+  means[[i]] <- implist[[i]] %>% pull(pss.0) %>% mean()
+}
+mean <- mean(means)
+
+```
+
+$\rightarrow$ **Nachteil**: trotz einfacher Operation komplexer Code, lange Rechenzeit.
+
+\par \normalsize
+
+## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen (II) {.t}
+
+**\alert{Functional Programming}** \scriptsize [@wickham2019advanced, Kapitel 9] \par \normalsize
+
+\small
+Anstatt mit dem gleichen Befehl durch alle Sets zu loopen, kann stattdessen ein **"funktionaler" Programmierstil** gewählt werden. D.h. es wird eine **Funktion** genutzt, die **wiederum selbst Funktionen** auf alle Imputationssets **anwendet**.
+
+In Base-R sind dies Funktionen wie `apply`, `mapply`, `vapply`, `Reduce`, etc. Besonders benutzerfreundlich und konsistent sind aber die `map`-Funktionen im package _{purrr}_ [@purrr]: 
+
+
+```{r, eval=FALSE, comment="##>", background="green"}
+mean <- implist %>% 
+          map_dbl(~mean(.$pss.0)) %>% 
+          mean()
+```
+
+$\rightarrow$ **Vorteil**: knapper, übersichtlicher Code; stark verkürzte Rechenzeit. 
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-1.2cm,yshift=-8.2cm] at (current page.north east)
+    {\includegraphics[height=1.7cm]{assets/purrr.png}};
+\end{tikzpicture}
+
+## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen (III) {.t}
+
+**\alert{Functional Programming}** \scriptsize [@wickham2019advanced, Kapitel 9] \par \normalsize
+
+\small
+**Die Funktionsweise von `map`:** \par \normalsize
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{assets/map.png}
+\end{center}
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-1.2cm,yshift=-8.2cm] at (current page.north east)
+    {\includegraphics[height=1.7cm]{assets/purrr.png}};
+\end{tikzpicture}
+
+## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen (IV) {.t}
+
+**\alert{Functional Programming}** \scriptsize [@wickham2019advanced, Kapitel 9] \par \normalsize
+
+\small
+**Die "Geschmacksrichtungen" von `map`:**
+
+- **`map`**: Output ist ein `list`-Objekt.
+
+- **`map_dbl`**: Output ist ein `numeric`-Vektor.
+
+- **`map_chr`**: Output ist ein `character`-Vektor.
+
+- **`map_lgl`**: Output ist ein `logical`-Vektor.
+
+- **`map_dfr`**: Output ist ein `data.frame`.
+
+- **`map2(_*)`**: Iteration über zwei Listen gleichzeitig. 
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-1.2cm,yshift=-8.2cm] at (current page.north east)
+    {\includegraphics[height=1.7cm]{assets/purrr.png}};
+\end{tikzpicture}
+
+\par \normalsize
+
+## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen (IV) {.t}
+
+**\alert{Functional Programming}** \scriptsize [@wickham2019advanced, Kapitel 9] \par \normalsize
+
+\small
+**`map` akzeptiert Funktionen auf 2 Arten:**
+
+1. **_"Klassisch"_**: eine "voll funktionstüchtige" Funktion wird in `map` gesteckt.
+
+\footnotesize
+
+```{r, eval=FALSE, comment="##>", background="green"}
+# 'x' repräsentiert das individuelle Listenelement in 'list'
+list %>% map(function(x) mean(x$variable))
+```
+
+\par \small
+
+2. **_"Verkürzt"_**: mit "`~`" und "`.`" wird der Funktionscode abgekürzt.
+
+\footnotesize
+
+```{r, eval=FALSE, comment="##>", background="green"}
+# '.' repräsentiert das individuelle Listenelement in 'list'
+# Der Beginn einer Funktion wird durch '~' (tilde) angezeigt.
+list %>% map(~ mean(.$variable))
+```
+
+\par \normalsize
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-1.2cm,yshift=-8.2cm] at (current page.north east)
+    {\includegraphics[height=1.7cm]{assets/purrr.png}};
+\end{tikzpicture}
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
+# Primäre Wirksamkeitsanalyse
+
+## Primäre Wirksamkeitsanalyse (I)
+
+\small
+
+In der primären Wirksamkeitsanalyse wird die **Effektivität der Interventionsbedingung** evaluiert ("hatte die Interventionen einen Effekt?").
+
+Die Analyse fokussiert dabei auf das **primäre Outcome** (mit _a priori_ definiertem Messzeitpunkt und Messinstrument), und ob darin **Unterschiede zwischen den Gruppen** bestehen:
+
+
+\begin{align*}
+\begin{split}
+|Y_{i,t} (X_1) - Y_{i,t}(X_0)| &> 0\\
+\Rightarrow |\hat{\mu}_{1,t} - \hat{\mu}_{0,t}| &> 0
+\end{split}
+\end{align*}
+
+
+Können wir dies statistisch Nachweisen, kann geschlossen werden, dass ein Effekt der Intervention vorliegt ($|\tau| > 0$).
+
+Das übliche Verfahren hierzu stellt die **\alert{\emph{Analysis of Covariance} (ANCOVA)}** dar.
+
+\par \normalsize
+
+
+## Primäre Wirksamkeitsanalyse (II) {.t}
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+
+
+\begin{multicols}{2}
+  \footnotesize 
+  ANCOVAs untersuchen, ob zwei oder mehrere Gruppen sich hinsichtlich einer gemessenen Variable $y$ unterscheiden, wenn für den \textbf{Einfluss} von (einer oder mehreren) \textbf{Kovariaten} (z.B. Baseline-Messung des primären Outcomes) kontrolliert wird.
+
+Die Methode der AN(C)OVA geht auf R.A. Fisher zurück, und ist eng mit der experimentellen Methodik randomisierter Studien verbunden. 
+
+$$~$$
+  \par \normalsize
+\columnbreak
+  \begin{center}
+  \includegraphics[width=.5\textwidth]{assets/smrw.png}
+  \newline \scriptsize  \emph{Statistical Methods for Research Workers} (1925) 
+  \end{center}
+  \par \normalsize
+\end{multicols}
+
+
+
+## Primäre Wirksamkeitsanalyse (III) {.t}
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+
+\small 
+
+$\rightarrow$ Die Durchführung von ANCOVAs in RCT-Analysen ist daher auch historisch zu erklären. Konzeptuell ist das Modell hinter ANCOVAs schlicht ein \textbf{Spezialfall linearer Regression!}
+
+\par \normalsize
+
+\begin{center}
+  \includegraphics[width=.5\textwidth]{assets/regression.png}
+\end{center}
+
+
+## Primäre Wirksamkeitsanalyse (IV)
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+
+\scriptsize
+
+Es sei:
+
+- $y_{ij}$ der Wert des (kontinuierlichen) primären Outcomes von Person $j$ in Gruppe $i$;
+- $\tau_i$ der Effekt der $i$-ten Behandlungsgruppe (z.B. Intervention oder Kontrolle);
+- $\x_{ij}$ der Wert von $ij$ auf einer Kovariate.
+
+**\underline{Das Modell der ANCOVA ist dann:}**
+
+$$y_{ij} = \mu +\tau_i + \beta(x_{ij} - \bar{x}) + \epsilon_{ij} 
+~~~\begin{cases}
+      i = 1, 2, \dots a\\
+      j = 1, 2, \dots n
+    \end{cases}$$
+
+Die **Residuale** des Modells folgen einer Normalverteilung mit Mittelwert 0: $\epsilon \overset{\text{i.i.d.}}{\sim} \mathcal{N}(0,\sigma^2)$. ANCOVAs basieren auf einer **Effekt-Kodierung** der Treatment-Variable (z.B. -1 und 1), sodass sich die $\tau_i$-Werte zu null aufsummieren: 
+
+
+$$\sum_{i=1}^{a} \tau_i = 0$$
+\par \normalsize
+
+
+## Primäre Wirksamkeitsanalyse (V)
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+
+\small
+
+AN(C)OVAs basieren auf dem Prinzip der **Varianzzerlegung**:
+
+\begin{align*}
+\begin{split}
+\text{SS}_{\text{Total}} &= \text{SS}_{\text{Prädiktor}} + \text{SS}_{\text{Residual}} \\
+\text{Daten} &= \text{Modellfit} + \text{Unerklärte Varianz}
+\end{split}
+\end{align*}
+
+
+
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+```{r, echo=F, message=FALSE, warning=FALSE}
+library(kableExtra)
+df = data.frame(
+  Variationsquellen = c("Systematisch", 
+                        "Zufällig", "Total"),
+  Quadratsumme = c("$\\text{SS}_{\\text{Prädiktor}}$",
+                     "$\\text{SS}_{\\text{Residual}}$", "$\\text{SS}_{\\text{Total}}$"),
+  nu = c("$\\nu_{\\text{num}} = p-1$", 
+         "$\\nu_{\\text{den}} = n-p$", "$n-1$"),
+  MQ = c("$\\text{MSS}_{\\text{Prädiktor}} = \\frac{\\text{SS}_{\\text{Prädiktor}}}{p-1}$",
+                              "$\\text{SS}_{\\text{Residual}} = \\frac{\\text{SS}_{\\text{Residual}}}{n-p}$", "-"))
+
+colnames(df) = c("Variationsquelle", "Quadratsumme", "Freiheitsgrade", "Mittlere Quadratsumme")
+
+knitr::kable(df, booktabs = TRUE, escape = FALSE) %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(2, hline_after = TRUE) %>% 
+  row_spec(3, hline_after = TRUE)
+```
+\renewcommand{\arraystretch}{1}
+\par \normalsize
+\end{center}
+\scriptsize
+$\rightarrow$ Bei ANCOVAs wird der Einfluss der Kovariate auf die Within-Varianz ($\text{SS}_{\text{Residual}}$) **"herausregerechnet"**.
+\par \normalsize
+\small
+
+
+## Primäre Wirksamkeitsanalyse (VI) {.t}
+
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+
+\small
+
+Die **Signifikanz des Treatment-Effekts** wird dann über den $F$-Test ermittelt. Dieser vergleicht die **Variation durch den Treatmentfaktor** mit der **unerklärten Variation** in den Daten:
+
+$$F_{\nu_{\text{num}},~\nu_{\text{den}}} = \frac{\text{SS}_{\text{Prädiktor}}/(p-1)}{\alert{\text{SS}_{\text{Residual}}}/(n-\alert{p})}$$
+
+\metroset{block=fill} 
+
+\begin{block}{Reduktion von $\text{SS}_{\text{Residual}}$ bei ANCOVAs}
+\scriptsize
+\begin{itemize}
+\itemsep-1em 
+\item Durch den Einschluss prognostischer Variablen wird die unerklärte Varianz innerhalb der Gruppen verringert. Dadurch verkleinert sich $\text{SS}_{\text{Residual}}$ und der $F$-Wert wird größer $\Rightarrow$ mehr Power zum Nachweis des Treatment-Effekts! \linebreak
+\item \textbf{Cave:} Dies ist nur er Fall, wenn die Kovariate tatsächlich prognostisch relevant ist. Wenn nicht, erhöht sich nur die Anzahl der Parameter $p$ $\Rightarrow$ \textbf{Power sinkt}!
+\end{itemize}
+\par \normalsize
+\end{block}
+
+## Primäre Wirksamkeitsanalyse (VII) {.t}
+
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+\small
+
+\underline{Vorteile der Adjustierung von Baseline-Variablen:}
+
+- **Interpretierbarkeit**: _"The central question is for two patients with the same pre measurement value of $x$, one given treatment A and the other treatment B, will the patients tend to have different post-treatment values? This is exactly what analysis of covariance assesses."_ [@harrell1]
+
+- **Power**: Adjustierung von prognostischen Variablen führt zu höherer Effizienz der Analysen (engere Konfidenzintervalle); bei dichotomen Outcomes (Odds Ratio) erhöht sich der Effekt selbst [@hernandez2004covariate].
+
+- **Baselineunterschiede**: Kovariaten adjustieren für systematische Baselineunterschiede, sollten diese tatsächlich vorliegen.
+
+\par \normalsize
+
+## Primäre Wirksamkeitsanalyse (VIII) {.t}
+
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+\small
+
+\underline{Empfehlungen}
+
+- Generell sollten nur Kovariation adjustiert werden, für die ein **starker prognostischer Zusammenhang plausibel** ist $\rightarrow$ bei der Baselinemessung des primären Outcomes voraussetzbar!
+
+- Bei stratifizierter Randomisierung sollten die **Stratifizierungsvariablen** kontrolliert werden [@Kahane5840].
+
+- Alle Kovariaten sollten **_a priori_** präspezifiert werden [@assmann2000subgroup].
+
+
+## Primäre Wirksamkeitsanalyse (IX) {.t}
+
+**\alert{Analysis of Covariance}** \scriptsize [@montgomery, Kapitel 15.3; @dunn2018generalized, Kapitel 2.9] \par \normalsize
+\small
+
+\underline{Anzahl der Kovariaten: Richtlinien der European Medicines Agency}
+
+> _"No more than **a few covariates should be included** in the primary analysis. Even though methods of adjustment, such as analysis of covariance, can theoretically adjust for a large number of covariates it is safer to pre-specify a simple model."_
+
+> _"Results based on such a model are more likely to be numerically stable, the assumptions underpinning the statistical model are easier to validate and generalisability of the results may be improved."_
+
+@ema, Absatz 6.2.
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-2.3cm,yshift=-8.2cm] at (current page.north east)
+    {\includegraphics[height=1.7cm]{assets/ema.jpg}};
+\end{tikzpicture}
+
+\par \normalsize
 
 # Referenzen
 

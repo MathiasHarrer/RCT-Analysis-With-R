@@ -1,0 +1,53 @@
+\frametitle{``Rinse \& Repeat'': Parallele Bearbeitung von Listenelementen (IV)}
+\protect\hypertarget{rinse-repeat-parallele-bearbeitung-von-listenelementen-iv-1}{}
+\textbf{\alert{Functional Programming}} \scriptsize (Wickham, 2019,
+Kapitel 9)
+
+\par \normalsize
+
+\small
+
+\textbf{\texttt{map} akzeptiert Funktionen auf 2 Arten:}
+
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{\emph{``Klassisch''}}: eine ``voll funktionstüchtige''
+  Funktion wird in \texttt{map} gesteckt.
+\end{enumerate}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# \textquotesingle{}x\textquotesingle{} repräsentiert das individuelle Listenelement in \textquotesingle{}list\textquotesingle{}}
+\NormalTok{list }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{map}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{mean}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{variable))}
+\end{Highlighting}
+\end{Shaded}
+
+\par \small
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{\emph{``Verkürzt''}}: mit ``\texttt{\textasciitilde{}}'' und
+  ``\texttt{.}'' wird der Funktionscode abgekürzt.
+\end{enumerate}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# \textquotesingle{}.\textquotesingle{} repräsentiert das individuelle Listenelement in \textquotesingle{}list\textquotesingle{}}
+\CommentTok{\# Der Beginn einer Funktion wird durch \textquotesingle{}\textasciitilde{}\textquotesingle{} (tilde) angezeigt.}
+\NormalTok{list }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{map}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \FunctionTok{mean}\NormalTok{(.}\SpecialCharTok{$}\NormalTok{variable))}
+\end{Highlighting}
+\end{Shaded}
+
+\par \normalsize
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=-1.2cm,yshift=-8.2cm] at (current page.north east)
+    {\includegraphics[height=1.7cm]{assets/purrr.png}};
+\end{tikzpicture}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  20 OCT 2021 20:09
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  24 OCT 2021 20:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1556,49 +1556,66 @@ Package microtype Info: Loading configuration file microtype.cfg.
 File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
 ))
 Package hyperref Info: Option `breaklinks' set `true' on input line 58.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count345
+\FV@InFile=\read3
+\FV@TabBox=\box75
+\c@FancyVerbLine=\count346
+\FV@StepNumber=\count347
+\FV@OutFile=\write5
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip75
+\fb@frw=\dimen296
+\fb@frh=\dimen297
+\FrameRule=\dimen298
+\FrameSep=\dimen299
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen296
-\lightrulewidth=\dimen297
-\cmidrulewidth=\dimen298
-\belowrulesep=\dimen299
-\belowbottomsep=\dimen300
-\aboverulesep=\dimen301
-\abovetopsep=\dimen302
-\cmidrulesep=\dimen303
-\cmidrulekern=\dimen304
-\defaultaddspace=\dimen305
-\@cmidla=\count345
-\@cmidlb=\count346
-\@aboverulesep=\dimen306
-\@belowrulesep=\dimen307
-\@thisruleclass=\count347
-\@lastruleclass=\count348
-\@thisrulewidth=\dimen308
+\heavyrulewidth=\dimen300
+\lightrulewidth=\dimen301
+\cmidrulewidth=\dimen302
+\belowrulesep=\dimen303
+\belowbottomsep=\dimen304
+\aboverulesep=\dimen305
+\abovetopsep=\dimen306
+\cmidrulesep=\dimen307
+\cmidrulekern=\dimen308
+\defaultaddspace=\dimen309
+\@cmidla=\count348
+\@cmidlb=\count349
+\@aboverulesep=\dimen310
+\@belowrulesep=\dimen311
+\@thisruleclass=\count350
+\@lastruleclass=\count351
+\@thisrulewidth=\dimen312
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
-\c@tracingmulticols=\count349
-\mult@box=\box75
-\multicol@leftmargin=\dimen309
-\c@unbalance=\count350
-\c@collectmore=\count351
-\doublecol@number=\count352
-\multicoltolerance=\count353
-\multicolpretolerance=\count354
-\full@width=\dimen310
-\page@free=\dimen311
-\premulticols=\dimen312
-\postmulticols=\dimen313
-\multicolsep=\skip75
-\multicolbaselineskip=\skip76
-\partial@page=\box76
-\last@line=\box77
-\maxbalancingoverflow=\dimen314
-\mult@rightbox=\box78
-\mult@grightbox=\box79
-\mult@gfirstbox=\box80
-\mult@firstbox=\box81
-\@tempa=\box82
+\c@tracingmulticols=\count352
+\mult@box=\box76
+\multicol@leftmargin=\dimen313
+\c@unbalance=\count353
+\c@collectmore=\count354
+\doublecol@number=\count355
+\multicoltolerance=\count356
+\multicolpretolerance=\count357
+\full@width=\dimen314
+\page@free=\dimen315
+\premulticols=\dimen316
+\postmulticols=\dimen317
+\multicolsep=\skip76
+\multicolbaselineskip=\skip77
+\partial@page=\box77
+\last@line=\box78
+\maxbalancingoverflow=\dimen318
+\mult@rightbox=\box79
+\mult@grightbox=\box80
+\mult@gfirstbox=\box81
+\mult@firstbox=\box82
 \@tempa=\box83
 \@tempa=\box84
 \@tempa=\box85
@@ -1615,45 +1632,46 @@ Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
 \@tempa=\box96
 \@tempa=\box97
 \@tempa=\box98
-\c@columnbadness=\count355
-\c@finalcolumnbadness=\count356
-\last@try=\dimen315
-\multicolovershoot=\dimen316
-\multicolundershoot=\dimen317
-\mult@nat@firstbox=\box99
-\colbreak@box=\box100
-\mc@col@check@num=\count357
+\@tempa=\box99
+\c@columnbadness=\count358
+\c@finalcolumnbadness=\count359
+\last@try=\dimen319
+\multicolovershoot=\dimen320
+\multicolundershoot=\dimen321
+\mult@nat@firstbox=\box100
+\colbreak@box=\box101
+\mc@col@check@num=\count360
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 115.
-\cslhangindent=\skip77
+Package hyperref Info: Option `colorlinks' set `true' on input line 155.
+\cslhangindent=\skip78
 (./11-Auswertung_Multipel_Imputierter_Daten.aux)
 \openout1 = `11-Auswertung_Multipel_Imputierter_Daten.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 180.
-LaTeX Font Info:    ... okay on input line 180.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 180.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 180.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 220.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 220.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    ... okay on input line 220.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1689,22 +1707,22 @@ LaTeX Font Info:    ... okay on input line 180.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box101
-Package hyperref Info: Link coloring ON on input line 180.
+\AtBeginShipoutBox=\box102
+Package hyperref Info: Link coloring ON on input line 220.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count358
+\c@section@level=\count361
 )
-LaTeX Info: Redefining \ref on input line 180.
-LaTeX Info: Redefining \pageref on input line 180.
-LaTeX Info: Redefining \nameref on input line 180.
+LaTeX Info: Redefining \ref on input line 220.
+LaTeX Info: Redefining \pageref on input line 220.
+LaTeX Info: Redefining \nameref on input line 220.
 (./11-Auswertung_Multipel_Imputierter_Daten.out) (./11-Auswertung_Multipel_Impu
 tierter_Daten.out)
-\@outlinefile=\write5
-\openout5 = `11-Auswertung_Multipel_Imputierter_Daten.out'.
+\@outlinefile=\write6
+\openout6 = `11-Auswertung_Multipel_Imputierter_Daten.out'.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/translator/translator-basic-dicti
@@ -1731,7 +1749,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \microtypecontext on input line 180.
+LaTeX Info: Redefining \microtypecontext on input line 220.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1743,37 +1761,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 (./11-Auswertung_Multipel_Imputierter_Daten.nav)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 4.90704pt on input line 180.
+(Font)              scaled to size 4.90704pt on input line 220.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 6.54272pt on input line 180.
+(Font)              scaled to size 6.54272pt on input line 220.
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/m/n' will be
-(Font)              scaled to size 6.59277pt on input line 180.
+(Font)              scaled to size 6.59277pt on input line 220.
 File: assets/logo/tum-lightblue.png Graphic file (type bmp)
 <assets/logo/tum-lightblue.png>
 File: assets/logo/protect.png Graphic file (type bmp)
 <assets/logo/protect.png>
 
-Overfull \vbox (42.29677pt too high) detected at line 185
+Overfull \vbox (42.29677pt too high) detected at line 225
  []
 
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 11.77689pt on input line 185.
+(Font)              scaled to size 11.77689pt on input line 225.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
-(Font)              scaled to size 11.68813pt on input line 185.
+(Font)              scaled to size 11.68813pt on input line 225.
 LaTeX Font Info:    Font shape `TU/FiraSansLight(0)/bx/n' will be
-(Font)              scaled to size 11.77689pt on input line 185.
+(Font)              scaled to size 11.77689pt on input line 225.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 9.81409pt on input line 185.
+(Font)              scaled to size 9.81409pt on input line 225.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 8.1784pt on input line 185.
+(Font)              scaled to size 8.1784pt on input line 225.
 
-Overfull \vbox (15.63992pt too high) detected at line 185
+Overfull \vbox (15.63992pt too high) detected at line 225
  []
 
 [1
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 190.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 230.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1782,72 +1800,72 @@ File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
 ern Roman (RS)
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 190.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 230.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 190
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 230
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 190
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 230
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 190.
+(Font)              <10.95> on input line 230.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 190.
+(Font)              <8> on input line 230.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 190.
-LaTeX Font Info:    Try loading font information for U+msa on input line 190.
+(Font)              <6> on input line 230.
+LaTeX Font Info:    Try loading font information for U+msa on input line 230.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 190.
+LaTeX Font Info:    Try loading font information for U+msb on input line 230.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 3.27136pt on input line 190.
+(Font)              scaled to size 3.27136pt on input line 230.
 [2
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
-(Font)              scaled to size 8.88785pt on input line 202.
+(Font)              scaled to size 8.88785pt on input line 242.
 File: assets/mi2.png Graphic file (type bmp)
 <assets/mi2.png>
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
-(Font)              scaled to size 9.74011pt on input line 202.
+(Font)              scaled to size 9.74011pt on input line 242.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [3
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 230.
+(Font)              <10> on input line 270.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 230.
+(Font)              <7> on input line 270.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 230.
+(Font)              <5> on input line 270.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
-(Font)              scaled to size 8.11676pt on input line 230.
+(Font)              scaled to size 8.11676pt on input line 270.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [4
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.72488pt on input line 252.
+(Font)              scaled to size 5.72488pt on input line 292.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 4.0892pt on input line 252.
+(Font)              scaled to size 4.0892pt on input line 292.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [5
@@ -1859,24 +1877,24 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/it' will be
-(Font)              scaled to size 8.11676pt on input line 290.
+(Font)              scaled to size 8.11676pt on input line 330.
 
-LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 290.
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 330.
 
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 290.
+(amsmath)                trying to recover with `aligned' on input line 330.
 
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
-(Font)              scaled to size 6.49341pt on input line 290.
+(Font)              scaled to size 6.49341pt on input line 330.
 
-LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 290.
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 330.
 
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 290.
+(amsmath)                trying to recover with `aligned' on input line 330.
 
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
@@ -1889,7 +1907,7 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/it' will be
-(Font)              scaled to size 8.88785pt on input line 324.
+(Font)              scaled to size 8.88785pt on input line 364.
 File: assets/third-kind.png Graphic file (type bmp)
 <assets/third-kind.png>
 File: assets/logo/tum_white.png Graphic file (type bmp)
@@ -1919,54 +1937,331 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 [14
 
 ]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 7.36057pt on input line 480.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
+(Font)              scaled to size 7.30508pt on input line 480.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 480.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [15
 
 ]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 8.95534pt on input line 502.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-
-Overfull \vbox (57.31458pt too high) detected at line 443
- []
-
 [16
 
-] [17
-
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.54272pt on input line 468.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[18
+[17
+
+] [18
 
 ]
-\tf@nav=\write6
-\openout6 = `11-Auswertung_Multipel_Imputierter_Daten.nav'.
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
+(Font)              scaled to size 7.36057pt on input line 558.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 7.36057pt on input line 558.
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[19
 
-\tf@toc=\write7
-\openout7 = `11-Auswertung_Multipel_Imputierter_Daten.toc'.
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[20
 
-\tf@snm=\write8
-\openout8 = `11-Auswertung_Multipel_Imputierter_Daten.snm'.
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[21
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 473.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 473.
+]
+File: assets/loop.png Graphic file (type bmp)
+<assets/loop.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[22
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/bx/n' will be
+(Font)              scaled to size 8.16284pt on input line 10.
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
+(Font)              scaled to size 8.1784pt on input line 13.
+
+LaTeX Font Warning: Font shape `TU/FiraMono(0)/m/it' undefined
+(Font)              using `TU/FiraMono(0)/m/n' instead on input line 14.
+
+)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[23
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 8.1784pt on input line 19.
+File: assets/purrr.png Graphic file (type bmp)
+<assets/purrr.png>
+)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[24
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb
+File: assets/map.png Graphic file (type bmp)
+<assets/map.png>
+File: assets/purrr.png Graphic file (type bmp)
+<assets/purrr.png>
+)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+
+Overfull \vbox (11.539pt too high) detected at line 698
+ []
+
+[25
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb
+File: assets/purrr.png Graphic file (type bmp)
+<assets/purrr.png>
+)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[26
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/it' will be
+(Font)              scaled to size 7.36057pt on input line 23.
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/bx/n' will be
+(Font)              scaled to size 7.34656pt on input line 24.
+File: assets/purrr.png Graphic file (type bmp)
+<assets/purrr.png>
+)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[27
+
+]
+File: assets/bg-praxis.jpg Graphic file (type bmp)
+<assets/bg-praxis.jpg>
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 20.34787pt on input line 811.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
+(Font)              scaled to size 20.19449pt on input line 811.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 811.
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+
+Overfull \vbox (4.72748pt too high) detected at line 811
+ []
+
+[28
+
+] [29
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[30
+
+]
+File: assets/smrw.png Graphic file (type bmp)
+<assets/smrw.png>
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.54272pt on input line 867.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 867--867
+ []  
+ []
+
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[31
+
+]
+File: assets/regression.png Graphic file (type bmp)
+<assets/regression.png>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[32
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[33
+
+]
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans scale = 0.8178393051031486.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans scale = 0.8178393051031486.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans scale = 0.8178393051031486.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans/B scale = 0.8116790051616935.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans/B scale = 0.8116790051616935.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans/I scale = 0.8178393051031486.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans/I scale = 0.8178393051031486.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans/BI scale = 0.8116790051616935.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Fira Sans/BI scale = 0.8116790051616935.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'FiraSans(1)' created for font 'Fira Sans' with options
+. [Ligatures=TeX,Scale=MatchLowercase,Ligatures=TeX,Numbers={Monospaced}].
+.  
+.  This font family consists of the following NFSS series/shapes:
+.  
+. - 'normal' (m/n) with NFSS spec.: <->s*[0.8178393051031486]"Fira
+. Sans/OT:script=latn;language=DFLT;+tnum;mapping=tex-text;"
+. - 'small caps'  (m/sc) with NFSS spec.: <->s*[0.8178393051031486]"Fira
+. Sans/OT:script=latn;language=DFLT;+tnum;+smcp;mapping=tex-text;"
+. - 'bold' (bx/n) with NFSS spec.: <->s*[0.8116790051616935]"Fira
+. Sans/B/OT:script=latn;language=DFLT;+tnum;mapping=tex-text;"
+. - 'bold small caps'  (bx/sc) with NFSS spec.: <->s*[0.8116790051616935]"Fira
+. Sans/B/OT:script=latn;language=DFLT;+tnum;+smcp;mapping=tex-text;"
+. - 'italic' (m/it) with NFSS spec.: <->s*[0.8178393051031486]"Fira
+. Sans/I/OT:script=latn;language=DFLT;+tnum;mapping=tex-text;"
+. - 'italic small caps'  (m/itsc) with NFSS spec.:
+. <->s*[0.8178393051031486]"Fira
+. Sans/I/OT:script=latn;language=DFLT;+tnum;+smcp;mapping=tex-text;"
+. - 'bold italic' (bx/it) with NFSS spec.: <->s*[0.8116790051616935]"Fira
+. Sans/BI/OT:script=latn;language=DFLT;+tnum;mapping=tex-text;"
+. - 'bold italic small caps'  (bx/itsc) with NFSS spec.:
+. <->s*[0.8116790051616935]"Fira
+. Sans/BI/OT:script=latn;language=DFLT;+tnum;+smcp;mapping=tex-text;"
+.................................................
+LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
+(Font)              scaled to size 6.54272pt on input line 976.
+LaTeX Font Info:    Font shape `TU/FiraSans(1)/bx/n' will be
+(Font)              scaled to size 6.49341pt on input line 976.
+LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
+(Font)              scaled to size 4.90704pt on input line 976.
+LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
+(Font)              scaled to size 4.0892pt on input line 976.
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[34
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[35
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[36
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[37
+
+]
+File: assets/ema.jpg Graphic file (type bmp)
+<assets/ema.jpg>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[38
+
+] [39
+
+]
+LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
+(Font)              scaled to size 6.54272pt on input line 1176.
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[40
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[41
+
+
+]
+\tf@nav=\write7
+\openout7 = `11-Auswertung_Multipel_Imputierter_Daten.nav'.
+
+\tf@toc=\write8
+\openout8 = `11-Auswertung_Multipel_Imputierter_Daten.toc'.
+
+\tf@snm=\write9
+\openout9 = `11-Auswertung_Multipel_Imputierter_Daten.snm'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1181.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1181.
 (./11-Auswertung_Multipel_Imputierter_Daten.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 473.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 473.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1181.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1181.
+
 Package rerunfilecheck Info: File `11-Auswertung_Multipel_Imputierter_Daten.out
 ' has not changed.
-(rerunfilecheck)             Checksum: CAF40BF551F01382EEDBB746D0B0B040.
+(rerunfilecheck)             Checksum: FBFC5A08EF5ACDB191367BA0EDE698BF.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 35873 strings out of 492970
- 735314 string characters out of 6133938
- 841047 words of memory out of 5000000
- 39223 multiletter control sequences out of 15000+600000
- 555279 words of font info for 99 fonts, out of 8000000 for 9000
+ 36598 strings out of 492970
+ 748893 string characters out of 6133938
+ 863067 words of memory out of 5000000
+ 39894 multiletter control sequences out of 15000+600000
+ 563478 words of font info for 130 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 71i,24n,145p,10481b,686s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,24n,145p,10481b,729s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 11-Auswertung_Multipel_Imputierter_Daten.pdf (18 pages).
+Output written on 11-Auswertung_Multipel_Imputierter_Daten.pdf (41 pages).
