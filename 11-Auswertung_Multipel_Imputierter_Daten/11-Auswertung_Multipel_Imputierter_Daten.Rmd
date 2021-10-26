@@ -15,6 +15,7 @@ header-includes: |
   \usepackage{calc}
   \usepackage{mathspec}
   \usepackage{booktabs}
+  \usepackage{makecell}
   \usepackage{amsmath,amsthm}
   \makeatletter
   \let\@@magyar@captionfix\relax
@@ -107,11 +108,11 @@ Dabei müssen wir miteinbeziehen, dass unsere Schätzwerte **mit Unsicherheit be
 
 \small
 
-Es sei $Q$ ein zu schätzender wahrer Wert (oder ein Vektor von Werten) der Population (z.B. Populationsmittelwert, Regressionskoeffizienten, ...). 
+Es sei $Q$ ein zu **schätzender wahrer Wert** (oder ein Vektor von Werten) der Population (z.B. Populationsmittelwert, Regressionskoeffizienten, ...). 
 
-Aufgrund der zuvor genannten Gründe ist $Q$ unbekannt und muss durch einen Schätzer $\hat{Q}$ angenähert werden. Dies ist nur durch die beobachteten Werte $Y_{\text{obs}}$ möglich.
+Aufgrund der zuvor genannten Gründe ist $Q$ **unbekannt** und muss durch einen Schätzer $\hat{Q}$ **angenähert** werden. Dies ist nur durch die **beobachteten Werte** $Y_{\text{obs}}$ möglich.
 
-Der Erwartungswert (d.h. die bestmögliche Annäherung) von $Q$ gegeben $Y_{\text{obs}}$ ist [@vanbuuren, Kapitel 2.3.2]:
+Der Erwartungswert (d.h. die **bestmögliche Annäherung**) von $Q$ gegeben $Y_{\text{obs}}$ ist [@vanbuuren, Kapitel 2.3.2]:
 
 $$E(Q|Y_{\text{obs}})=E\bigg(E(Q|Y_{\text{obs}}, Y_{\text{mis}})~\bigg|~Y_{\text{obs}}\bigg)$$
 d.h. der Durchschnittswert der (imputierten) Schätzungen des Mittelwerts von $Q$ über alle multiplen Imputationen hinweg.
@@ -510,7 +511,7 @@ $$~$$
 
 In der primären Wirksamkeitsanalyse wird die **Effektivität der Interventionsbedingung** evaluiert ("hatte die Interventionen einen Effekt?").
 
-Die Analyse fokussiert dabei auf das **primäre Outcome** (mit _a priori_ definiertem Messzeitpunkt und Messinstrument), und ob darin **Unterschiede zwischen den Gruppen** bestehen:
+Die Analyse fokussiert dabei auf den **primären Endpunkt** (mit _a priori_ definiertem Messzeitpunkt und Messinstrument), und ob darin **Unterschiede zwischen den Gruppen** bestehen:
 
 
 \begin{align*}
@@ -535,7 +536,7 @@ Das übliche Verfahren hierzu stellt die **\alert{\emph{Analysis of Covariance} 
 
 \begin{multicols}{2}
   \footnotesize 
-  ANCOVAs untersuchen, ob zwei oder mehrere Gruppen sich hinsichtlich einer gemessenen Variable $y$ unterscheiden, wenn für den \textbf{Einfluss} von (einer oder mehreren) \textbf{Kovariaten} (z.B. Baseline-Messung des primären Outcomes) kontrolliert wird.
+  ANCOVAs untersuchen, ob zwei oder mehrere Gruppen sich hinsichtlich einer gemessenen Variable $y$ unterscheiden, wenn für den \textbf{Einfluss} von (einer oder mehreren) \textbf{Kovariaten} (z.B. Baseline-Messung des primären Endpunkt) kontrolliert wird.
 
 Die Methode der AN(C)OVA geht auf R.A. Fisher zurück, und ist eng mit der experimentellen Methodik randomisierter Studien verbunden. 
 
@@ -574,7 +575,7 @@ $\rightarrow$ Die Durchführung von ANCOVAs in RCT-Analysen ist daher auch histo
 
 Es sei:
 
-- $y_{ij}$ der Wert des (kontinuierlichen) primären Outcomes von Person $j$ in Gruppe $i$;
+- $y_{ij}$ der Wert des (kontinuierlichen) primären Endpunkts von Person $j$ in Gruppe $i$;
 - $\tau_i$ der Effekt der $i$-ten Behandlungsgruppe (z.B. Intervention oder Kontrolle);
 - $\x_{ij}$ der Wert von $ij$ auf einer Kovariate.
 
@@ -654,7 +655,7 @@ $$F_{\nu_{\text{num}},~\nu_{\text{den}}} = \frac{\text{SS}_{\text{Prädiktor}}/(
 
 \metroset{block=fill} 
 
-\begin{block}{Reduktion von $\text{SS}_{\text{Residual}}$ bei ANCOVAs}
+\begin{block}{Warum adjustieren? Reduktion von $\text{SS}_{\text{Residual}}$ bei ANCOVAs}
 \scriptsize
 \begin{itemize}
 \itemsep-1em 
@@ -714,6 +715,317 @@ $$F_{\nu_{\text{num}},~\nu_{\text{den}}} = \frac{\text{SS}_{\text{Prädiktor}}/(
 \end{tikzpicture}
 
 \par \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
+# ANCOVAs in R
+
+## ANCOVAs in R (I)
+
+ANCOVAs basieren auf einem **linearen Modell**. Daher kann zur Berechnung als erster Schritt die **`lm`**-Funktion genutzt werden:
+
+\underline{Notwendige Argumente für \texttt{lm} sind:}
+
+* **\alert{\texttt{formula}}**: Die Formel des linearen Modells, mit der Grundform \linebreak "**`y ~ 1 + x`**". Dabei steht "`1`" für das Intercept (nicht zwingend notwendig). 
+  - Interaktionen werden mit "`*`" gebildet, z.B. "`x1 * x2`".
+  - Kontinuierliche Prädiktoren können mit `scale()` zentriert und skaliert werden, z.B. "`y ~ 1 + scale(x)`".
+
++ **\alert{\texttt{data}}**: Ein `data.frame` mit den zu verwendenden Daten.
+
+$\rightarrow$ Eine **Varianzanalyse** des Modells kann dann durch den **\texttt{anova}**-Befehl durchgeführt werden.
+
+
+## ANCOVAs in R (II)
+
+**\alert{Berechnung in multipel imputierten Daten}**
+
+\small
+
+Mit Funktionen des **_{mitml}_ package** [@mitml] lassen sich (generalisierte) lineare Modelle unkompliziert in multipel imputierten Daten fitten.
+
+Dazu müssen die Imputationen als eine Liste vom Typus "`mitml.list`" vorliegen. Diese Klasse kann durch die "`as.mitml.list`"-Funktion festgelegt werden.
+
+Modelle können dann mit der `with`-Funktion **in allen MI-Sets gerechnet** werden, z.B.:
+
+```{r, eval=F}
+m <- with(implist, lm(y ~ 1 + trt + x))
+```
+
+
+Daraufhin kann die `testEstimates`-Funktion genutzt werden, um die **Modellparameter** mit den Rubin-Regeln zu **poolen**:
+
+```{r, eval=F}
+testEstimates(m)
+```
+
+
+
+\par \normalsize
+
+
+# Klinische Signifikante & Reliable Veränderung
+
+## Klinische Signifikante & Reliable Veränderung (I)
+
+- Methoden wie AN(C)OVAs evaluieren nur, ob das **Treatment einen signifikanten Einfluss** auf den primären Endpunkt hat. 
+
+- Dies sagt aber noch wenig darüber aus (1) wie **_bedeutsam_** dieser Einfluss ist, noch (2) was dieser Effekt auf **individueller Ebene bedeutet**.
+
+- Aus diesem Grund wird bei RCTs häufig^[Derartige Analysen finden sich v.a. bei klinisch-psychologischen und biomedizinischen Trials.] auch die **\alert{klinische Signifikanz}** der Ergebnisse beurteilt, sowie der Anteil der Teilnehmenden, bei denen eine **\alert{reliable Veränderung}** stattgefunden hat.
+
+
+
+
+
+## Klinische Signifikante & Reliable Veränderung (II) {.t}
+
+**\alert{Klinisch Signifikante (CS) Veränderung}** \scriptsize [@jacobson1992clinical; @zahra2010reliable; @wise2004methods; @kroenke2001phq] \par \normalsize
+
+
+\begin{multicols}{2}
+  \footnotesize
+Eine klinisch signifikante Veränderung kann als \textbf{"Behandlungserfolg"} definiert werden. Dieser bemisst sich am Unterschreiten eines \textbf{klinisch oder praktisch relevanten Cut-offs}.
+
+Dieser Cut-off kann je nach Instrument und Untersuchungsgegenstand \textbf{variieren} (z.B. Scores $\leq$ 9 und 50\% Symptomreduktion beim PHQ-9; Kroenke, 2001). 
+
+Die zugrundeliegende Idee ist, dass Personen damit von einer \textbf{"dysfunktionalen"} in eine \textbf{"funktionale" Population übergewechselt} sind.
+  \par \normalsize
+  \par \normalsize
+\columnbreak
+  \begin{center}
+  \includegraphics[width=.5\textwidth]{assets/rci1.png}
+  \newline \scriptsize  aus Jacobson \& Truax (1992) 
+  \end{center}
+  \par \normalsize
+\end{multicols}
+
+## Klinische Signifikante & Reliable Veränderung (II) {.t}
+
+**\alert{Reliable Veränderung (RC)}** \scriptsize [@jacobson1992clinical; @zahra2010reliable; @wise2004methods; @kroenke2001phq] \par \normalsize
+
+- Werden bei einer Person $i$ zu Baseline und Post-Zeitpunkt **unterschiedliche Werte** für das primäre Outcome $y$ gemessen (z.B. $y_{1,i} > y_{0,i}$) ist unklar, ob dies eine **tatsächliche Verbesserung/Verschlechterung darstellt**!
+
+- Die Veränderung könnte u.A. **zufälliges "Rauschen"** darstellen, oder durch den **Messfehler des Instruments** verursacht sein.
+
+- Es muss daher ein **_reliables_** Veränderungsmaß berechnet werden. Dafür wird häufig der **\alert{"Reliable Change Index"}** [@jacobson1992clinical; @jacobson1984psychotherapy] herangezogen.
+
+## Klinische Signifikante & Reliable Veränderung (III) {.t}
+
+\footnotesize
+
+Es seien $y_{1,i}$ und $y_{0,i}$ die Werte des primären Outcomes einer Person $i$ zum Post-test und zu Baseline. **Der Reliable Change Index (RCI) ist dann definiert als**:
+
+$$\text{RCI}=\frac{y_{1,i}-y_{0,i}}{s_{\text{diff}}} ~~~ \text{mit} ~~~ s_{\text{diff}} = \sqrt{2(s_0\sqrt{1-r_{yy}})^2}$$
+$s_0$ ist typischerweise die **Standardabweichung von $y_0$**, und $r_{yy}$ ist die **\alert{Test-Retest-Reliabilität}** von $y$. Insgesamt repräsentiert $s_{\text{diff}}$ die **erwartete Breite** der **Verteilung der Change Scores**, wenn **keine tatsächliche Veränderung** stattgefunden hat.
+
+
+Für die berechneten RCIs wird eine Standardnormalverteilung angenommen: $\text{RCI} \sim \mathcal{N}(0,1)$. Dadurch ergibt sich:
+
+$$
+\text{wenn}~
+\begin{cases}
+|\text{RCI}| \geq \Phi^{-1}(0.975) \Rightarrow |\text{RCI}| \geq 1.96: \text{reliable Veränderung.} \\
+|\text{RCI}| < \Phi^{-1}(0.975) \Rightarrow |\text{RCI}| < 1.96: \text{\underline{keine} reliable Veränderung.}
+\end{cases}
+$$
+\par \normalsize
+
+## Klinische Signifikante & Reliable Veränderung (IV) {.t}
+
+\small
+Liegt sowohl klinisch signifikante als auch reliable Verbesserung vor, spricht man von **_\alert{reliable and clinically significant improvement}_** (RCSI). \par \normalsize 
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{assets/rci2.png}
+\end{center}
+\scriptsize aus @zahra2010reliable. \par \normalsize
+
+
+# Number Needed To Treat
+
+## Number Needed To Treat 
+
+\footnotesize Die **\alert{Number Needed To Treat (NNT)}** gibt an, wie viele **zusätzliche Personen** mit der untersuchten **Intervention behandelt** werden müssen, um **\underline{ein} gewünschtes Ereignis** zu erreichen [@altman1998confidence].
+
+$\rightarrow$ Ist z.B. NNT=3, dann müssen 3 Personen die Behandlung erhalten, um bei einer Person eine reliable Verbesserungen zu bewirken (oder um bei einer Person ein negatives Outcome zu verhindern; je nach Fragestellung).
+
+Die NNT ist definiert als die **_inverse absolute Risikoreduktion_** [ARR, @harrer2021doing]. Es sei $e$ ein gewünschtes Ereignis, z.B. reliable Verbesserung:
+
+\begin{align*}
+\openup 2\jot
+\begin{split}
+\text{NNT} = (p_{e_{\text{treat}}} - p_{e_{\text{control}}})^{-1} = \text{ARR}^{-1} \\
+p_{e_{\text{treat}}} = \frac{n_{{e}_{\text{treat}}}}{n_{\text{treat}}} ~~~ \text{und} ~~~ p_{e_{\text{control}}} =\frac{n_{{e}_{\text{control}}}}{n_{\text{control}}}.
+\end{split}
+\end{align*}
+
+Ist die NNT negativ, spricht man stattdessen von der **Number Needed to Harm** (NNH).
+\small \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
+# Generalisierte Lineare Modelle (GLM)
+
+## Generalisierte Lineare Modelle (I)
+
+\small
+**Was tun, wenn der primäre Endpunkt $y$ nicht kontinuierlich & ungefähr normalverteilt ist?** \par \normalsize
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="88%", fig.align='center'}
+library(ggplot2)
+library(gridExtra)
+
+set.seed(1234)
+data.frame(gamma = rgamma(10000, 2),
+           poisson = rpois(10000, 3),
+           binom = rbinom(10000, 1, 0.75),
+           negbinom = rnbinom(1000, 1, 0.1)) -> df
+
+ggplot(df) +
+  geom_density(aes(gamma), fill = "#A1C642", color = "darkgreen", alpha = 0.8) +
+  ggtitle(expression("Gammaverteilung:"~y%~%Gamma(alpha == 2, beta == 1))) +
+  ylab("") +
+  xlab("Einkommen, in Tausend") +
+  theme_minimal() +
+  theme(axis.title=element_text(size=16,face="bold"),
+        plot.margin = unit(c(1,1,1,1), "cm")) -> p1
+
+ggplot(df) +
+  geom_histogram(aes(poisson), fill = "#A1C642", color = "darkgreen", 
+                 alpha = 0.8, bins = 11, binwidth = 0.5) +
+  ggtitle(expression("Poissonverteilung:"~y%~%Pois(lambda == 3))) +
+  ylab("") +
+  xlab("Anzahl an Hospitalisierungen, pro Tag") +
+  theme_minimal() +
+  theme(axis.title=element_text(size=16,face="bold"),
+        plot.margin = unit(c(1,1,1,1), "cm"))  -> p2
+
+ggplot(df) +
+  geom_histogram(aes(binom), fill = "#A1C642", color = "darkgreen", 
+                 alpha = 0.8, bins = 2, binwidth = 0.5) +
+  scale_x_continuous(n.breaks = 2) +
+  ggtitle(expression("Binomial-/Bernoulliverteilung:"~y%~%B(n == 1, p == 0.75))) +
+  ylab("") +
+  xlab("Reliable Veränderung") +
+  theme_minimal() +
+  theme(axis.title=element_text(size=16,face="bold"),
+        plot.margin = unit(c(1,1,1,1), "cm"))  -> p3
+
+
+ggplot(df) +
+  geom_histogram(aes(negbinom), fill = "#A1C642", color = "darkgreen", 
+                 alpha = 0.8, bins = 60, binwidth = 0.5) +
+  ggtitle(expression("Negative Binomialverteilung:"~y%~%NB(r == 1, p == 0.1))) +
+  ylab("") +
+  xlab("Absenztage von Schülern im verg. Schuljahr") +
+  theme_minimal() +
+  theme(axis.title=element_text(size=15,face="bold"),
+        plot.margin = unit(c(1,1,1,1), "cm"))  -> p4
+
+grid.arrange(p1, p2, p3, p4, ncol=2)
+
+```
+
+## Generalisierte Linear Modelle (II)
+
+Linear Predictor
+
+$$\eta_i = (o_i) +\alpha + \mathbf{x}_i^\top\mathbf{\beta}$$
+
+Kopplungsfunktion (link function):
+
+$$g(\mu) = \eta $$
+
+
+\begin{align*}
+\begin{split}
+g(\mu) &= \log(\mu) = \eta \\
+g(\mu) &= \log\left(\frac{\mu}{E}\right) = \eta ~~~ \text{(mit Offset)}\\
+&= \log(\mu) = \eta + \log(E)
+\end{split}
+\end{align*}
+
+
+## Generalisierte Linear Modelle {.t}
+
+\small 
+**\alert{GLMs \& Link-Funktionen: Übersicht}** $~~~~~~~ ~~~~ ~ ~ ~$ \tiny $^{\text{*}}$ bekannt als "Logistische Regression". \par \normalsize
+
+
+\renewcommand{\arraystretch}{1.5}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(kableExtra)
+data.frame(
+  Verteilung = c("Normal", "Binomial", "$~$", "$~$", 
+                 "\\makecell[l]{Negativ\\\\Binomial}", "Poisson", "Gamma"),
+  Linktyp = c("Identity", "Logit$^{\\text{*}}$", "Log", "\\makecell[l]{Complem.\\\\Log-Log}", 
+              "Log", "Log", "Inverse"),
+  Linkfunktion = c("$\\mu$", "$\\text{log}_e{\\left(\\frac{\\mu}{1-\\mu}\\right)}$", 
+                   "$\\text{log}_e{\\left(\\mu\\right)}$", 
+                   "$\\text{log}_e{\\left[-\\text{log}_e{\\left(1-\\mu\\right)}\\right]}$",
+                   "$\\text{log}_e{\\left(\\frac{\\mu}{\\mu+k}\\right)}$", 
+                   "$\\text{log}_e{\\left(\\mu\\right)}$", "${-\\mu}^{-1}$"),
+  Support = c("$\\mathbb{R}$", "$\\frac{0,1,\\dots,m}{m}$", 
+              "$\\frac{0,1,\\dots,m}{m}$", "$\\frac{0,1,\\dots,m}{m}$", 
+              "$\\mathbb{N}_0$", "$\\mathbb{N}_0$", "$\\mathbb{R}_{+}$"),
+  beta = c("MD", "OR", "RR", "HR", "(I)RR", "(I)RR", "-"),
+  glm.family = c("\\texttt{gaussian(„identity“)}", 
+                 "\\texttt{binomial(„logit“)}", 
+                 "\\texttt{binomial(„log“)}", 
+                 "\\texttt{binomial(„cloglog“)}", 
+                 "\\text{log} (in \\texttt{MASS::glm.nb})", 
+                 "\\texttt{poisson(„log“)}", 
+                 "\\texttt{gamma(„inverse“)}")) -> df.tab
+
+colnames(df.tab) = c("Verteilung", "Link-Typ", "Linkfunktion", "Support ($y$)",
+                     "$\\text{exp}(\\beta_{\\text{treat}})$", "\\texttt{family}")
+
+knitr::kable(df.tab, align="llccll", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(font_size = 7) %>% 
+  row_spec(0, bold = TRUE, background = ) %>% 
+  row_spec(1, hline_after = TRUE) %>% 
+  row_spec(4, hline_after = TRUE) %>% 
+  row_spec(5, hline_after = TRUE) %>% 
+  row_spec(6, hline_after = TRUE) %>% 
+  row_spec(7, hline_after = TRUE)
+```
+
+\renewcommand{\arraystretch}{1}
+
 
 # Referenzen
 

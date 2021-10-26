@@ -1,0 +1,9 @@
+Block I: R Entdecken
+Block II: Randomisiert-kontrollierte Studien & Ihre Hintergründe
+- RCTs: Aufbau & Hintergrund
+- Sammlung & Strukturierung von RCT-Daten für den Import
+- Import & "Eyeballing" der Studiendaten
+- Vorläufige deskriptive Statistik & Dropout-Analyse
+- Fehlende Werte
+Block III: RCT-Ergebnisse: Analysieren & Verstehen
+- 

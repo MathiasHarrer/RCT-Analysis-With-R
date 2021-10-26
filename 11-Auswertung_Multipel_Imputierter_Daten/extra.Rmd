@@ -133,6 +133,88 @@ with an optional background color.
   Block content.
 \end{exampleblock}
 
+# n
+
+What probability distribution is appropriate? The answer determines the random component of the model. The choice of probability distribution may be suggested by the response data (for example, proportions of a total suggest a binomial distribution), or knowledge of how the variance changes with the mean.
+
+How are the explanatory variables related to the mean of the response μ? The answer suggests the systematic component of the model. Glms assume a function linking the linear predictor  to the mean, such as log mu = eta for example. That is, glms are regression models linear in the parameters.
+
+## n 
+
+Glms assume the responses come from a distribution that belongs to a fam- ily of distributions called the exponential dispersion model family (or edm family, or just edms). Continuous edms include the normal and gamma dis- tributions. Discrete edms include the Poisson, binomial and negative bino- mial distributions. 
+
+## n
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+library(ggplot2)
+library(gridExtra)
+
+set.seed(1234)
+data.frame(gamma = rgamma(10000, 2),
+           poisson = rpois(10000, 3),
+           binom = rbinom(10000, 1, 0.75),
+           negbinom = rnbinom(1000, 1, 0.1)) -> df
+
+ggplot(df) +
+  geom_density(aes(gamma), fill = "#A1C642", color = "darkgreen", alpha = 0.8) +
+  ggtitle(expression("Gammaverteilung:"~y%~%Gamma(alpha == 2, beta == 1))) +
+  ylab("") +
+  xlab("Einkommen, in Tausend") +
+  theme_minimal() -> p1
+
+ggplot(df) +
+  geom_histogram(aes(poisson), fill = "#A1C642", color = "darkgreen", 
+                 alpha = 0.8, bins = 11, binwidth = 0.5) +
+  ggtitle(expression("Poissonverteilung:"~y%~%Pois(lambda == 3))) +
+  ylab("") +
+  xlab("Anzahl an Hospitalisierungen, pro Tag") +
+  theme_minimal() -> p2
+
+ggplot(df) +
+  geom_histogram(aes(binom), fill = "#A1C642", color = "darkgreen", 
+                 alpha = 0.8, bins = 2, binwidth = 0.5) +
+  scale_x_continuous(n.breaks = 2) +
+  ggtitle(expression("Binomial-/Bernoulliverteilung:"~y%~%B(n == 1, p == 0.75))) +
+  ylab("") +
+  xlab("Reliable Veränderung") +
+  theme_minimal() -> p3
+
+
+ggplot(df) +
+  geom_histogram(aes(negbinom), fill = "#A1C642", color = "darkgreen", 
+                 alpha = 0.8, bins = 60, binwidth = 0.5) +
+  ggtitle(expression("Negative Binomialverteilung:"~y%~%NB(r == 1, p == 0.1))) +
+  ylab("") +
+  xlab("Absenztage von Schülern im vergangenen Schuljahr") +
+  theme_minimal() -> p4
+
+grid.arrange(p1, p2, p3, p4, ncol=2)
+
+```
+
+
+
+## n
+
+Linear Predictor
+
+$$\eta_i = (o_i) +\alpha + \mathbf{x}_i^\top\mathbf{\beta}$$
+
+Kopplungsfunktion (link function):
+
+$$g(\mu) = \eta $$
+
+Offset (bekannte "Exposure"):
+
+\begin{align*}
+\begin{split}
+g(\mu) &= \log(\mu) = \eta \\
+&= \log\left(\frac{\mu}{E}\right) = \eta \\
+&= \log(\mu) = \eta + \log(E)
+\end{split}
+\end{align*}
+
+
 
 
 ## Resources

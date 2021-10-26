@@ -71,7 +71,7 @@ print.skimReport = function(x){
 } 
 
 
-# 1. Deskriptive Auswertung der imputierten Daten -----------------------------
+# 1. Deskriptive Auswertung der Imputierten Daten -----------------------------
 
 # Konvertiere Imputationen (Klasse 'mids') in eine 'mitml'-Liste
 implist <- mids2mitml.list(imp)
@@ -131,32 +131,67 @@ cbind(variable, num.desc.full, num.desc.ig, num.desc.cg) %>%
 
 # 2. Analysis of Covariance ---------------------------------------------------
 
+## 2.1 ANCOVA in einem Imputationsset -----------------------------------------
+
 m.ancova <- lm(pss.1 ~ 1 + group + scale(pss.0), data = implist[[1]]) 
 summary(m.ancova)
-anova(m.ancova)
+
+# Prüfe Voraussetzungen:
+# - Varianzhomogenität: gleichförmige Streuung der Residuen um 0
+#   (-> Residuals vs. Fitted Plot)
+# - Normalverteilung der Residuen (-> Q-Q Plot)
+
+# Residuals vs. Fitted
 plot(m.ancova, 1)
+
+# Q-Q Plot
 plot(m.ancova, 2)
 
+# Analysis of Variance des Modells
+anova(m.ancova)
+
+# Zum Vergleich: Fit ohne Kovariate
+lm(pss.1 ~ 1 + group, data = implist[[1]]) %>% 
+  anova()
+
+
+## 2.2 ANCOVA in Multipel Imputierten Daten -----------------------------------
+
+# Liste muss Klasse "mitml.list" besitzen!
 class(implist) = c("mitml.list", "list")
 
+# Fitte ANCOVA-Modell in allen MI-Sets
 with(implist, lm(pss.1 ~ 1 + group + pss.0)) %>% 
   testEstimates() -> mi.ancova
 
+# Extrahiere F-Werte
 with(implist, lm(pss.1 ~ 1 + group + pss.0)) %>% 
   map_dbl(~anova(.)$`F value`[1]) -> Fvalues
 
+# Kombiniere F-Werte mit Rubin-Regeln
 micombine.F(Fvalues, 1)
 
 
+## 2.3 ANCOVA bei sekundären Endpunkten ---------------------------------------
 
+# Definiere Namen alles zu analysierenden Variablen
+# (ohne Zeitangabe)
 test.vars = c("pss", "cesd", "hadsa",
               "isi", "mbi", "pswq")
 
+# Generiere Modellformeln für Post- und FU-Messzeitpunkt
 formula.1 = paste(test.vars, ".1 ~ 1 + group + ", test.vars, ".0",
                   sep = "")
 formula.2 = paste(test.vars, ".2 ~ 1 + group + ", test.vars, ".0",
                   sep = "")
 
+# Nutze "map", um Funktion über alle _Formeln_(!) anzuwenden:
+# 1. Berechne ANCOVA für spezifisches Outcome, unter Kontrolle der
+#    Baselinemessung
+# 2. Extrahiere Ergebnisse des Gruppenterms
+# 3. Extrahiere F-Werte und aggregiere mit Rubin-Regeln
+# 4. Gebe generiertem data.frame neue Variablennamen
+# 5. Füge Spalten für Variable und MZP hinzu
 as.list(c(formula.1, formula.2)) %>% 
   map_dfr(function(x){
     
@@ -176,6 +211,7 @@ as.list(c(formula.1, formula.2)) %>%
   bind_cols(variable = rep(test.vars, 2), 
             time = rep(1:2, each = 6), .) -> mi.ancova.full
   
+# Speichere Ergebnisse als Excel-Sheet
 write_xlsx(mi.ancova.full, "mi_ancova_full.xlsx")
 
 

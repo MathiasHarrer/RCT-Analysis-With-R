@@ -1,2 +1,4 @@
 base
 kableExtra
+ggplot2
+gridExtra
