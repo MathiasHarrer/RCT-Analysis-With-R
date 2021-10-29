@@ -13,8 +13,10 @@ mainfont: "Fira Sans"
 header-includes: |
   ```{=latex}
   \usepackage{calc}
+  \usepackage{svg}
   \usepackage{mathspec}
   \usepackage{booktabs}
+  \usepackage{makecell}
   \usepackage{amsmath,amsthm}
   \makeatletter
   \let\@@magyar@captionfix\relax
@@ -75,12 +77,37 @@ header-includes: |
 knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 ```
 
+# CONSORT Flow Chart
+
+## CONSORT Flow Chart (I)
+
+\begin{multicols}{2}
+  \footnotesize 
+Die Erstellung eines \textbf{Studien-Flowcharts} wird im CONSORT Statement \underline{ausdrücklich} empfohlen (Item 13a). 
+
+Die maßgebliche Vorlage dazu kann als MS Word-Dokument heruntergeladen werden: \href{http://www.consort-statement.org/consort-statement/flow-diagram}{consort-statement.org/consort-statement/flow-diagram}.
+
+Eine Erstellung in R ist möglich (s. z.B. \href{http://www.consort-statement.org/consort-statement/flow-diagram}{hier}, oder indirekt mit \href{http://www.consort-statement.org/consort-statement/flow-diagram}{Ti\emph{k}Z}), aber oft vergleichsweise mühselig. 
+
+$$~$$
+  \par \normalsize
+\columnbreak
+  \begin{center}
+  \includegraphics[width=.5\textwidth]{assets/consort-flow-diagram.png}
+  \end{center}
+  \par \normalsize
+\end{multicols}
+
+\scriptsize
+@moher2012consort \par \normalsize
+
+
 
 # "Raincloud" Plots
 
-## "Raincloud" Plots
+## "Raincloud" Plots (I)
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width='90%'}
 library(ggplot2)
 library(see)
 library(tidyverse)
@@ -158,6 +185,59 @@ ggplot(plot.data, aes(x = as.factor(time), y = pss, color = group)) +
   xlab("Messzeitpunkt")
 
 ```
+
+
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
+
+## "Raincloud" Plots (II) {.t}
+
+\footnotesize
+
+Beschränkt man sich auf ein Datenset (z.B. ein zufällig gewähltes Imputationsset) können auch die Funktionen des **_{raincloudplots}_ Package** [@allen2019raincloud] genutzt werden ([Dokumentation](https://github.com/jorvlan/raincloudplots)).
+
+\underline{Installation:}
+
+```{r, eval=F}
+remotes::install_github('jorvlan/raincloudplots')
+```
+
+\par \normalsize
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-2.2cm,yshift=-3.9cm] at (current page.north east)
+    {\includegraphics[height=2.1cm]{assets/hex-rainclouds.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-9.3cm,yshift=-6.9cm] at (current page.north east)
+    {\includegraphics[height=4cm]{assets/fig_5.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-3.7cm,yshift=-6.9cm] at (current page.north east)
+    {\includegraphics[height=4cm]{assets/fig_7.png}};
+\end{tikzpicture}
+
 
 
 

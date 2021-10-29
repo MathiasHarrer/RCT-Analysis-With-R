@@ -780,9 +780,9 @@ testEstimates(m)
 \par \normalsize
 
 
-# Klinische Signifikante & Reliable Veränderung
+# Klinisch Signifikante & Reliable Veränderung
 
-## Klinische Signifikante & Reliable Veränderung (I)
+## Klinisch Signifikante & Reliable Veränderung (I)
 
 - Methoden wie AN(C)OVAs evaluieren nur, ob das **Treatment einen signifikanten Einfluss** auf den primären Endpunkt hat. 
 
@@ -794,7 +794,7 @@ testEstimates(m)
 
 
 
-## Klinische Signifikante & Reliable Veränderung (II) {.t}
+## Klinisch Signifikante & Reliable Veränderung (II) {.t}
 
 **\alert{Klinisch Signifikante (CS) Veränderung}** \scriptsize [@jacobson1992clinical; @zahra2010reliable; @wise2004methods; @kroenke2001phq] \par \normalsize
 
@@ -816,7 +816,7 @@ Die zugrundeliegende Idee ist, dass Personen damit von einer \textbf{"dysfunktio
   \par \normalsize
 \end{multicols}
 
-## Klinische Signifikante & Reliable Veränderung (II) {.t}
+## Klinisch Signifikante & Reliable Veränderung (II) {.t}
 
 **\alert{Reliable Veränderung (RC)}** \scriptsize [@jacobson1992clinical; @zahra2010reliable; @wise2004methods; @kroenke2001phq] \par \normalsize
 
@@ -826,7 +826,7 @@ Die zugrundeliegende Idee ist, dass Personen damit von einer \textbf{"dysfunktio
 
 - Es muss daher ein **_reliables_** Veränderungsmaß berechnet werden. Dafür wird häufig der **\alert{"Reliable Change Index"}** [@jacobson1992clinical; @jacobson1984psychotherapy] herangezogen.
 
-## Klinische Signifikante & Reliable Veränderung (III) {.t}
+## Klinisch Signifikante & Reliable Veränderung (III) {.t}
 
 \footnotesize
 
@@ -847,7 +847,7 @@ $$
 $$
 \par \normalsize
 
-## Klinische Signifikante & Reliable Veränderung (IV) {.t}
+## Klinisch Signifikante & Reliable Veränderung (IV) {.t}
 
 \small
 Liegt sowohl klinisch signifikante als auch reliable Verbesserung vor, spricht man von **_\alert{reliable and clinically significant improvement}_** (RCSI). \par \normalsize 
@@ -960,27 +960,69 @@ grid.arrange(p1, p2, p3, p4, ncol=2)
 
 ```
 
-## Generalisierte Linear Modelle (II)
+## Generalisierte Linear Modelle (II) {.t}
 
-Linear Predictor
+**\alert{Die Struktur von GLMs}** \scriptsize [@dunn2018generalized, Kapitel 5] \par \normalsize
+
+
+- GLMs sind eine **Verallgemeinerung** linearer Modelle auf die gesamte Klasse der **Exponentialfamilie** von Verteilungen ("exponential dispersion model family"; EDM). 
+
+- Damit können auch Endpunkte wie **Zähl-/Eventdaten** oder **dichotome Outcomes** modelliert werden.
+
+- Einfache lineare Modelle können direkt durch Matrixalgebra berechnet werden (**Ordinary Least Squares**; OLS). Bei (anderen) GLMs muss die **Optimierung iterativ** durch **Maximum-Likelihood-Schätzung** (MLE) **vorgenommen werden**. 
+
+
+## Generalisierte Linear Modelle (III) {.t}
+
+**\alert{Die Struktur von GLMs}** \scriptsize [@dunn2018generalized, Kapitel 5] \par \normalsize
+
+\footnotesize
+GLMs bestehen aus \underline{zwei} Komponenten: dem **linearen Prädiktor** $\eta_i~$...
 
 $$\eta_i = (o_i) +\alpha + \mathbf{x}_i^\top\mathbf{\beta}$$
 
-Kopplungsfunktion (link function):
+... und einer **Kopplungsfunktion** ("Linkfunktion"):
 
-$$g(\mu) = \eta $$
+$$g(\mu_i) = \eta_i $$
+
+Die inverse Kopplungsfunktion **"übersetzt"** dabei die Werte des **linearen Prädiktors** in das **Format der Responsevariable**: $g^{-1}(\eta_i) = \mu_i$; $\mu = E(y_i)$. 
+
+In R können GLMs mit der `glm`-Funktion unter Angabe der Linkfunktion berechnet werden; z.B.
+
+```{r, eval=F}
+glm(y ~ trt + x, data = data, link = binomial("logit"))
+```
+
+\normalsize
+
+## Generalisierte Linear Modelle (IV) {.t}
+
+**\alert{Die Struktur von GLMs}** \scriptsize [@dunn2018generalized, Kapitel 5] \par \normalsize
+
+\footnotesize
+
+$$\eta_i = (\alert{o_i}) +\alpha + \mathbf{x}_i^\top\mathbf{\beta}$$
+Der Term $o_i$ steht hier für einen **Offset**, der v.a. bei Poisson- und negativ binomialen Modellen verwendet wird. Offsets sind _a priori_ bekannte Werte, für die **keine Parameterschätzung** notwendig ist; in der Biomedizin oft die Dauer der Exposition $E$ bei der Analyse klinisch relevanter Events (z.B. Schlaganfälle während variierenden Zeitraums $E$). 
+
+\underline{Für das Poisson-Modell ergibt sich so z.B.:}
 
 
 \begin{align*}
 \begin{split}
-g(\mu) &= \log(\mu) = \eta \\
-g(\mu) &= \log\left(\frac{\mu}{E}\right) = \eta ~~~ \text{(mit Offset)}\\
-&= \log(\mu) = \eta + \log(E)
+g(\mu) &= \overbrace{\text{log}_e(\mu)}^{\text{Linkfunktion}} = \eta \\
+g(\mu) &= \text{log}_e\left(\frac{\mu}{E}\right) = \eta ~~~ \text{(mit Offset)}\\
+&= \text{log}_e(\mu) = \eta + \text{log}_e(E)
 \end{split}
 \end{align*}
 
+```{r, eval=F}
+glm(y ~ trt + x + offset(E), data = data, link = poisson("log"))
+```
 
-## Generalisierte Linear Modelle {.t}
+
+\par \normalsize
+
+## Generalisierte Linear Modelle (V) {.t}
 
 \small 
 **\alert{GLMs \& Link-Funktionen: Übersicht}** $~~~~~~~ ~~~~ ~ ~ ~$ \tiny $^{\text{*}}$ bekannt als "Logistische Regression". \par \normalsize
@@ -1025,6 +1067,26 @@ knitr::kable(df.tab, align="llccll", booktabs = TRUE, escape = FALSE) %>%
 ```
 
 \renewcommand{\arraystretch}{1}
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
 
 
 # Referenzen

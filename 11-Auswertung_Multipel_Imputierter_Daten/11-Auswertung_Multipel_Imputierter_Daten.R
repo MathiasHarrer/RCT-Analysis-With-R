@@ -216,6 +216,125 @@ write_xlsx(mi.ancova.full, "mi_ancova_full.xlsx")
 
 
 
+# 3. Reliable Change Index ----------------------------------------------------
+
+# Wir nutzen die 'rci'-Funktion, um den Reliable Change Index zu berechnen
+rci <- function(y0, y1, ryy){
+  
+  diff = y1-y0
+  sdiff = sqrt(2*((sd(y0)*sqrt(1-ryy))^2))
+  return(diff/sdiff)
+  
+}
+
+## 3.1 Berechnung -------------------------------------------------------------
+
+# Ausprobieren in einem Imputationsset
+# Wir nehmen eine Reliabilität von ryy = 0.91 an
+with(implist[[1]], rci(y0 = pss.0, y1 = pss.1, ryy = 0.91)) 
+
+# Berechnung in allen Imputationssets mit 'purrr'
+implist %>% 
+  map(function(x){
+    
+    # Berechne RCI für jede Person
+    x$rci = with(x, rci(y0 = pss.0, y1 = pss.1, ryy = 0.91)) 
+    
+    # Berechne Reliable Improvement (RCI <= -1.96)
+    x$ri = ifelse(x$rci <= -1.96, 1, 0)
+    
+    # Berechne Reliable Deterioriation (RCI >= 1.96)
+    x$rd = ifelse(x$rci >= 1.96, 1, 0)
+    
+    # Return x
+    x
+    
+  }) -> implist
+
+
+# Berechnung der Anzahl/Raten von Reliable Improvement
+# Dies kann über die 'table' Funktion erreicht werden
+with(implist[[1]], table(group, ri))
+
+# Berechnung in allen Imputationssets
+# Wir runden die Fallzahlen am Ende. Dies dient nur dazu,
+# diese später zu berichten.
+implist %>% 
+  map(~ with(., table(group, ri))) %>% 
+  {Reduce(`+`, .)/25} %>% 
+  as.matrix() %>% 
+  round() -> table.ri
+
+
+## 3.2 Chi-Quadrat Test -------------------------------------------------------
+
+# Rechne zuerst mit gepooleten Ergebnissen, um sich mit der
+# Funktion vertraut zu machen:
+chisq.test(table.ri)
+
+# Berechne Chi-Quadrat-Werte in allen Sets
+implist %>% 
+  map_dbl(function(x){
+    
+    table <- with(x, table(group, ri))
+    chisq <- chisq.test(table)$statistic; chisq
+    
+  }) -> chisq
+
+# Aggregiere die Werte
+micombine.chisquare(dk = chisq, df = 1)
+
+
+
+# 4. Number Needed to Treat ---------------------------------------------------
+
+# Berechne n in Interventions- und Kontrollgruppe
+n.ig <- sum(table.ri[2,])
+n.cg <- sum(table.ri[1,])
+
+# Berechne Anteil von reliable Improvement
+p.ig <- table.ri[2,2]/n.ig
+p.cg <- table.ri[1,2]/n.cg
+
+# Berechne NNT als inverse Risikodifferenz
+nnt <- (p.ig - p.cg)^-1 
+
+
+
+# 5. Generalisierte Lineare Modelle -------------------------------------------
+
+# Wir fokussieren hier auf die logistische Regression.
+# Wir nutzen die neu generierte Reliable Improvement-Variable als Repsonse
+
+# In einem Set:
+m.logreg <- glm(ri ~ 1 + group + pss.0, data = implist[[1]],
+                family = binomial("logit"))
+summary(m.logreg)
+
+
+# In den MI-Sets:
+with(implist, glm(ri ~ 1 + group + pss.0,binomial("logit"))) %>% 
+  testEstimates() -> mi.logreg
+mi.logreg
+
+
+data$id = 1:nrow(data)
+
+
+datlong = data.frame(id = rep(1:100, times = 10),
+                     y = c(rnorm(100, 10, 5), rnorm(100, 20, 5), rnorm(100, 30, 5),
+                           rnorm(100, 40, 5), rnorm(100, 50, 5), rnorm(100, 60, 5),
+                           rnorm(100, 70, 5), rnorm(100, 80, 5), rnorm(100, 90, 5),
+                           rnorm(100, 100, 5)),
+                     cond = rep(1:10, each = 100))
+
+
+
+
+aov(y ~ cond + Error(id), datlong) 
+lmer(y ~ cond + (cond||id), datlong) %>% summary()
+
+aov(pss.1 ~ group, implist[[1]])
 
 
 
