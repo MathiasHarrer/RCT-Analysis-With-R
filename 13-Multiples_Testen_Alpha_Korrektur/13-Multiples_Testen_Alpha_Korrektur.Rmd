@@ -1,0 +1,192 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Multiples Testen & Alphafehler-Korrektur"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{makecell}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Multiples Testen
+
+## Multiples Testen (I)
+
+\small
+
+Zur Evaluation der Studienhypothesen ist in manchen Fällen **\alert{mehr als ein Test notwendig}**. Zwei typische Szenarien sind:
+
+- **Multiple primäre Endpunkte**: es wurden mehrere Outcomes gemessen (z.B. depressive Symptomschwere, Lebensqualität, Lungenfunktion, Gait Speed, ...), für die alle ein Interventionseffekt nachgewiesen werden soll.
+
+- **Multiple Assessments des primären Endpunkts**: es gibt nur ein primäres Outcome, dieses wurde aber mehrfach gemessen, und der Interventionseffekt soll zu allen Zeitpunkten nachgewiesen werden.
+
+- **Multiple Interventionsgruppen**: es gibt mehr als eine Interventionsgruppe, und es soll der Effekt aller untersuchten Interventionen im Vergleich zur Kontrollgruppe nachgewiesen werden. 
+
+\par \normalsize
+
+## Multiples Testen (II)
+
+Werden $k$ multiple Tests mit einem nominalen Signifikanzniveau von (typischerweise) $\alpha$ = 0.05 getestet, führt dies zur **\alert{Inflation der family-wise error rate}** [FWER, @li2017introduction; @vickerstaff2019methods]:
+
+$$P(\text{mindestens ein signifikantes Ergebnis}) = 1-(1-\alpha)^k$$
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="60%", fig.align='center', fig.width=3, fig.height=2}
+Tests = 1:100
+alpha = 1-(1-0.05)^Tests
+
+data.frame(Tests, alpha) -> pd
+
+library(ggplot2)
+ggplot(data = pd, aes(x = Tests, y = alpha)) +
+  geom_line(color = "#cdde99", size = 1) +
+  geom_hline(yintercept = 0.05, color = "#2a7792", size = 1, linetype = "solid") +
+  ylim(0,1) +
+  scale_y_continuous(breaks = c(0, .05, .2, .4, .6, .8, 1), labels = scales::percent_format(accuracy = 1)) +
+  ylab(expression(alpha~"- Level / FWER")) +
+  xlab("Anzahl Tests (k)") +
+  theme_minimal()
+
+```
+
+## Multiples Testen (III)
+
+\small
+
+**\alert{Die Bonferroni- und Holm-Bonferroni-Korrektur}**
+
+Um eine Inflation falsch-positiver Befunde zu vermeiden und das nominale Signifikanzniveau trotz multipler Tests zu erhalten, ist daher eine $\alpha$-Fehlerkorrektur notwendig. 
+
+Zwei häufig gewählte Verfahren sind die (überkonservative) **Bonferroni-** und (weniger strenge) **Holm-Bonferroni**-Korrektur [@holm1979simple]. Diese lassen sich in R mit der `p.adjust`-Funktion anwenden:
+
+\footnotesize
+
+```{r, eval=F}
+p <- c(0.001, 0.023, 0.025)         # Sammle p-Werte multipler Tests
+p.adjust(p, method = "bonferroni")  # Bonferroni-Korrektur
+p.adjust(p, method = "holm")        # Holm-Bonferroni-Korrektur
+```
+
+```
+#> [1] 0.003 0.069 0.075
+#> [1] 0.003 0.046 0.046
+```
+
+\par \normalsize
+
+## Multiples Testen (IV)
+
+**\alert{Wann muss korrigiert werden?}** \scriptsize [@li2017introduction; @vickerstaff2019methods] \normalsize
+
+\small
+- **Multiple Outcomes**: eine Korrektur ist nur notwendig, wenn alle Outcome-Tests als _konfirmatorisch_ betrachtet werden. Gibt es nur einen primären und mehrere sekundäre Endpunkte, ist keine Korrektur notwendig. Ergebnisse der sekundären Endpunkte sind dann aber \underline{nur explorativ}, kein konfirmatorischer Nachweis!
+
+- **Multiple Messzeitpunkte**: ist ein Messzeitpunkt als konfirmatorisch-primär präspezifiziert, ist keine Korrektur notwendig; ebenso bei Tests, bei denen über alle MZP _hinweg_ modelliert wird (z.B. repeated-measures ANOVA, gemischte Modelle).
+
+- **Multiple Interventionsgruppen**: eine Korrektur ist insbesondere dann notwendig, wenn die Interventionsgruppen _"verwandt"_ sind (z.B. gleiches Medikament in unterschiedlicher Dosis).
+\normalsize
+
+
+# Einseitig oder Zweiseitig?
+
+## Einseitig oder Zweiseitig? (I)
+
+\footnotesize
+
+Wir erinnern uns $\rightarrow$ Studienhypothesen bei Superiority Trials:
+
+
+\begin{align*}
+\begin{split}
+\text{H}_{\text{0}}: & ~~~\mu_1 \leq \mu_0 ~~~ \Rightarrow ~~~ \tau \leq 0 \\
+\text{H}_{\text{1}}: & ~~~\mu_1 > \mu_0 ~~~ \Rightarrow ~~~ \tau > 0
+\end{split}
+\end{align*}
+
+Dies impliziert eigentlich einen **\alert{einseitigen Test}**, da wir nur testen wollen, ob $\mu_1$ _größer_ als $\mu_0$ ist, nicht ob $\mu_1 \neq \mu_0$. "By default" ausgegebene Tests sind aber (häufig) zweiseitig (z.B. $t$-Tests)! 
+
+Unter **gewissen Voraussetzungen** kann eine einseitige Testung vorgenommen, bzw. $\alpha$ auf 10% erhöht werden [@knottnerus2001ethics; @dunnett1996alternative]:
+
+- Das Ziel der Studie ist es \underline{nicht}, **negative Effekte konfirmatorisch bestätigen zu können** (z.B. weil diese auf Basis vorheriger Forschung als unwahrscheinlich gelten).
+
+- Wird \underline{kein} **positiver Effekt** der Intervention festgestellt, so wird dies als die **Kontrollgruppe favorisierende Evidenz** ausgelegt.
+
+\par \normalsize
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

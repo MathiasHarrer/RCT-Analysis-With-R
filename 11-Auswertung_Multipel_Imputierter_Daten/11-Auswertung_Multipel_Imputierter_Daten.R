@@ -313,7 +313,7 @@ summary(m.logreg)
 
 
 # In den MI-Sets:
-with(implist, glm(ri ~ 1 + group + pss.0,binomial("logit"))) %>% 
+with(implist, glm(ri ~ 1 + group + pss.0, binomial("logit"))) %>% 
   testEstimates() -> mi.logreg
 mi.logreg
 

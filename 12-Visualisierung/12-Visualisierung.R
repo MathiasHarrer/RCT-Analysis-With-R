@@ -8,18 +8,18 @@ library(ggplot2)
 library(see)
 library(tidyverse)
 
-
-
+# Speichere Anzahl an Personen und Anzahl an
+# Imputationssets
 m = length(implist)
 n = nrow(implist[[1]])
 mn = m*n
 
+# Fasse Imputationslist zu einem großen data frame zusammen
 do.call(rbind, implist) %>% 
   mutate(m = rep(1:m, each = n),
          id = 1:mn) -> data
 
-
-
+# Bringe Daten des primären Endpunktes ins Long-Format
 data %>% 
   select(id, m, group, pss.0, 
          pss.1, pss.2) %>% 
@@ -28,6 +28,7 @@ data %>%
                names_prefix = "pss.",
                values_to = "pss") -> plot.data
 
+# Jitter hinzufügen (vermeidet Overplotting)
 jitter1 = runif(nrow(plot.data), -.05, .05)
 jitter2 = runif(nrow(plot.data), -.5, .5)
 
@@ -39,7 +40,7 @@ within(plot.data, {
 }) -> plot.data
 
 
-
+# Splitte Daten nach Zeitpunkten
 plot.data %>% 
   filter(time != 2) -> plot.data.prepost
 

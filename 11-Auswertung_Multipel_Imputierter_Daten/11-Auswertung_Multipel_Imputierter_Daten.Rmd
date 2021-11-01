@@ -1044,7 +1044,7 @@ data.frame(
   Support = c("$\\mathbb{R}$", "$\\frac{0,1,\\dots,m}{m}$", 
               "$\\frac{0,1,\\dots,m}{m}$", "$\\frac{0,1,\\dots,m}{m}$", 
               "$\\mathbb{N}_0$", "$\\mathbb{N}_0$", "$\\mathbb{R}_{+}$"),
-  beta = c("MD", "OR", "RR", "HR", "(I)RR", "(I)RR", "-"),
+  beta = c("$\\text{log}_e$(MD)", "OR", "RR", "HR", "(I)RR", "(I)RR", "-"),
   glm.family = c("\\texttt{gaussian(„identity“)}", 
                  "\\texttt{binomial(„logit“)}", 
                  "\\texttt{binomial(„log“)}", 

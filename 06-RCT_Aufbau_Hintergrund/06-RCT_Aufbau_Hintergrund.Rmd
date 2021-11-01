@@ -332,7 +332,7 @@ _"[T]he test actually assesses the probability (the '_P_ value') that the observ
 
 \begin{align*}
 \begin{split}
-\text{H}_{\text{0}}: & ~~~\mu_1 \leq \mu_0 ~~~ \Rightarrow ~~~ \tau > 0 \\
+\text{H}_{\text{0}}: & ~~~\mu_1 \leq \mu_0 ~~~ \Rightarrow ~~~ \tau \leq 0 \\
 \text{H}_{\text{1}}: & ~~~\mu_1 > \mu_0 ~~~ \Rightarrow ~~~ \tau > 0
 \end{split}
 \end{align*}
