@@ -1,0 +1,225 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Effektstärken"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{makecell}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Hintergrund
+
+## Hintergrund (I)
+
+\small
+- Der Begriff **\alert{"Effektstärke"}** (_effect size_) ist **nicht klar definiert**; manche verstehen darunter nur **standardisierte Mittelwertsunterschiede** (Cohen's $d$); andere bevorzugen **breitere Definitionen**. 
+
+- Die **"engere" Definition** ist nur **schwer haltbar**, da auch Korrelationen, Odds Ratios, $z$-Werte etc. Richtung und Stärke eines Effekt ausdrücken können (und teils auch ineinander transformierbar sind).
+
+- Im Kontext von RCTs werden Effektstärken genutzt, um die **Größe des Interventionseffekts** zu quantifizieren und **vergleichbar** zu machen. 
+
+- Eine praktische Schwierigkeit stellt dabei die **korrekte Berechnung von Konfidenzintervallen** dar. Für viele Effekstärken existieren **geschlossene Formeln zur Berechnung der sampling-Varianz**; diese beziehen aber nicht die **Imputationssicherheit** mit ein!
+\normalsize
+
+## Hintergrund (II)
+
+Eine elegante Form der Berechnung von Effekstärken und deren 95%-Konfidenzintervalle bei MI stellt die Nutzung der **\alert{"natürlichen" Interpretation des $\beta$-Gewichts der Treatmentvariable}** in (G)LM dar.
+
+Es sei $f(\beta)$ eine je nach Linkfunktion variierende Transformationsfunktion (häufig die Exponentialfunktion), und $\hat\theta$ die zu berechnende Effektstärke:
+
+\begin{align*}
+\begin{split}
+\hat\theta &= f(\hat\beta_{\text{treat}}) \\
+\hat\theta_{\text{lower}} &= f\left(\hat\beta_{\text{treat}} - t_{\nu_{\text{(MI)}}, \text{0.975}} \times \text{S.E.}_{\hat\beta_{\text{treat}}}\right) \\
+\hat\theta_{\text{upper}} &= f\left(\hat\beta_{\text{treat}} + t_{\nu_{\text{(MI)}}, \text{0.975}} \times \text{S.E.}_{\hat\beta_{\text{treat}}}\right)
+\end{split}
+\end{align*}
+
+## Hintergrund (III)
+
+
+**Viele Effektstärken lassen sich direkt aus GLM ableiten!**
+
+\renewcommand{\arraystretch}{1.5}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(kableExtra)
+data.frame(
+  Verteilung = c("Normal", "Binomial", "$~$", "$~$", 
+                 "\\makecell[l]{Negativ\\\\Binomial}", "Poisson", "Gamma"),
+  Linktyp = c("Identity", "Logit$^{\\text{*}}$", "Log", "\\makecell[l]{Complem.\\\\Log-Log}", 
+              "Log", "Log", "Inverse"),
+  Linkfunktion = c("$\\mu$", "$\\text{log}_e{\\left(\\frac{\\mu}{1-\\mu}\\right)}$", 
+                   "$\\text{log}_e{\\left(\\mu\\right)}$", 
+                   "$\\text{log}_e{\\left[-\\text{log}_e{\\left(1-\\mu\\right)}\\right]}$",
+                   "$\\text{log}_e{\\left(\\frac{\\mu}{\\mu+k}\\right)}$", 
+                   "$\\text{log}_e{\\left(\\mu\\right)}$", "${-\\mu}^{-1}$"),
+  Support = c("$\\mathbb{R}$", "$\\frac{0,1,\\dots,m}{m}$", 
+              "$\\frac{0,1,\\dots,m}{m}$", "$\\frac{0,1,\\dots,m}{m}$", 
+              "$\\mathbb{N}_0$", "$\\mathbb{N}_0$", "$\\mathbb{R}_{+}$"),
+  beta = c("\\alert{$\\text{log}_e$(MD)}", "\\alert{OR}", "\\alert{RR}", "\\alert{HR}", "\\alert{(I)RR}", "\\alert{(I)RR}", "-"),
+  glm.family = c("\\texttt{gaussian(„identity“)}", 
+                 "\\texttt{binomial(„logit“)}", 
+                 "\\texttt{binomial(„log“)}", 
+                 "\\texttt{binomial(„cloglog“)}", 
+                 "\\text{log} (in \\texttt{MASS::glm.nb})", 
+                 "\\texttt{poisson(„log“)}", 
+                 "\\texttt{gamma(„inverse“)}")) -> df.tab
+
+colnames(df.tab) = c("Verteilung", "Link-Typ", "Linkfunktion", "Support ($y$)",
+                     "$\\text{exp}(\\beta_{\\text{treat}})$", "\\texttt{family}")
+
+knitr::kable(df.tab, align="llccll", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(font_size = 7) %>% 
+  row_spec(0, bold = TRUE, background = ) %>% 
+  row_spec(1, hline_after = TRUE) %>% 
+  row_spec(4, hline_after = TRUE) %>% 
+  row_spec(5, hline_after = TRUE) %>% 
+  row_spec(6, hline_after = TRUE) %>% 
+  row_spec(7, hline_after = TRUE)
+```
+
+\renewcommand{\arraystretch}{1}
+
+
+## Hintergrund (IV)
+
+\small
+
+**\alert{Beispiel: Standardisierte Mittelwertsunterschiede (Cohen's $d$)}**
+
+\begin{align*}
+d &= \frac{\mu_1 - \mu_1} {s_{\text{pooled}}} = \frac{\mu_1 - \mu_1}{\sqrt{\frac{(n_1-1)s^2_1+(n_0-1)s^2_0}{(n_1-1)+(n_0-1)}}} 
+\end{align*}
+
+$\rightarrow$ Hier kann die gepoolte Standardabweichung als "Offset" genutzt werden, um $d$ direkt aus einem linearen Model zu berechnen.
+
+```{r, eval=F}
+# Der Wert von s_pooled wurde mit 6.32 berechnet
+with(implist, lm(I(pss.1/6.32) ~ 1 + group + pss.0)) %>%
+  testEstimates() -> m
+
+m; confint(m)
+```
+
+
+\normalsize
+
+## Hintergrund (V)
+
+**\alert{Ergebnis:}** $d$=-0.92, 95%CI: -1.16$-$-0.68.
+
+\footnotesize
+
+```
+#>         Estimate Std.Error  t.value        df  P(>|t|)    RIV    FMI 
+#> (Intrcpt)  1.486     0.400    3.719  4878.106    0.000  0.075  0.071 
+#> group     -0.918     0.122   -7.548  4141.218    0.000  0.082  0.077 
+#> pss.0      0.085     0.015    5.517  6989.062    0.000  0.062  0.059 
+#> 
+#> Unadjusted hypothesis test as appropriate in larger samples.
+#> 
+#>                   2.5 %     97.5 %
+#> (Intercept)  0.70280613  2.2697069
+#> group       -1.15677072 -0.6797633
+#> pss.0        0.05486783  0.1153496
+```
+
+\normalsize
+
+
+## Hintergrund (VI)
+
+\small
+
+**\alert{Beispiel: Odds Ratio (OR)}**
+
+\footnotesize
+
+Für eine logistische Regression mit dummy-kodierter Treatmentvariable gilt:
+
+$$\text{exp}(\hat\beta_{\text{treat}}) = \widehat{\text{OR}}$$
+Wir können also in R die **Exponentialfunktion** `exp` nutzen, um direkt die **OR und das Konfidenzintervall** zu berechnen:
+
+```{r, eval=F}
+with(implist, glm(ri ~ 1 + group + pss.0, binomial("logit"))) %>% 
+  testEstimates() -> mi.logreg
+
+c(mi.logreg$estimates[2,1], confint(mi.logreg)[2,]) %>% exp()
+```
+
+```
+#>       2.5 % 97.5 % 
+#> 5.958 3.366 10.546 
+```
+
+
