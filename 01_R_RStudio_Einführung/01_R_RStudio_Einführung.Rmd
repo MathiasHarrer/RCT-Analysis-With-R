@@ -95,10 +95,8 @@ knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 \begin{multicols}{2}
 
   \includegraphics[width=.4\textwidth]{assets/scatterplot_wickham_AdvR_3_3.png}
-  \scriptsize [@wickham2016r, Kapitel 3.3] \par \normalsize
 
   \includegraphics[width=.4\textwidth]{assets/RCT_outcome_harrer_stressgui.png}
-  \scriptsize @heber2016web \par \normalsize
 
 \columnbreak
 
@@ -107,6 +105,8 @@ knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
   \newline \scriptsize (aus diesem Workshop) \par \normalsize
   \vfill \null
 \end{multicols}
+
+\scriptsize @wickham2016r, Kapitel 3.3; @heber2016web \par \normalsize
 
 ## \textsf{R} (III)
 
