@@ -1,0 +1,218 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Installation von \textsf{R} und \textsf{RStudio} auf dem PC
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+
+# Installation von \textsf{R}
+
+## Herunterladen von \textsf{R}
+
+**\textsf{R} kann von der Comprehensive \textsf{R} Archive Network (CRAN) website heruntergeladen werden**
+
+- für Windows: \href{https://cran.r-project.org/bin/windows/base/}{cran.r-project.org/bin/windows/base}
+
+- für macOS: \href{https://cran.r-project.org/bin/macosx/}{cran.r-project.org/bin/macosx}
+
+Eine **\alert{detaillierte Anleitung}** zur Installation finden Sie z.B. hier: \href{http://methods-berlin.com/wp-content/uploads/Installation.html}{Methodengruppe-Berlin}
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+\Huge
+\colorbox{white}{\textbf{ Installieren Sie \textsf{R} }} \par \normalsize 
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+
+## Versionen von \textsf{R}
+
+**Es werden regelmäßig Updates und somit neue Versionen für \textsf{R} zur Verfügung gestellt**
+
+\metroset{block=fill} 
+\begin{exampleblock}{CAVE}
+  Sollte Ihre Version von \textsf{R} zu veraltet sein, kann es dazu kommen, dass bestimmte Dinge nicht mehr funktionieren. Updaten Sie \textsf{R} deshalb ca. einmal im Jahr, indem Sie \textsf{R} reinstallieren.
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 2.1] \par \normalsize
+
+# Installation von \textsf{RStudio}
+
+\metroset{block=fill} 
+\begin{exampleblock}{CAVE}
+  Um \textsf{RStudio} nutzen zu können, muss \textsf{R} bereits vorinstalliert sein.
+\end{exampleblock}
+
+**\textsf{RStudio} kann von folgender Website heruntergeladen werden:**
+
+- \href{https://www.rstudio.com/products/rstudio/download/}{rstudio.com/products/rstudio/download}
+
+- Die **\alert{kostenfreie Version von \textsf{RStudio Desktop}}** ist für unsere Zwecke ausreichend
+
+Eine **\alert{detaillierte Anleitung}** zur Installation finden Sie z.B. wieder hier: \href{http://methods-berlin.com/wp-content/uploads/Installation.html}{Methodengruppe-Berlin}
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+\Huge
+\colorbox{white}{\textbf{ Installieren Sie \textsf{RStudio} }} \par \normalsize 
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+## Öffnen von \textsf{RStudio}
+
+**\textsf{RStudio} wird beim ersten Öffnen wahrscheinlich so aussehen:**
+\begin{center}
+\includegraphics[width=1\textwidth]{assets/RStudio_noscript_harrer.png}
+\end{center}
+
+\scriptsize [@harrer2021doing, Kap. 2.1] \par \normalsize
+
+## Fenster in \textsf{RStudio} (I)
+
+\metroset{block=fill} 
+\begin{exampleblock}{Console}
+  Die Konsole ist das Herzstück von \textsf{R}: Hinter dem Pfeil unten links kann \textsf{R} code eingegeben und durch das Drücken der Entertaste ausgeführt werden.
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Environment}
+  Hier werden alle Objekte, die wir in \textsf{R} definieren, angezeigt.
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Files, Plots, Packages and Help}
+  Dieses Fenster erfüllt mehrere Funktionen: Hier werden z.B. Ordner auf dem Computer, Graphen und installierte \textsf{packages} angezeigt. Auch Hilfeseiten sind hier zu finden.
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 2.1] \par \normalsize
+
+## Fenster in \textsf{RStudio} (II)
+
+**Ein viertes Fenster, der Editor, öffnet sich über _"File > New File > R Script"_**
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{assets/rstudio-editor_wickham.png}
+\end{center}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Editor}
+ In \textsf{R} Skripten im Editor sammelt man code, den man für wichtig hält. \textsf{R} Skripte können später über \emph{File > Save} in einer Datei mit der Erweiterung ".R" auf dem Computer gespeichert werden.
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 2.1; @wickham2016r, Kap. 6] \par \normalsize
+
+## Fenster in \textsf{RStudio} (III)
+
+\metroset{block=fill} 
+\begin{exampleblock}{CAVE: Unterscheidung Editor und Konsole}
+  In der Konsole wird \textsf{R} code ausgeführt und im Editor lediglich gespeichert. Wenn im Editor geschriebener code ausgeführt werden soll, muss er dementsprechend der Konsole übergeben werden. Dazu wird der relevante code mit der Maus ausgewählt und entweder über den Button "Run" oben rechts im Editor oder die Tastenkombination \textsf{Ctrl/ Cmd + Enter} ausgeführt.
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 2.1] \par \normalsize
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+
