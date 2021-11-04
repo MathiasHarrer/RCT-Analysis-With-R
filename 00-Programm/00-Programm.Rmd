@@ -1,0 +1,221 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Programm"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{bm}
+  \usepackage{tikz}
+  \usetikzlibrary{shapes.geometric, arrows, decorations.pathreplacing, calligraphy}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+# Herzlich Willkommen!
+
+## Herzlich Willkommen! {.t}
+
+**\alert{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}**
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{assets/rct-r.png}
+\end{center}
+
+\underline{"Zwei Workshops in Einem"}
+
+\small
+- grundlegende **statistische Methoden** zur **Analyse randomisiert-kontrollierter Studien** ("randomized controlled trials"; RCTs) \dots
+
+- \dots und deren praktische **Umsetzung** in der **Programmiersprache R**.
+\normalsize
+
+## Gegenstand 
+
+**\alert{Fokus}**: **zweiarmige**, **randomisiert-kontrollierte Studien** zur Evaluation **medizinischer** oder **gesundheitsfördernder Interventionen**.
+
+Methoden sind aber auch übertragbar auf Bereiche wie Pädagogik, Soziologie, Ökologie, Wirtschaftswissenschaften etc. $\rightarrow$ überall, wo der Effekt einer "Behandlung" untersucht werden soll!
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=1.4cm,yshift=-2.4cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/sport.jpeg}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-1.3cm,yshift=-1.7cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/vorsorge.jpg}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=-0.8cm] at (current page.center)
+    {\includegraphics[height=2cm]{assets/weight.jpg}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-4.5cm,yshift=-2.2cm] at (current page.center)
+    {\includegraphics[height=2cm]{assets/placebo.jpg}};
+\end{tikzpicture}
+
+## Lerninhalte
+
+**\alert{Block I}** | **R Entdecken** \newline
+\checkmark Einführung in R & RStudio \newline
+\checkmark R Basics: Objektklassen, Funktionen, Operatoren, \dots \newline
+
+**\alert{Block II}** | **Einführung & Hintergrund** \newline
+\checkmark Methodischer Hintergrund von randomisierten Studien \newline
+\checkmark Import und Manipulation von Studiendaten mit R \newline
+\checkmark Schätzung fehlender Werte \newline
+
+**\alert{Block III}** | **Analysieren & Verstehen** \newline
+\checkmark Statistische Wirksamkeitsanalyse \newline
+\checkmark Alphakorrektur, Effektstärkenberechnung, Visualisierung, ...
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=2.5cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/rs.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=0.2cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/causal.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=2cm]{assets/raincloud.png}};
+\end{tikzpicture}
+
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Vorwissen }} \par \normalsize 
+
+$$~$$
+$$~$$
+
+$$~$$
+
+$$~$$
+
+$$~$$
+
+
+## Voraussetzungen
+
+\begin{itemize}
+    \item[\textbf{\alert{\checkmark}}] Installation von \textbf{R} (4.0.0+) und \textbf{RStudio} auf dem Computer.
+    \item[\alert{\checkmark}] Vertrautheit mit basalen \textbf{Konzepten (frequentistischer) Inferenzstatistik} (Lage-/Streueungsmaße, $p$-Werte, (Ko-)varianz, lineare Regression, \dots).
+    \item[\alert{\checkmark}] Grundkenntnisse \textbf{experimenteller Forschungsdesigns}, sowie Gefährdungen von deren Validität.
+\end{itemize}
+
+
+\begin{itemize}
+    \item[${\times}$] Vorkenntnisse in R (sind aber hilfreich!)
+    \item[$\times$] Erfahrungen bei der Analyse randomisiert-kontrollierter Studien
+\end{itemize}
+
+
+## \dots und das Wichtigste:
+
+
+\includegraphics[width=1\textwidth]{assets/panic.jpg}
+
+
+## Begleit-Website {.t}
+
+\footnotesize
+[`protectlab.org/workshop/rct-evaluation-in-r/`](https://www.protectlab.org/workshop/rct-evaluation-in-r/) (auch nach Kursende verfügbar)
+
+- **Foliensätze** für alle behandelten Themen
+- **Zusätzliche Inhalte**, die nicht/nur knapp im Workshop behandelt werden
+- **Kursmaterialien** & weiterführende Literatur
+- **Code** für alle Praxis-Beispiele
+\normalsize
+
+$$~$$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-2.9cm,yshift=-1.8cm] at (current page.center)
+    {\includegraphics[height=4cm]{assets/web2.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=2.9cm,yshift=-1.8cm] at (current page.center)
+    {\includegraphics[height=4cm]{assets/web1.png}};
+\end{tikzpicture}
+
+
+
+

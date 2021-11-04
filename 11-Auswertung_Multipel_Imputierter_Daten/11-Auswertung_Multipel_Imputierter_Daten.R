@@ -332,9 +332,19 @@ datlong = data.frame(id = rep(1:100, times = 10),
 
 
 aov(y ~ cond + Error(id), datlong) 
+aov(y ~ cond, datlong) 
+
+
 lmer(y ~ cond + (cond||id), datlong) %>% summary()
 
 aov(pss.1 ~ group, implist[[1]])
+
+aov(rt ~ cond + Error(id), dat)
+mod <- lmer(rt ~ cond + (cond||id), data=dat)
+
+
+
+
 
 
 
