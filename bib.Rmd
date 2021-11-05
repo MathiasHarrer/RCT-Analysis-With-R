@@ -1,0 +1,11 @@
+---
+title: "bib"
+output: html_document
+bibliography: bib-complete.bib
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+

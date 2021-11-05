@@ -180,6 +180,27 @@ Unter **gewissen Voraussetzungen** kann eine einseitige Testung vorgenommen, bzw
 
 \par \normalsize
 
+
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
+
+
 # Referenzen
 
 ## Referenzen {.allowframebreaks}

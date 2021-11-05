@@ -317,34 +317,3 @@ with(implist, glm(ri ~ 1 + group + pss.0, binomial("logit"))) %>%
   testEstimates() -> mi.logreg
 mi.logreg
 
-
-data$id = 1:nrow(data)
-
-
-datlong = data.frame(id = rep(1:100, times = 10),
-                     y = c(rnorm(100, 10, 5), rnorm(100, 20, 5), rnorm(100, 30, 5),
-                           rnorm(100, 40, 5), rnorm(100, 50, 5), rnorm(100, 60, 5),
-                           rnorm(100, 70, 5), rnorm(100, 80, 5), rnorm(100, 90, 5),
-                           rnorm(100, 100, 5)),
-                     cond = rep(1:10, each = 100))
-
-
-
-
-aov(y ~ cond + Error(id), datlong) 
-aov(y ~ cond, datlong) 
-
-
-lmer(y ~ cond + (cond||id), datlong) %>% summary()
-
-aov(pss.1 ~ group, implist[[1]])
-
-aov(rt ~ cond + Error(id), dat)
-mod <- lmer(rt ~ cond + (cond||id), data=dat)
-
-
-
-
-
-
-

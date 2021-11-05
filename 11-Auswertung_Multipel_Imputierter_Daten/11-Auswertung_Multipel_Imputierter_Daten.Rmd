@@ -351,6 +351,26 @@ vgl. @vanbuuren, Kapitel 5.1.2.
 
 \par \normalsize
 
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
+
+
 
 ## "Rinse & Repeat": Parallele Bearbeitung von Listenelementen
 
@@ -483,6 +503,27 @@ list %>% map(~ mean(.$variable))
   \node [xshift=-1.2cm,yshift=-8.2cm] at (current page.north east)
     {\includegraphics[height=1.7cm]{assets/purrr.png}};
 \end{tikzpicture}
+
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
+
+
 
 ## $~$
 
@@ -716,6 +757,8 @@ $$F_{\nu_{\text{num}},~\nu_{\text{den}}} = \frac{\text{SS}_{\text{Prädiktor}}/(
 
 \par \normalsize
 
+
+
 ## $~$
 
 \begin{tikzpicture}[remember picture,overlay]  
@@ -778,6 +821,26 @@ testEstimates(m)
 
 
 \par \normalsize
+
+
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
 
 
 # Klinisch Signifikante & Reliable Veränderung
@@ -1067,6 +1130,26 @@ knitr::kable(df.tab, align="llccll", booktabs = TRUE, escape = FALSE) %>%
 ```
 
 \renewcommand{\arraystretch}{1}
+
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
+
 
 ## $~$
 

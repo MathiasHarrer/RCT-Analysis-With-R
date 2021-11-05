@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  3 NOV 2021 14:11
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  4 NOV 2021 17:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1996,11 +1996,24 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 [21
 
 ]
+File: assets/bg-praxis.jpg Graphic file (type bmp)
+<assets/bg-praxis.jpg>
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 16.962pt on input line 618.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
+(Font)              scaled to size 16.83415pt on input line 618.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 618.
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[22
+
+]
 File: assets/loop.png Graphic file (type bmp)
 <assets/loop.png>
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[22
+[23
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2017,7 +2030,7 @@ LaTeX Font Warning: Font shape `TU/FiraMono(0)/m/it' undefined
 )
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[23
+[24
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2030,7 +2043,7 @@ File: assets/purrr.png Graphic file (type bmp)
 )
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[24
+[25
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2044,10 +2057,10 @@ File: assets/purrr.png Graphic file (type bmp)
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 
-Overfull \vbox (11.539pt too high) detected at line 700
+Overfull \vbox (11.539pt too high) detected at line 718
  []
 
-[25
+[26
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2058,7 +2071,7 @@ File: assets/purrr.png Graphic file (type bmp)
 )
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[26
+[27
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2073,57 +2086,62 @@ File: assets/purrr.png Graphic file (type bmp)
 )
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[27
+[28
+
+]
+File: assets/bg-praxis.jpg Graphic file (type bmp)
+<assets/bg-praxis.jpg>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[29
 
 ]
 File: assets/bg-praxis.jpg Graphic file (type bmp)
 <assets/bg-praxis.jpg>
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 20.34787pt on input line 813.
+(Font)              scaled to size 20.34787pt on input line 849.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/n' will be
-(Font)              scaled to size 20.19449pt on input line 813.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 813.
+(Font)              scaled to size 20.19449pt on input line 849.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 
-Overfull \vbox (4.72748pt too high) detected at line 813
+Overfull \vbox (4.72748pt too high) detected at line 849
  []
 
-[28
+[30
 
-] [29
+] [31
 
 ]
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[30
+[32
 
 ]
 File: assets/smrw.png Graphic file (type bmp)
 <assets/smrw.png>
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.54272pt on input line 869.
+(Font)              scaled to size 6.54272pt on input line 905.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 869--869
+Overfull \hbox (5.0pt too wide) in paragraph at lines 905--905
  []  
  []
 
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[31
+[33
 
 ]
 File: assets/regression.png Graphic file (type bmp)
 <assets/regression.png>
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[32
+[34
 
 ]
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[33
+[35
 
 ]
 .................................................
@@ -2199,23 +2217,13 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 . Sans/BI/OT:script=latn;language=DFLT;+tnum;+smcp;mapping=tex-text;"
 .................................................
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
-(Font)              scaled to size 6.54272pt on input line 978.
+(Font)              scaled to size 6.54272pt on input line 1014.
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/bx/n' will be
-(Font)              scaled to size 6.49341pt on input line 978.
+(Font)              scaled to size 6.49341pt on input line 1014.
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
-(Font)              scaled to size 4.90704pt on input line 978.
+(Font)              scaled to size 4.90704pt on input line 1014.
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
-(Font)              scaled to size 4.0892pt on input line 978.
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
-[34
-
-]
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
-[35
-
-]
+(Font)              scaled to size 4.0892pt on input line 1014.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [36
@@ -2226,11 +2234,21 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 [37
 
 ]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[38
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[39
+
+]
 File: assets/ema.jpg Graphic file (type bmp)
 <assets/ema.jpg>
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[38
+[40
 
 ]
 File: assets/bg-praxis.jpg Graphic file (type bmp)
@@ -2238,12 +2256,12 @@ File: assets/bg-praxis.jpg Graphic file (type bmp)
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 
-Overfull \vbox (4.72748pt too high) detected at line 1118
+Overfull \vbox (4.72748pt too high) detected at line 1154
  []
 
-[39
+[41
 
-] [40
+] [42
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2256,7 +2274,7 @@ LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
 )
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[41
+[43
 
 ]
 \openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
@@ -2264,31 +2282,16 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 (./11-Auswertung_Multipel_Imputierter_Daten.vrb)
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[42
-
-] [43
-
-]
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
 [44
 
 ]
-File: assets/rci1.png Graphic file (type bmp)
-<assets/rci1.png>
-
-Overfull \hbox (5.0pt too wide) in paragraph at lines 1240--1240
- []  
- []
-
+File: assets/bg-praxis.jpg Graphic file (type bmp)
+<assets/bg-praxis.jpg>
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 [45
 
-]
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
-[46
+] [46
 
 ]
 File: assets/logo/tum_white.png Graphic file (type bmp)
@@ -2296,24 +2299,46 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 [47
 
 ]
+File: assets/rci1.png Graphic file (type bmp)
+<assets/rci1.png>
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 1294--1294
+ []  
+ []
+
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[48
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[49
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[50
+
+]
 File: assets/rci2.png Graphic file (type bmp)
 <assets/rci2.png>
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 
-Overfull \vbox (2.63454pt too high) detected at line 1313
+Overfull \vbox (2.63454pt too high) detected at line 1367
  []
 
-[48
+[51
 
-] [49
+] [52
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/bx/it' will be
-(Font)              scaled to size 7.30508pt on input line 1345.
+(Font)              scaled to size 7.30508pt on input line 1399.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[50
+[53
 
 ]
 File: assets/bg-praxis.jpg Graphic file (type bmp)
@@ -2321,12 +2346,12 @@ File: assets/bg-praxis.jpg Graphic file (type bmp)
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 
-Overfull \vbox (4.72748pt too high) detected at line 1367
+Overfull \vbox (4.72748pt too high) detected at line 1421
  []
 
-[51
+[54
 
-] [52
+] [55
 
 ]
 File: 11-Auswertung_Multipel_Imputierter_Daten_files/figure-beamer/unnamed-chun
@@ -2335,28 +2360,28 @@ k-8-1.pdf Graphic file (type pdf)
 -8-1.pdf>
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[53
-
-]
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
-[54
-
-]
-\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
-
-(./11-Auswertung_Multipel_Imputierter_Daten.vrb)
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
-[55
-
-]
-\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
-
-(./11-Auswertung_Multipel_Imputierter_Daten.vrb)
-File: assets/logo/tum_white.png Graphic file (type bmp)
-<assets/logo/tum_white.png>
 [56
+
+]
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[57
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[58
+
+]
+\openout4 = `11-Auswertung_Multipel_Imputierter_Daten.vrb'.
+
+(./11-Auswertung_Multipel_Imputierter_Daten.vrb)
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[59
 
 ]
 .................................................
@@ -2365,23 +2390,30 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 . Fira Sans scale = 0.8178415135546531.
 .................................................
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/m/n' will be
-(Font)              scaled to size 5.72488pt on input line 1516.
+(Font)              scaled to size 5.72488pt on input line 1570.
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/bx/n' will be
-(Font)              scaled to size 5.68173pt on input line 1516.
+(Font)              scaled to size 5.68173pt on input line 1570.
 LaTeX Font Info:    Font shape `TU/FiraSans(1)/bx/n' will be
-(Font)              scaled to size 4.05838pt on input line 1516.
+(Font)              scaled to size 4.05838pt on input line 1570.
 LaTeX Font Info:    Font shape `TU/FiraMono(0)/bx/n' will be
-(Font)              scaled to size 5.71399pt on input line 1516.
+(Font)              scaled to size 5.71399pt on input line 1570.
 LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
-(Font)              scaled to size 5.72488pt on input line 1516.
+(Font)              scaled to size 5.72488pt on input line 1570.
 
-Overfull \hbox (5.49329pt too wide) in paragraph at lines 1516--1516
+Overfull \hbox (5.49329pt too wide) in paragraph at lines 1570--1570
  [] 
  []
 
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[57
+[60
+
+]
+File: assets/bg-praxis.jpg Graphic file (type bmp)
+<assets/bg-praxis.jpg>
+File: assets/logo/tum_white.png Graphic file (type bmp)
+<assets/logo/tum_white.png>
+[61
 
 ]
 File: assets/bg-praxis.jpg Graphic file (type bmp)
@@ -2389,30 +2421,30 @@ File: assets/bg-praxis.jpg Graphic file (type bmp)
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
 
-Overfull \vbox (4.72748pt too high) detected at line 1538
+Overfull \vbox (4.72748pt too high) detected at line 1610
  []
 
-[58
+[62
 
-] [59
+] [63
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraMono(0)/m/n' will be
-(Font)              scaled to size 6.54272pt on input line 1661.
+(Font)              scaled to size 6.54272pt on input line 1733.
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[60
+[64
 
 ]
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[61
+[65
 
 
 ]
 File: assets/logo/tum_white.png Graphic file (type bmp)
 <assets/logo/tum_white.png>
-[62
+[66
 
 
 ]
@@ -2425,11 +2457,11 @@ File: assets/logo/tum_white.png Graphic file (type bmp)
 \tf@snm=\write9
 \openout9 = `11-Auswertung_Multipel_Imputierter_Daten.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1666.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1666.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1738.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1738.
 (./11-Auswertung_Multipel_Imputierter_Daten.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1666.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1666.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1738.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1738.
 
 Package rerunfilecheck Info: File `11-Auswertung_Multipel_Imputierter_Daten.out
 ' has not changed.
@@ -2439,12 +2471,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 36974 strings out of 492970
- 755250 string characters out of 6133938
- 872589 words of memory out of 5000000
- 40235 multiletter control sequences out of 15000+600000
- 587097 words of font info for 148 fonts, out of 8000000 for 9000
+ 36996 strings out of 492970
+ 755735 string characters out of 6133938
+ 873039 words of memory out of 5000000
+ 40255 multiletter control sequences out of 15000+600000
+ 587113 words of font info for 150 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  71i,25n,145p,10481b,729s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 11-Auswertung_Multipel_Imputierter_Daten.pdf (62 pages).
+Output written on 11-Auswertung_Multipel_Imputierter_Daten.pdf (66 pages).

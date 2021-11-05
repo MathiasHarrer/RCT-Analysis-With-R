@@ -77,7 +77,7 @@ knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 ```
 
 
-# Hintergrund
+# Effektstärken: Hintergrund
 
 ## Hintergrund (I)
 
@@ -223,3 +223,87 @@ c(mi.logreg$estimates[2,1], confint(mi.logreg)[2,]) %>% exp()
 ```
 
 
+# Cohen's $d$ von Within-Group-Vergleichen
+
+## Cohen's $d$ von Within-Group-Vergleichen (I) {.t}
+
+\small
+- Cohen's $d$ ist bei Zwischengruppenvergleichen (z.B $\hat\mu_{\text{treat}}$ --- $\hat\mu_{\text{control}}$) eindeutig definiert. 
+
+- Strittiger ist, wie Cohen's $d$ bei **Within-Group-Vergleichen** (z.B $\hat\mu_{\text{pre}}$ --- $\hat\mu_{\text{post}}$) zu berechnen ist, und ob dann noch von "dem" Cohen's $d$ die Rede ist.
+
+- Das Kernproblem liegt dabei in der **\alert{passenden Berechnung von $s_{\text{pooled}}$}** zur Standardisierung des Mittelwertsunterschieds.
+\normalsize
+
+\includegraphics[width=.5\textwidth]{assets/westfall.png}
+
+\scriptsize siehe @westfall. \normalsize
+
+## Cohen's $d$ von Within-Group-Vergleichen (II) {.t}
+
+
+**\alert{\underline{Die "agnostische" Methode}}**
+
+Eine Möglichkeit zur Berechnung von $d_{\text{within}}$ ist:
+
+$$d_{\text{within}} = \frac{\hat\mu_{\text{pre}} - \hat\mu_{\text{post}}}{s_{\text{pooled}}} = \frac{\hat\mu_{\text{pre}}-\hat\mu_{\text{pre}}}{\sqrt{(s^2_{\text{pre}}+s^2_{\text{post}})/2}}$$
+Unter Annahme dass $n_{\text{pre}} = n_{\text{post}}$. 
+
+Hier wird schlicht "ignoriert", dass zu beiden Messzeitpunkten die gleichen Personen gemessen wurden (abhängige Stichprobe). Die Standardisierung erfolgt durch die **mittlere Standardabweichung der beiden Messzeitpunkte**.
+
+
+## Cohen's $d$ von Within-Group-Vergleichen (III) {.t}
+
+
+**\alert{\underline{Die "modellbasierte" Methode}}**
+
+\footnotesize
+_"Effect size is how large the true condition effect is relative to the true amount of variability in this effect across the population. Measures of true effect and true amount of variability are **only defined in statistical models**. They don't really exist accept within the context of a model."_ \scriptsize [@rouder] \normalsize
+
+\small
+Nach dieser Logik ist $s_{\text{pooled}}$ die **Standardabweichung der Residuale** des dem Design **zugrundeliegenden Modells**! Bei within-group-Vergleichen ist dies typischerweise eine _repeated-measures ANOVA_ oder ein gemischtes Modell (da mehrere Messzeitpunkte pro Person). 
+
+\metroset{block=fill}
+\begin{block}{\textbf{\alert{Cave}}}
+Bei reinen prä-post-Vergleichen führt dies zu \textbf{nahezu identischen Ergebnissen} wie das "agnostische" Vorgehen. Der "modellbasierte" Ansatz ist aber \textbf{breiter einsetzbar} (z.B. repeated-measures ANOVA mit zwei Gruppen, AB-Designs, ...)
+\end{block}
+\normalsize
+
+
+
+## Cohen's $d$ von Within-Group-Vergleichen (IV) {.t}
+
+\footnotesize
+**\alert{Beispiel: Berechnung von $d_{\text{within}}$ aus rmANOVA}**
+
+```{r, eval=F}
+(m <- aov(pss ~ time + Error(id), data.ig)$Within)
+cbind(coef(m), confint(m))
+```
+
+\scriptsize
+```
+#>                     time Residuals
+#> Sum of Squares  4811.095  7394.886
+#> Deg. of Freedom        1       261
+#> 
+#> Residual standard error: 5.322866
+#> Estimated effects are balanced
+#>                     2.5 %    97.5 %
+#> time1 -8.537879 -9.828029 -7.247729
+```
+
+\footnotesize
+$$d_{\text{within}}= \frac{\texttt{time1}}{\texttt{Residual standard error}} =\frac{-8.538}{5.323} \approx -1.6$$
+
+
+
+
+\normalsize
+
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize

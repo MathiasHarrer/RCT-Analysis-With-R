@@ -77,6 +77,8 @@ header-includes: |
 knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 ```
 
+
+
 # CONSORT Flow Chart
 
 ## CONSORT Flow Chart (I)

@@ -1,0 +1,190 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Reporting & Reproduzierbarkeit"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{makecell}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Reporting & Reproduzierbarkeit
+
+## Reporting & Reproduzierbarkeit
+
+**\underline{Folgende Szenarien sind im Forschungsalltag keine Seltenheit:}**
+
+- Wir finden einen **Fehler** in unserem Code, und müssen Teile unserer **Analyse** mit leichten Veränderungen **wiederholen**.
+
+- Mitarbeiter oder **Reviewer** wünschen sich weitere oder andere Analysen unserer Daten.
+
+- Wir müssen Teile der Analysen an Mitarbeiter **delegieren**.
+
+- Wir wollen unsere Ergebnisse mit **Kollegen teilen**, aber diese kennen R nicht und haben RStudio nicht installiert.
+
+$\rightarrow$ In all diesen Fällen ist ein **\alert{reproduzierbarer Workflow}** extrem vorteilhaft!
+
+# R Projekte
+
+## R Projekte {.t}
+
+**R Projekte** erstellen eine neue Umgebung in einem Ordner auf unserem Computer. In diesem Ordner werden alle Daten und der R Code, den wir für unsere Analysen benötigen, gespeichert.
+
+Die Durchführung von Analysen in einem R-Projekt bedeutet, dass alle von uns erstellten Objekte vorübergehend in der Projektumgebung gespeichert werden und beim nächsten Öffnen wieder zugänglich sind.
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-2.5cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=2cm]{assets/rproj1_col.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=2.5cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/rproj2_col.png}};
+\end{tikzpicture}
+
+
+# R Markdown
+
+## R Markdown (I) {.t}
+
+**Markdown** ist eine einfache Auszeichnungssprache zur Textformatierung. **\alert{R Markdown}** (Xie, Allaire und Grolemund 2018) ist eine Erweiterung von Markdown und macht es einfach, Text, R Code und Output in einem HTML- oder PDF-Dokument zu kombinieren. 
+
+Die Markdown-Syntax ist schnell erlernbar: siehe [Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf). 
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-3cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/rmd1_col.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=2cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/rmd2_col.png}};
+\end{tikzpicture}
+
+
+
+## R Markdown (II) {.t}
+
+
+Der wichtigste Teil von R Markdown-Dokumenten ist der **\alert{YAML}**-Header.
+
+```
+---
+title: "Analysis"
+author: "Author Name"
+date: "10/16/2020"
+output: html_document
+---
+```
+
+Er steuert den Titel, den Autor, das Datum und das Exportformat des Dokuments. Das Ausgabeformat, das wir für unser Dokument gewählt haben, ist `html_document` (Export als HTML).
+
+
+## R Markdown (III) {.t}
+
+Es können **neue Code-Chunks** hinzugefügt werden. Der **\alert{"Knit"}**-Button führt den R-Code in den Chunks aus und **rendert** das Dokument.
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-3cm,yshift=0cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/rmd3_col.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=2cm,yshift=0cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/rmd4_col.png}};
+\end{tikzpicture}
+
+
+# Open Science Framework (OSF)
+
+## Open Science Framework (OSF) {.t}
+
+
+- Das Open Science Framework ([osf.io](https://osf.io/)) erlaubt die versionierte Veröffentlichung von Daten, Code und anderen Materialien. 
+- [OSF Registries](https://osf.io/registries) erlaubt die **Präregistrierung** von Analysen.
+- [OSF Preprint](https://osf.io/preprints/) ermöglicht die Veröffentlichung von **Preprints**.
+
+
+ 
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-3cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/osf3_col.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=3cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=3cm]{assets/osf6_col.png}};
+\end{tikzpicture}
+
+
+
