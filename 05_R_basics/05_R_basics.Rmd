@@ -1,0 +1,375 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: \textsf{R} basics - Funktionen, Objekte, Operatoren und Fehlermeldungen
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Funktionen
+
+## \textsf{R} als "Taschenrechner"
+
+**Unabhängig von spezifischen Funktionen, können mithilfe von \textsf{R} klassische Rechenaufgaben gelöst werden:**
+
+Probieren Sie selbst:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+5*28/7
+(12+67-3)*4
+```
+
+## Was sind Funktionen?
+
+\small
+
+**Funktionen sind Kernelemente von \textsf{R}: Sie erlauben es, (meist in Bezug auf unsere eigenen Daten) \alert{vordefinierte Operationen} auszuführen.**
+
+Parallele zur mathematischen Formulierung einer Funktion \emph{f(x)}:
+
+\begin{enumerate}
+  \item[$\rightarrow$] In \textsf{R} wird eine Funktion definiert, indem erst der Name der Funktion und dahinter in Klammern input und/ oder weitere Spezifikationen für die Funktion (sog. Argumente) aufgeschrieben werden
+\end{enumerate}
+
+
+```{r, eval=FALSE, comment="##>", background="green"}
+Funktionsname(Argument1 = Wert1, Argument2 = Wert2, ...)
+```
+
+\metroset{block=fill} 
+\begin{exampleblock}{Position Matching}
+  Der Agrumentname (z.B. "Argument1 =") kann auch weggelassen werden, wenn die Reihenfolge der Argumente eingehalten wird.
+\end{exampleblock}
+
+\par \normalsize
+
+\scriptsize [@harrer2021doing, Kap. 2.2] \par \normalsize
+
+## Beispiele (I)
+
+**\alert{1.}** Was ist die Wurzel von 9? Dazu können die Funktionen \textsf{sqrt()} nutzen:
+```{r, eval=FALSE, comment="##>", background="green"}
+sqrt(9)
+## [1] 3
+```
+
+**\alert{2.}** Logarithmus (\textsf{log()}) aller Werte der Variable "age" im Datensatz:
+```{r, eval=FALSE, comment="##>", background="green"}
+log(data$age)
+## [1] 3.850148 3.737670 3.951244 3.135494 3.828641 ...
+```
+
+\begin{itemize}
+\item [$\rightarrow$] Statt eines konkreten Wertes wird die gesamte Variable in die Funktion eingespeist, indem die Variable "age" über das Dollarzeichen aus unserem Datensatz "data" ausgewählt wird.
+\end{itemize}
+
+## Beispiele (II)
+
+**\alert{3.}** Mittelwert (\textsf{mean()}) der Variable "pss" zum Post-Zeitunkt:
+```{r, eval=FALSE, comment="##>", background="green"}
+mean(data$pss.1)
+## [1] NA
+mean(data$pss.1, na.rm = TRUE)
+[1] 20.42387
+```
+
+\begin{itemize}
+\item [$\rightarrow$] Das Ergebnis der ersten Zeile Code ist "not available", da zum Post-Zeitpunkt Beobachtungen fehlen und der Mittelwert so nicht berechnet werden kann. Durch die Spezifikation des Arguments "na.rm" als "TRUE", wird der Mittelwert nur über die beobachteten Werte gebildet und kann somit ausgegeben werden.
+\end{itemize}
+
+## Tipps im Umgang mit Funktionen (I)
+
+\metroset{block=fill} 
+\begin{exampleblock}{Info}
+  Auch deutlich komplexere Funktionen in \textsf{R} funktionieren nach dem gleichen Prinzip: Man gibt die Parameterinformationen ein, die eine Funktion benötigt, und die Funktion nutzt diese Information, um ihre Berechnungen durchzuführen und schließlich das Ergebnis anzuzeigen.
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 2.2] \par \normalsize
+
+## Tipps im Umgang mit Funktionen (II)
+
+\metroset{block=fill} 
+\begin{exampleblock}{Hilfe und \textsf{R Documentation}}
+  \begin{itemize}
+  \item Manche Funktionen in \textsf{R} verlangen mehrere Agrumente und niemand kann die korrekte Nutzung aller Funktionen auswendig lernen
+  \item Die Lösung: Detaillierte Beschreibungen der Funktionen in \textsf{R Documentation}
+  \item Öffnen von \textsf{R Documentation} entweder über \emph{Help} im rechten unteren Fenster in \textsf{Rstudio} und Eingabe der Funktion in die Suchleiste oder über das Ausführen von \textsf{?\emph{funktionsname}} in der Konsole (z.B. \textsf{?mean})
+  \end{itemize}
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Tipps im Umgang mit Funktionen (III)
+
+\metroset{block=fill} 
+\begin{exampleblock}{Default Arguments}
+  \begin{itemize}
+  \item Darunter werden Argumente einer Funktion verstanden, deren Wert vordefiniert ist und automatisch genutzt wird
+  \item Default Arguments müssen beim Schreiben der Funktion also nur hinzugefügt werden, wenn sie explizit von den Voreinstellungen abweichen
+  \item Default Werte einer Funktion können im Abschnitt "Usage" in \textsf{R Documentation} eingesehen werden
+  \end{itemize}
+\end{exampleblock}
+
+\scriptsize [@harrer2021doing, Kap. 4.2] \par \normalsize
+
+## Functional programming languages
+
+**Im Gegensatz zu _"object-oriented programming languages"_ konzentrieren sich _"functional programming languages"_ bei der Problemlösung auf Funktionen**
+
+\metroset{block=fill} 
+\begin{exampleblock}{Hauptmerkmale von functional programming languages}
+  \begin{itemize}
+  \item \textbf{first-class functions:} Vielseitige Einsetzbarkeit von Funktionen
+  \item \textbf{pure functions:} Output der Funktion hängt vom Input ab (d.h. Output reproduzierbar) und keine Nebeneffekte der Funktion (wie z.B. Veränderung des Wertes einer globalen Variable)
+  \end{itemize}
+\end{exampleblock}
+
+$\Rightarrow$ Auch wenn \textsf{R} diesen Kriterien nicht vollkommen entspricht, kann **\alert{\textsf{R} im Kern als functional programming language definiert}** werden
+
+\scriptsize @wickham2019advanced \par \normalsize
+
+
+# Objekte
+
+## Neue Objekte in \textsf{R} erstellen (I)
+
+\small
+
+**Zum Speichern von Werten (z.B. Zahlen) in Objekten kann der \alert{Zuweisungsoperator \textsf{<-}} verwendet werden:**
+
+```{r, eval=FALSE, comment="##>", background="green"}
+object.name <- 3*4
+```
+
+Auch andere Werte wie Worte können in Objekten gespeichert werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+object.name.2 <- "Hochschulabschluss"
+```
+
+Zur Inspektion des Objekts kann der Name des Objekts eingegeben werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+object.name
+## [1] 12
+```
+
+\par \normalsize
+
+\scriptsize [@wickham2016r, Kap. 4.2] \par \normalsize
+
+## Neue Objekte in \textsf{R} erstellen (II)
+
+\begin{itemize}
+\item [$\rightarrow$] Objekte werden unter \emph{Environment} im rechten oberen Fenster in \textsf{RStudio} angezeigt.
+\item [$\rightarrow$] Existierende Objekte werden überschrieben, nicht vorhandene Objekte werden neu erzeugt.
+\end{itemize}
+
+\metroset{block=fill} 
+\begin{exampleblock}{CAVE}
+  \begin{itemize}
+  \item Objektnamen müssen mit einem Buchstaben beginnen und können nur Buchstaben, Zahlen, Unterstriche und Punkte beinhalten.
+  \item [$\rightarrow$] Wir empfehlen, objektnamen.mit.punkten.zu.trennen und immer klein zu schreiben
+  \end{itemize}
+\end{exampleblock}
+
+\scriptsize [@wickham2016r, Kap. 4.2] \par \normalsize
+
+## Objektklassen
+
+\small
+
+**Objektklassen beschreiben \alert{unterschiedliche Typen von Daten}**
+
+- **\alert{numerics/ doubles:}** in Zahlen gespeicherte Daten (z.B. Alter)
+- **\alert{characters:}** in Worten gespeicherte Daten
+- **\alert{logicals:}** binäre Variablen, die anzeigen, ob eine Bedingung "TRUE" oder "FALSE" ist
+- **\alert{factors:}** in Zahlen gespeicherte Daten, wobei jede Zahl ein anderes Level einer Variable anzeigt (z.B. 1 = "wenig", 2 = "mittel", 3 = "hoch")
+
+\metroset{block=fill} 
+\begin{exampleblock}{CAVE}
+  Die Klasse einer Variable hat Implikationen auf weitere Analyseschritte. Für \textsf{characters} kann z.B. kein Mittelwert berechnet werden.
+\end{exampleblock}
+
+\par \normalsize
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Welche Variablen sind welchen Objektklassen zugeordnet?
+
+\small
+
+**\alert{Alle Variablen des Datensatzes:}** Funktion \textsf{glimpse} aus dem package \textsf{tidyverse}
+```{r, eval=FALSE, comment="##>", background="green"}
+library(tidyverse)
+glimpse(data)
+## Rows: 264
+## Columns: 34
+## $ id           <chr> "stress_gui_002", "stress_gui_140", ~
+## $ group        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, ~
+## $ sex          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
+## ...
+```
+
+**\alert{Einzelne Variablen:}** Funktion \textsf{class} aus dem \textsf{R base package}
+```{r, eval=FALSE, comment="##>", background="green"}
+class(data$id)
+## [1] "character"
+```
+
+\par \normalsize
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+# Operatoren
+
+## Überblick Operatoren
+
+$\checkmark$ Einige Operatoren haben Sie bereits kennengelernt
+
+- **\alert{Grundrechenarten:}** +, -, *, /
+- **\alert{Potenz:}** ^2
+- **\alert{Zuweisungsoperator:}** <-
+- **\alert{Vergleichsoperatoren:}** >, >=, <, <=, != (nicht gleich), == (gleich)
+- $\rightarrow$ Mit Vergleichsoperatoren kann getestet werden, ob Vergleiche zweier Zahlen wahr (TRUE) oder falsch (FALSE) sind
+- **\alert{Boole'sche Operatoren:}** & (und), | (oder), ! (nicht)
+
+\scriptsize [@wickham2016r, Kap. 5.2] \par \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+
+# Fehlermeldungen
+
+## Überblick Fehlermeldungen (I)
+
+\small
+
+\metroset{block=fill} 
+\begin{exampleblock}{Fehlerarten}
+\begin{itemize}
+  \item \textbf{Errors}: Eine Funktion kann nicht ausgeführt und muss gestoppt werden.
+  \item \textbf{Warnings}: Es ist ein Fehler aufgetreten, aber die Funktion kann trotzdem (teilweise) ausgeführt werden.
+  \item \textbf{Messages}: Information, dass eine Aktion für den Benutzer/ die Benutzerin ausgeführt wurde.
+\end{itemize}
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Don't panic}
+\begin{itemize}
+  \item Fehlermeldungen in \textsf{R} sind am Anfang meist sehr verwirrend
+  \item[$\rightarrow$] Im Laufe der Zeit werden Fehlermeldungen immer informativer und leichter zu entziffern
+  \item[$\rightarrow$] Googlen hilft immer :)
+\end{itemize}
+\end{exampleblock}
+
+\par \normalsize
+
+\scriptsize [@wickham2016r, Kap. 6.2] \par \normalsize
+
+## Überblick Fehlermeldungen (II)
+
+**Good news: Im Skript in \textsf{RStudio} werden mögliche Fehler häufig automatisch markiert**
+
+Syntaxfehler werden mit einem roten Kreuz und potentielle Probleme mit gelbem Ausrufezeichen am linken Rand markiert:
+
+\includegraphics[width=0.3\textwidth]{assets/RStudio_error.png}
+\includegraphics[width=0.8\textwidth]{assets/RStudio_potential_problem.png}
+
+\scriptsize [@wickham2016r, Kap. 6.2] \par \normalsize
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

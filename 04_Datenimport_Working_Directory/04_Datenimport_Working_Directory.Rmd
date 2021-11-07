@@ -117,16 +117,15 @@ $$~$$
 
 ## Welche Daten beinhaltet der Übungsdatensatz?
 
-\includegraphics[width=0.7\textwidth]{assets/title_stress_gui.png}
-
 \metroset{block=fill} 
-\begin{exampleblock}{Daten der Intervention "Get.On Fit im Stress"}
+\begin{exampleblock}{Übungsdatensatz "Get.On Fit im Stress"}
 \begin{enumerate}
   \item[$\checkmark$] \textbf{Stichprobe}: 264 erwachsene ArbeitnehmerInnen mit erhöhtem Stresslevel
   \item[$\checkmark$] \textbf{Randomisierung}: Interventions- und Kontrollgruppe (Warteliste)
   \item[$\checkmark$] \textbf{Intervention}: Internetbasierte Stressmanagement-Intervention
   \item[$\checkmark$] \textbf{Primary outcome}: Perceived Stress Scale (PSS-10)
-  \item[$\checkmark$] \textbf{Messzeitpuntke}: Baseline, Post (7 Wochen), follow-up (6 Monate)
+  \item[$\checkmark$] \textbf{Messzeitpuntke}: Baseline, Post (7 Wochen), Follow-up (6 Monate)
+  \item[$\checkmark$] \textbf{Kodierung der Messzeitpuntke}: Variablenendung \textsf{.0} für Baseline, \textsf{.1} für Post, \textsf{.2} für Follow-up)
 \end{enumerate}
 \end{exampleblock}
 
