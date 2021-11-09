@@ -1,0 +1,137 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Datenvorbereitung bei RCTs: Dos & Don'ts"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Vorbereitung der Daten: Dos & Don'ts
+
+## Vorbereitung der Daten (I)
+
+**Die Vorbereitung der Daten kann mühselig sein, ist aber das \alert{Grundgerüst für alle späteren Schritte}.**
+
+\begin{itemize}
+  \item[$\rightarrow$] Die Daten vor Import in R in das korrekte Format zu bringen, ist also lohnenswert.
+\end{itemize}
+
+\metroset{block=fill}
+\begin{block}{Dateiformat}
+Da der Import von \emph{Microsoft Excel} in R sehr einfach ist, ist es empfehlenswert, Daten dort teilweise vorzubereiten. Excel Sheets können unkompliziert als \emph{comma-separated values}-Datei (.csv) exportiert werden. Diese Dateiart kann besonders einfach und ohne großes Fehlerrisiko in R importiert werden (via \texttt{read.csv}).
+\end{block}
+
+
+
+## Vorbereitung der Daten (II)
+
+\small
+
+\metroset{block=fill} 
+\begin{block}{Dos and Dont's}
+\begin{itemize}
+  \item Eine \textbf{korrekte Benennung der Spalten} bereits in Excel spart oft viel Zeit, da keine Umbenennung mehr in R stattfinden muss.
+  \item Die \textbf{Bezeichnung der Variablen} sollte \textbf{möglichst kurz sein} und einem \textbf{einheitlichen Schema} folgen.
+  \item Für die Bezeichnung der \textbf{Zeitpunkte} empfiehlt sich eine \textbf{Zahlenkodierung}, die an das Ende des Variablennames angehängt wird. (z.B. \texttt{variable.0} für Baseline, \texttt{variable.1} für Postmessung etc.)
+  \item Spaltennamen sollten \textbf{keine Leerzeichen} beinhalten. Zur Trennung zweier Worte sollten Punkte oder \texttt{camelCase} genutzt werden.
+  \item Auch \textbf{Sonderzeichen} in Variablennamen sollten vermieden werden, da sie beim Import ggf. verändert werden.
+\end{itemize}
+\end{block}
+
+\par \normalsize
+
+
+
+## Vorbereitung der Daten (III)
+
+\small
+
+\metroset{block=fill} 
+\begin{block}{Dos and Dont's}
+\begin{itemize}
+  \item Wenn der Name der Spalte in der \textbf{ersten Zeile der Spalte} eingetragen ist, wird R den Namen \textbf{automatisch als Spaltennamen} erkennen. Weitere Formatierung der Spalten ist dann nicht mehr notwendig.
+  \item Die \textbf{Reihenfolge der Spalten} in der Excel-Datei ist \textbf{unerheblich}.
+  \item Die Excel-Datei sollte nur \textbf{ein Tabellenblatt} haben.
+  \item Sollte es mehrere \textbf{leere Zeilen und Spalten} geben, ist es ratsam, diese zu \textbf{löschen}. Beim Import könnten diese sonst als Missings interpretiert werden.
+  \item Es sollte ein \textbf{\alert{Codebook}} angelegt werden, in dem vermerkt ist, welcher Variable welches Kürzel zugeordnet ist und wie Antworten/Beobachtungen kodiert wurden.
+\end{itemize}
+\end{block}
+
+\par \normalsize
+
+\scriptsize siehe [Beispiel](https://www.protectlab.org/workshop/rct-evaluation-in-r/material/data.xlsx) für korrekt vorstrukturiertes Excel-Sheet. \par \normalsize
+
+
+
+
+

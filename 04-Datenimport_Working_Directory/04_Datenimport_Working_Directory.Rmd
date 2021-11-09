@@ -1,0 +1,229 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "Working Directories & Datenimport"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Working Directories
+
+## Was ist ein Working Directory?
+
+**Ein Ordner auf dem Computer, auf den R zugreifen kann, um dort gespeicherte Daten zu nutzen und später Ergebnisse zu speichern**
+
+\metroset{block=fill} 
+\begin{exampleblock}{Festlegen eines Working Directory}
+\begin{enumerate}
+  \item Erstellen eines Ordners auf dem Computer, in dem alle Analysedaten gespeichert sind (in unserem Fall \texttt{rct-workshop}$^{\text{1}}$). 
+  \item Öffnen des erstellten Ordners in RStudio über \emph{Files} im rechten unteren Fenster. Der Analysedatensatz sollte hier aufgeführt sein.
+  \item Klicken auf das Zahnrad im rechten unteren Fenster und anschließend auf \emph{Set as working directory} im sich öffnenden Dropdown-Menu.
+  \item Der aktuell geöffnete Ordner ist nun als Working Directory festgelegt.
+\end{enumerate}
+\end{exampleblock}
+
+\scriptsize $^{\text{1}}$[protectlab.org/workshop/rct-evaluation-in-r/vorbereitung/rct-workshop.zip](https://www.protectlab.org/workshop/rct-evaluation-in-r/vorbereitung/rct-workshop.zip) \par \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+\colorbox{white}{\textbf{ Das Working Directory festlegen}}
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+
+# Datenimport
+
+## Welche Daten beinhaltet der Übungsdatensatz?
+
+\metroset{block=fill} 
+\begin{exampleblock}{Randomisiert-Kontrollierte Evaluation von "Get.On Fit im Stress" (adaptiert)}
+\begin{enumerate}
+  \item[$\checkmark$] \textbf{Stichprobe}: 264 erwachsene ArbeitnehmerInnen mit erhöhtem Stresslevel
+  \item[$\checkmark$] \textbf{Randomisierung}: Interventions- und Kontrollgruppe (Warteliste).
+  \item[$\checkmark$] \textbf{Intervention}: Internetbasierte Stressmanagement-Intervention.
+  \item[$\checkmark$] \textbf{Primärer Endpunkt}: Perceived Stress Scale (PSS-10), Post.
+  \item[$\checkmark$] \textbf{Messzeitpuntke}: Baseline, Post (7 Wochen), Follow-up (6 Monate).
+  \item[$\checkmark$] \textbf{Kodierung der Messzeitpuntke}: Variablenendung \texttt{.0} für Baseline, \texttt{.1} für Post, \texttt{.2} für Follow-up)
+\end{enumerate}
+\end{exampleblock}
+
+\scriptsize angelehnt an @heber2016web. \par \normalsize
+
+## Struktur der Daten
+
+\metroset{block=fill} 
+\begin{exampleblock}{Der Übungsdatensatz folgt den allgemeinen Regeln:}
+\begin{enumerate}
+  \item Spalten sind die gemessenen Variablen.
+  \item Beobachtungen/ ProbandInnen sind in Zeilen.
+  \item Individuelle Werte sind in den Zellen.
+\end{enumerate}
+\end{exampleblock}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{assets/data_structure_wickham.png}
+\end{center}
+
+\scriptsize [@wickham2016r, Kap. 12.1] \par \normalsize
+
+## Importieren von Daten in \textsf{R} (I)
+
+\metroset{block=fill} 
+\begin{block}{Cave: Working Directory beachten}
+  Um Daten in \textsf{R} zu importieren, muss zunächst ein Working Directory festgelegt werden.
+\end{block}
+
+**Möglichkeit A** | **\alert{Import per "Klick"}:**
+
+\begin{enumerate}
+  \item Anklicken der Datei mit den Analysedaten im rechten unteren Fenster von RStudio unter \emph{Files}.
+  \item \emph{Import Dataset} auswählen.
+  \item In der sich öffnenden Datenvorschau \emph{Import} auswählen.
+\end{enumerate}
+
+
+## Importieren von Daten in \textsf{R} (II)
+
+**Möglichkeit B** | **\alert{Import per Code}:**
+
+\begin{enumerate}
+  \item Gegenenfalls Installation und Laden des package \emph{\{openxslx\}} für Daten im \emph{.xslx}-Format.
+  \item Da die Datei mit den Analysedaten im working directory gespeichert ist, kann der Dateiname direkt als Argument in folgender Funktion genutzt werden. Der vorangehende Pfeil zeigt an, dass die Analysedaten im Objekt \texttt{data} in R gespeichert werden sollen.
+\end{enumerate}
+
+```{r, eval=FALSE, comment="##>", background="green"}
+    data <- read.xlsx("Dateiname")
+    # bzw.
+    data <- read.csv("Dateiname")
+```
+
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+\colorbox{white}{\textbf{ Datensatz in R Importieren }}
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

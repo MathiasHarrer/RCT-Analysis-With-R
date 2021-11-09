@@ -1,0 +1,286 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Deskriptive Statistik und Analyse von Dropouts
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Deskriptive Statistik
+
+## Deskriptive Statistik (I)
+
+\small
+
+**Es ist sinnvoll, vor der eigentlichen Analyse der Daten deskriptive Statistiken zu "eyeballen", um u.a. einen Eindruck von der \alert{Verteilung der Daten} zu bekommen.**
+
+\metroset{block=fill} 
+\begin{block}{\small Die \texttt{skim} Funktion aus dem package \emph{\{skimr\}}}
+  Die \texttt{skim}-Funktion bietet sich zur deskriptiven Statistik an, da sie einen guten Überblick über alle Variablen bietet:
+  \begin{itemize}
+  \item Zugehörigkeit zu Objektklassen (\texttt{character} oder \texttt{numeric})
+  \item Anzahl der Missings
+  \item Bei \texttt{character}s: Anzahl uniquer Elemente
+  \item Bei \texttt{numeric}s: Mittelwert, Standardabweichung, Perzentile und Häufigkeitsverteilung
+\end{itemize}
+\end{block}
+
+\par \normalsize
+
+
+## Deskriptive Statistik (II)
+
+\small
+
+```{r, eval=FALSE, comment="##>", background="green"}
+library(skimr)
+skim(data)
+```
+
+\tiny
+
+```
+── Data Summary ────────────────────────
+                           Values
+Name                       data  
+Number of rows             264   
+Number of columns          33    
+
+[...]
+
+── Variable type: numeric ─────────────────────────────────────────────────────────────────────
+   skim_variable n_missing complete_rate   mean     sd    p0   p25   p50   p75  p100 hist 
+[...]
+12 child                 0         1      0.530  0.500   0     0     1     1       1 ▇▁▁▁▇
+13 sess                132         0.5    5.70   2.32    0     5     7     7       7 ▁▁▁▁▇
+14 cesd.0                0         1     23.6    8.03    4    18    23    28      56 ▂▇▇▁▁
+15 cesd.1               22         0.917 18.5    9.72    1    12    17    24      49 ▃▇▃▂▁
+16 cesd.2               38         0.856 17.6    9.33    1    11    16    24      44 ▅▇▅▃▁
+17 hadsa.0               0         1     11.0    3.36    4     8    11    13      21 ▃▇▇▂▁
+[...]
+
+```
+
+
+\par \normalsize
+
+
+## Deskriptive Statistik (III)
+
+**Deskriptive Statistik separat für Interventions- und Kontrollgruppe:**
+```{r, eval=FALSE, comment="##>", background="green"}
+library(skimr)
+library(tidyverse)
+
+## Interventionsgruppe:
+data %>%
+  filter(group == 0) %>%
+  skim()
+## Kontrollgruppe:
+data %>%
+  filter(group == 1) %>%
+  skim()
+```
+
+## Deskriptive Statistik (IV)
+
+\small
+
+**Es ist ratsam, sich die \alert{Häufigkeitsverteilung des primären Outcomes} genauer anzusehen.**
+
+Mithilfe der Funktion \texttt{multi.hist} aus dem \emph{\{psych\}} Package können mehrere Histogramme gleichzeitig erstellt werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+library(psych)
+library(tidyverse)
+multi.hist(data %>% select(pss.0, pss.1, pss.2), ncol = 3)
+```
+
+```{r, eval=TRUE, comment="##>", background="green", echo=F, message=F, warning=F, fig.height=2, fig.width=6, out.width="70%", fig.align='center'}
+library(psych)
+library(tidyverse)
+data <- read.csv("data/data.csv")
+par(bg = "#faf9f8")
+multi.hist(data %>% select(pss.0, pss.1, pss.2), ncol = 3)
+```
+
+\par \normalsize
+
+
+
+# Analyse der Dropouts
+
+## Analyse der Dropouts (I)
+
+**Wie klassischerweise in RCTs zu erwarten, gibt es Missings (fehlende Werte) in unserem Datensatz zur Postmessung und zum Follow-up.**
+
+$\rightarrow$ Empfehlung: **\alert{Quantiﬁzierung der Missings}**, gesamt und nach Gruppe
+
+## Analyse der Dropouts (II)
+
+\metroset{block=fill} 
+\begin{block}{Grundlagen}
+  Wird eine Variable in die Funktion \texttt{is.na} eingespeist, gibt sie einen Vektor der Klasse \texttt{logical} aus, in dem alle Missings als \texttt{TRUE} klassifiziert werden. Über die Funktion \texttt{sum} werden alle als \texttt{TRUE} klassifizierten Werte gezählt, wodurch man die \textbf{Anzahl der Missings} erhält.
+\end{block}
+
+```{r, eval=FALSE, comment="##>", background="green"}
+x <- c(1, 2, 3, 4, 5, NA, NA, 200)
+sum(is.na(x)) 
+## [1] 2
+```
+
+## Analyse der Dropout (III)
+
+\small
+
+\metroset{block=fill} 
+\begin{block}{Cave}
+  Missings in unserem Datensatz fallen patientenweise an, d.h. wenn eine Person einen Fragebogen zu einem Zeitpunkt nicht ausgefüllt wurde, hat sie keinen Fragebögen zu diesem Zeitpunkt ausgefüllt. Deshalb genügt es, wenn wir uns auf die Dropoutanalyse des primary outcome beschränken.
+\end{block}
+
+**Missings in Interventions- und Kontrollgruppe**:
+
+\footnotesize
+```{r, eval=FALSE, comment="##>", background="green"}
+with(data, {
+  c(sum(is.na(pss.0)),
+    sum(is.na(pss.1)),
+    sum(is.na(pss.2)))
+}) -> na.all
+
+## Werte in Prozent umrechnen
+na.all.p <- na.all/nrow(data)
+```
+
+\par \normalsize
+
+## Analyse der Dropout (IV)
+
+\small
+
+**Missings in der Interventionsgruppe**:
+```{r, eval=FALSE, comment="##>", background="green"}
+data %>% 
+  filter(group == 1) %>%
+  with({
+    c(sum(is.na(pss.0)),
+      sum(is.na(pss.1)),
+      sum(is.na(pss.2)))
+  }) -> na.ig
+
+## Werte in Prozent umrechnen
+na.ig.p <- na.ig/nrow(data %>% filter(group == 1))
+
+```
+
+$\rightarrow$ Analog für Missings in der Kontrollgruppe!
+
+\par \normalsize
+
+## Analyse der Dropouts (V)
+
+\small
+
+**Alle Werte in einen dataframe binden**:
+
+\footnotesize
+```{r, eval=FALSE, comment="##>", background="green"}
+na <- data.frame(na.all, na.all.p = na.all.p*100, 
+                 na.ig, na.ig.p = na.ig.p*100, 
+                 na.cg, na.cg.p = na.cg.p*100)
+
+## Zeilennamen des Dataframe ändern
+rownames(na) = c("t0", "t1", "t2")
+na
+##    na.all na.all.p na.ig na.ig.p na.cg na.cg.p
+## t0      0     0.00     0    0.00     0    0.00
+## t1     21     7.95    16   12.12     5    3.78
+## t2     28    10.60    17   12.87    11    8.33
+```
+
+\par \small
+
+$\rightarrow$ Die Dropout-Rate ist zum Follow-up mit 10.6% am höchsten und es haben mehr Teilnehmende aus der IG als aus der KG die Studie vorzeitig abgebrochen.
+
+\par \normalsize
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

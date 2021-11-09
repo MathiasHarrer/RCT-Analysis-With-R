@@ -1,0 +1,298 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Eyeballing und Manipulation der Studiendaten
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Eyeballing
+
+## Eyeballing (I)
+
+**Nach dem Import der Daten ist es sinnvoll, sich einen \alert{Überblick über die Daten} zu verschaffen.**
+
+$\rightarrow$ Eine Möglichkeit dazu ist die Funktion \textsf{glimpse} aus dem package \textsf{tidyverse}:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+library(tidyverse)
+glimpse(data)
+## Rows: 264
+## Columns: 34
+## $ id           <chr> "stress_gui_002", "stress_gui_14~
+## $ group        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,~
+## $ sex          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## ...
+```
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Eyeballing (II)
+
+\metroset{block=fill} 
+\begin{exampleblock}{Vorteile von \textsf{glimpse}}
+\begin{enumerate}
+  \item[$\checkmark$] Anzahl der Beobachtungen/ Personen und Spalten/ Variablen dargestellt
+  \item[$\checkmark$] Übersicht über inkludierte Variablen
+  \item[$\checkmark$] Übersicht über zugeordnete Objektklassen
+  \item[$\checkmark$] Einblick in die Ausprägungen der ersten Personen im Datensatz auf den einzelnen
+\end{enumerate}
+\end{exampleblock}
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+\colorbox{white}{\textbf{ Eyeballing der Studiendaten }}
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+
+# Manipulation von Studiendaten
+
+## Data Wrangling
+
+**\emph{Data Wrangling} bezeichnet den essentiellen Prozess, in dem \alert{Daten für weitere Analysen nutzbar gemacht werden}**
+
+- Data Scientists verbringen z.B. wahrscheinlich die meiste Zeit damit, raw "untidy" data in "tidy" data umzuwandeln.
+- Exzellente Werkzeuge dafür bietet das package **\alert{\textsf{tidyverse}}**
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Variablen den richigen Klassen zuordnen
+
+**Beim Datenimport werden Variablen teilweise falsch klassifiziert. Um die Daten nutzbar zu machen, müssen die Variablen zunächst den richtigen Klassen zugeordnet werden**
+
+Dazu eignen sich die Funktionen \textsf{as.numeric()}, \textsf{as.character()}, \textsf{as.factor()} und \textsf{as.logical()} aus dem \textsf{R base package}:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+data$group <- as.factor(data$group)
+class(data$group)
+## [1] "factor"
+```
+
+$\Rightarrow$ Hierbei wird die betreffende Variable in die Funktion eingespeist und der output durch den Zuweisungsoperator \textsf{<-} wieder in der originalen Variable gespeichert.
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+\colorbox{white}{\textbf{ Korrekte Klassenzuordnung }}
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+
+## Data Slicing (I)
+
+**Es gibt mehrere Wege, um in \textsf{R} Daten zu extrahieren. Z.B.:**
+
+\begin{enumerate}
+\item Mithilfe des Dollarzeichen-Operators (schon besprochen)
+\item Über eckige Klammern \textsf{[]}
+\item Über die Funktion \textsf{filter()} aus dem package \textsf{tidyverse}
+\end{enumerate}
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Data Slicing (II)
+
+**\alert{2.} Über eckige Klammern**
+
+- Generelle Form: **\alert{\textsf{data.frame[rows, columns]}}**
+- Als Argumente können sowohl die Nummer der Reihe oder Spalte als auch der Name der Reihe oder Spalte genutzt werden
+
+```{r, eval=FALSE, comment="##>", background="green"}
+data[2,3]
+## [1] 0
+data[2, "group"]
+## [1] 0
+```
+
+$\rightarrow$ Wird das Argument vor oder nach dem Komma leer gelassen, werden ganze Zeilen oder Spalten extrahiert werden.
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Data Slicing (III)
+
+**\alert{2.} Über eckige Klammern**
+
+\metroset{block=fill} 
+\begin{exampleblock}{\textsf{concatenate} bzw. \textsf{c()} Funktion}
+  Diese Funktion bindet zwei oder mehr Worte oder Zahlen zusammen. \newline
+  Bsp.: \textsf{c(1,5,3)}; \textsf{c("blau", "grün")}  
+\end{exampleblock}
+
+Kombination aus \textsf{c()} Funktion und eckigen Klammern:
+```{r, eval=FALSE, comment="##>", background="green"}
+data[,c("pss.0", "pss.1", "pss.2")]
+##   pss.0 pss.1 pss.2
+## 1    25    15    21
+## 2    22    18    24
+## 3    25    NA    22
+## ...
+```
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Data Slicing (IV)
+
+**\alert{3.} Über die Funktion \textsf{filter()}**
+
+- Generelle Form: **\alert{\textsf{filter(data, \emph{Filterlogik})}}**
+- Auch hierüber können Daten nach Variablennamen gefiltert werden
+- Besonders an dieser Funktion ist allerdings, dass **\alert{Daten einfach basierend auf Zeilenwerten extrahiert}** werden können
+
+```{r, eval=FALSE, comment="##>", background="green"}
+filter(data, age >= 40)
+```
+
+$\rightarrow$ Dieser Befehl extrahiert z.B. einen Datensatz, in dem alle Personen mindestens 40 Jahre alt sind. Auch alle anderen Vergleichsoperatoren wie \textsf{<; ==} etc. können hier angewandt werden.
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## Pipe Operator %>%
+
+\small
+
+**Pipes haben zwei große Vorteile:**
+
+- Funktionen können auf ein Objekt angwandt werden, **\alert{ohne dass das Objekt in den Funktionen jeweils nochmal benannt werden muss}**
+- Mit pipes können **\alert{mehrere Funktionen aneinandergekettet}** werden
+
+```{r, eval=FALSE, comment="##>", background="green"}
+data %>%
+  filter(age < 41) %>%
+  pull(pss.0) %>%
+  mean()
+## [1] 25.73469
+```
+
+\metroset{block=fill} 
+\begin{exampleblock}{\textsf{pull} Funktion}
+  Die \textsf{pull} Funktion ist ein Äquivalent zum Dollarzeichen-Operator, die aber in Pipes genutzt werden kann. Die Funktion "zieht" eine Variable aus dem Datensatz und gibt sie weiter an die nächste Funktion.
+\end{exampleblock}
+
+\par \normalsize
+
+\scriptsize [@harrer2021doing, Kap. 2.5] \par \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil: }} \par \normalsize 
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

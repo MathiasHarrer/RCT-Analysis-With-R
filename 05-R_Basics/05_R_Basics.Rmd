@@ -1,0 +1,772 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: "R Basics: Funktionen, Objekte, Operatoren und Fehlermeldungen"
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \usepackage[pscoord]{eso-pic}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Funktionen
+
+## R als "Taschenrechner"
+
+**Unabhängig von spezifischen Funktionen, können mithilfe von R klassische Rechenaufgaben gelöst werden:**
+
+Probieren wir es selbst:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+(49*6)/7
+1^3 + 5^3 + 3^3
+```
+
+## Was sind Funktionen? (I) {.t}
+
+\small
+
+Funktionen sind **\alert{Kernelemente von R}**: Sie erlauben es, vordefinierte Operationen auszuführen. Es besteht eine Parallele zur **mathematischen Formulierung** einer Funktion $f(x)$; z.B. für die Quadratwurzel:
+
+$$f(x) = \sqrt{x} $$
+
+In R wird eine Funktion definiert, indem erst der \textbf{Name der Funktion} und dahinter in Klammern ihre \textbf{Inputs} (sog. \textbf{Argumente}) aufgeschrieben werden.
+
+
+```{r, eval=FALSE, comment="##>", background="green"}
+Funktionsname(Argument1 = Wert1, Argument2 = Wert2, ...)
+```
+
+In R wird so aus obiger Formel für die Quadratwurzel:
+
+```{r, eval=F}
+sqrt(x = 4)
+```
+
+
+
+## Was sind Funktionen? (II) {.t}
+
+\metroset{block=fill} 
+\begin{block}{Position Matching}
+  Der Argumentname kann auch \textbf{weggelassen} werden, solange die \textbf{Reihenfolge} der Argumente eingehalten wird.
+\end{block}
+
+Beispiel: "`sqrt(x = 4)`" und "`sqrt(4)`" führen zum gleichen Ergebnis, da beides mal `4` als erstes Argument auftaucht.
+
+
+\par \normalsize
+
+
+
+## Beispiele (I)
+
+**\alert{1.} Was ist die Quadratwurzel von 9? Dazu können die Funktionen `sqrt()` nutzen:**
+```{r, eval=FALSE, comment="##>", background="green"}
+sqrt(9)
+## [1] 3
+```
+
+**\alert{2.} Logarithmus `log()` aller Werte der Variable `age` im Datensatz:**
+```{r, eval=FALSE, comment="##>", background="green"}
+log(data$age)
+## [1] 3.850 3.737 3.951 3.135 3.828 ...
+```
+
+\begin{itemize}
+\item [$\rightarrow$] Statt eines konkreten Wertes wird die gesamte Variable in die Funktion eingespeist, indem die Variable \texttt{age} über das Dollarzeichen aus unserem Datensatz \texttt{data} ausgewählt wird.
+\end{itemize}
+
+## Beispiele (II)
+
+**\alert{3.} Mittelwert `mean()` der Variable `pss` zum Post-Zeitunkt:**
+```{r, eval=FALSE, comment="##>", background="green"}
+mean(data$pss.1)
+## [1] NA
+mean(data$pss.1, na.rm = TRUE)
+[1] 20.423
+```
+
+\small
+In R kodiert `NA`, dass ein Wert fehlt.
+
+Das Ergebnis der ersten Zeile Code ist **"not available"** (`NA`), da zum Post-Zeitpunkt **Beobachtungen fehlen** (d.h. `NA` sind) und der Mittelwert so nicht berechnet werden kann. Durch die Spezifikation des Arguments `na.rm` als `TRUE`, wird der Mittelwert nur über die **beobachteten Werte** gebildet und kann somit ausgegeben werden.
+\normalsize
+
+
+## Anmerkungen zu Funktionen (I) {.t}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Funktionen als "Herzstück" von R}
+  Auch deutlich komplexere Funktionen in R funktionieren nach dem gleichen Prinzip: Man gibt die Parameterinformationen ein, die eine Funktion benötigt, und die Funktion nutzt diese Information, um ihre Berechnungen durchzuführen und schließlich das Ergebnis anzuzeigen.
+\end{exampleblock}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-1.5cm] at (current page.center)
+    {\includegraphics[width=0.3\paperwidth]{assets/inputoutput.jpg}};
+\end{tikzpicture}
+
+
+
+## Anmerkungen zu Funktionen (II)
+
+\small
+
+\metroset{block=fill} 
+\begin{block}{Die R Documentation}
+Viele Funktionen in R verlangen mehrere Argumente, und \textbf{niemand} kann die korrekte Nutzung aller Funktionen \textbf{auswendig lernen}!
+  \begin{itemize}
+  \item Die Lösung: Detaillierte Beschreibungen der Funktionen in der \textbf{R Documentation}.
+  \item Die R Documentation kann entweder über \textbf{Help} im rechten unteren Fenster in Rstudio aufgerufen werden; oder direkt via Ausführen von \texttt{?funktionsname} in der Konsole; z.B. \texttt{?mean}.
+  \item \textbf{\alert{Cave}}: Die Dokumentation von Funktionen wird von den jeweiligen Package-Entwicklern selbst geschrieben. Sie ist daher nicht immer gleich informativ oder anfängerfreundlich.
+  \end{itemize}
+\end{block}
+
+Die R Documentation kann im Browser via [rdocumentation.org](https://www.rdocumentation.org/) oder [rdrr.io](https://rdrr.io/) eingesehen werden.
+
+\normalsize
+
+## Anmerkungen zu Funktionen (III)
+
+\metroset{block=fill} 
+\begin{block}{Default Arguments}
+  \begin{itemize}
+  \item Unter "Default Arguments" werden Argumente einer Funktion verstanden, deren Wert \textbf{vordefiniert ist und automatisch genutzt wird}.
+  \item Default Arguments müssen beim Schreiben der Funktion also nur hinzugefügt werden, wenn sie \textbf{explizit von den Voreinstellungen abweichen}.
+  \item Default-Werte einer Funktion können im Abschnitt "Usage" in \textbf{R Documentation} eingesehen werden
+  \end{itemize}
+\end{block}
+
+Siehe z.B. den Documentation-Eintrag für `?mean`:
+
+`mean(x, trim = 0,` \alert{\texttt{na.rm = FALSE}}`, ...)`
+
+
+
+## R als "Functional Programming Language"
+
+Im Gegensatz zu "Object-Oriented Programming Languages" (z.B. Python, JS) konzentrieren sich **\alert{"Functional Programming Languages"}** bei der Problemlösung auf **Funktionen**:
+
+\metroset{block=fill} 
+\begin{block}{Hauptmerkmale von Functional Programming Languages}
+  \begin{itemize}
+  \item \textbf{First-Class Functions:} Vielseitige Einsetzbarkeit von Funktionen.
+  \item \textbf{Pure Functions:} Output der Funktion hängt vom Input ab (d.h. Output reproduzierbar) und keine Nebeneffekte der Funktion (wie z.B. Veränderung des Wertes einer globalen Variable).
+  \end{itemize}
+\end{block}
+
+Auch wenn R diesen Kriterien nicht vollkommen entspricht, kann **R im Kern als Functional Programming Language definiert** werden.
+
+\scriptsize @wickham2019advanced \par \normalsize
+
+
+# Objekte
+
+## Funktionen & Objekte {.t}
+
+**\alert{Objekte}** können als **Gegenspieler** von Funktionen verstanden werden: wir verwenden Funktionen, um Operationen an Objekten durchzuführen!
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=0.4\paperwidth]{assets/func.png}};
+\end{tikzpicture}
+
+
+
+## Der Zuweisungsoperator (I)
+
+\small
+
+Um Objekte in R nutzen zu können, müssen wir diesen einen **Variablennamen** zuweisen.
+Dies ist möglich durch den **\alert{Zuweisungsoperator}** `<-` (_assignment operator_).
+
+```{r, eval=FALSE, comment="##>", background="green"}
+geschlecht <- "Weiblich"
+```
+
+Eine Variablenname kann auch so zugewiesen werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+"Weiblich" -> geschlecht
+geschlecht = "Weiblich"
+assign("geschlecht", "Weiblich")
+```
+
+Zur Inspektion des Objekts kann der Name des Objekts eingegeben werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+geschlecht
+## [1] "Weiblich"
+```
+
+\par \normalsize
+
+
+
+## Der Zuweisungsoperator (II)
+
+\footnotesize
+
+- Sobald Objekte einem Variablennamen zugewiesen worden sind, werden diese in RStudio im **Environment** rechts oben angezeigt.
+
+- Dies bedeutet, dass das Objekt (temporär) in unserer Programmierumgebung **gespeichert** ist, und für weitere Operationen zur Verfügung steht. 
+
+- Existierende Objekte werden **überschrieben**, nicht vorhandene neu erzeugt.
+
+- Mit der `rm` Funktion lassen sich Objekte aus dem Environment löschen, z.B. `rm(geschlecht)`.
+
+
+
+
+\metroset{block=fill} 
+\begin{block}{Cave: Benennung von Objekten}
+  \begin{itemize}
+  \item Objektnamen müssen mit einem Buchstaben beginnen und können nur Buchstaben, Zahlen, Unterstriche und Punkte beinhalten.
+  \item Konsistenz ist immer von Vorteil: z.B. immer \texttt{namen.mit.punkten.trennen} oder \texttt{camelCaseVerwenden}.
+  \end{itemize}
+\end{block}
+
+\scriptsize [@wickham2016r, Kap. 4.2] \par \normalsize
+
+## Die wichtigsten Objektklassen in R
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.3cm] at (current page.center)
+    {\includegraphics[width=0.78\paperwidth]{assets/objektklassen.png}};
+\end{tikzpicture}
+
+
+## Objektklassen (I)
+
+**\underline{\alert{Vektoren}}**
+
+Vektoren (_vectors_) sind eine Sammlung von Werten (z.B. Zahlen, Wörter, Faktorstufen). Besteht ein Vektor nur aus einer Zahl, spricht man von einem **Skalar**.
+
+Ein Vektor kann über die **concatenate**-Funktion `c` gebildet werden:
+
+```{r}
+vector <- c(6, 9, 12, 18)
+vector
+```
+
+
+
+## Objektklassen (II)
+
+\small
+
+**Vektoren kommen in unterschiedlichen "Geschmacksrichtungen":**
+
+- **\alert{\texttt{numeric}}** oder **\alert{\texttt{double}}**: in Zahlen gespeicherte Daten (z.B. Alter).
+- **\alert{\texttt{character}}**: in "Worten"/Buchstaben gespeicherte Daten.
+- **\alert{\texttt{logical}}**: binäre Variablen, die anzeigen, ob eine Bedingung `TRUE` oder `FALSE` ist.
+- **\alert{\texttt{factor}}**: in Zahlen gespeicherte Daten, wobei jede Zahl ein anderes Level einer Variable anzeigt (z.B. `1` = "wenig", `2` = "mittel", `3` = "hoch").
+
+Die Klasse eines Vektors kann mit der `class`-Funktion überprüft werden.
+
+\metroset{block=fill} 
+\begin{block}{Cave: Vektorklassen und weiterführende Analysen}
+  Die Klasse eines Vektors hat Implikationen auf weitere Analyseschritte. Für \texttt{character}s kann z.B. kein Mittelwert berechnet werden.
+\end{block}
+
+\par \normalsize
+
+
+
+## Objektklassen (III)
+
+\small
+
+**Alle Variablen des Datensatzes:** Funktion \texttt{glimpse} aus dem package _{tidyverse}_.
+```{r, eval=FALSE, comment="##>", background="green"}
+library(tidyverse)
+glimpse(data)
+## Rows: 264
+## Columns: 34
+## $ id           <chr> "stress_gui_002", "stress_gui_140", ~
+## $ group        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, ~
+## $ sex          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
+## ...
+```
+
+**Einzelne Variablen:** Anwendung der \texttt{class}-Funktion.
+```{r, eval=FALSE, comment="##>", background="green"}
+class(data$id)
+## [1] "character"
+```
+
+\par \normalsize
+
+
+## Objektklassen (IV)
+
+**\underline{\alert{Dataframes}}**
+
+\footnotesize
+
+Dataframes (`data.frame`) sind die geläufigste **Struktur zur Sammlung von Daten** in R. Sie funktionieren wie einfache **Tabellen**: für jeden Zeileneintrag $m$ gibt es Werte für $n$ verschiedene Variablen.
+
+Dataframes können aus **Vektoren zusammengestellt** werden. Im Gegensatz zur `matrix` können dabei unterschiedliche Vektorklassen (`numeric`, `logical`, `character`, ...) gebündelt werden.
+
+```{r, eval=F}
+name <- c("Lea", "Antonia", "Paula")
+alter <- c(27, 22, NA)
+weiblich <- c(TRUE, TRUE, TRUE)
+data.frame(name, alter, weiblich)
+##      name alter weiblich
+## 1     Lea    27     TRUE
+## 2 Antonia    22     TRUE
+## 3   Paula    NA     TRUE
+```
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=3.3cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[width=0.3\paperwidth]{assets/df.png}};
+\end{tikzpicture}
+
+\par \normalsize
+
+
+
+
+## Objektklassen (V)
+
+**\underline{\alert{Listen}}**
+
+\footnotesize
+
+Listen (`list`s) sind die **flexibelste** Datenstruktur in R. Sie erlauben es, jegliche Art von Objekt in einem "übergeordneten" Objekt zu sammeln (z.B. Dataframes, Vektoren, Arrays, Matrizen, einfache Werte, ...).
+
+\scriptsize
+
+```{r, eval=F}
+df <- data.frame(name, alter, weiblich) # siehe Folie zu data.frames
+df.beschreibung <- "Tabelle SHKs 2021"
+universitäten <- c("TUM", "FAU")
+list(df, df.beschreibung, universitäten)
+
+## [[1]]
+##      name alter weiblich
+## 1     Lea    27     TRUE
+## 2 Antonia    22     TRUE
+## 3   Paula    NA     TRUE
+## [[2]]
+## [1] "Tabelle SHKs 2021"
+## [[3]]
+## [1] "TUM" "FAU"
+```
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=3.3cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[width=0.4\paperwidth]{assets/list.png}};
+\end{tikzpicture}
+
+\par \normalsize
+
+# Operatoren
+
+## Überblick Operatoren
+
+**\alert{$\checkmark$ Einige Operatoren haben wir bereits kennengelernt}**:
+
+- **Grundrechenarten:** `+`, `-`, `*`, `/`
+- **Potenz:** `^2`, `^3`, `^4`, ...
+- **Zuweisungsoperator:** `<-`, `->`, `=`
+- **"Pull"-Operator:** `$`
+
+**\alert{$\rightarrow$ Weitere Operatoren:}**
+
+- **Vergleichsoperatoren:** `>`, `>=`, `<`, `<=`, `!=` (nicht gleich), `==` (gleich)
+- **Boole'sche Operatoren:** `&` (und), `|` (oder), `!` (nicht)
+- **Pipe-Operator:** `%>%`
+
+\scriptsize [@wickham2016r, Kap. 5.2] \par \normalsize
+
+## Vergleichs- und Boole'sche Operatoren
+
+Vergleichs- und Boole'sche Operatoren sind nützlich, um zu bestimmten, ob bestimmte Vektorelemente eine **Bedingung** erfüllen oder nicht. 
+
+```{r, eval=FALSE}
+"Variable" == "variable"
+# [1] FALSE
+```
+
+```{r, eval=FALSE}
+x <- 10
+y <- 20
+x > 5 & y != 10
+## [1] TRUE
+```
+
+
+
+```{r, eval=FALSE}
+data$cesd.0 > 16
+## [1] TRUE TRUE TRUE TRUE TRUE TRUE ...
+```
+
+
+## Der Pipe-Operator
+
+\footnotesize
+
+Der **\alert{Pipe-Operator}** **`%>%`** ist als einziger Operator \underline{nicht} Teil von Base R^[Mit R Version 4.0.0 wurde nun auch ein Base-R Pipe-Operator eingeführt. Dieser benutzt jedoch "**`|>`**" als Symbol.]. Er ist erst verfügbar, sobald das _{tidyverse}_ Package geladen wurde. Pipes haben **zwei große Vorteile**:
+
+- Funktionen können auf ein Objekt angewandt werden, ohne dass das Objekt in der Funktion jeweils nochmal benannt werden muss.
+
+- Mit Pipes können mehrere Funktionen **aneinandergekettet** werden.
+
+```{r, eval=F}
+library(tidyverse)
+data %>% pull(pss.0) %>% mean() %>% sqrt()
+## [1] 5.051627
+```
+
+\metroset{block=fill} 
+\begin{block}{\footnotesize Die \texttt{pull}-Funktion}
+  Die \texttt{pull}-Funktion ist das Äquivalent zum \texttt{\$}-Operator innerhalb von Pipes. Die Funktion "zieht" eine Variable aus dem Datensatz und gibt sie weiter an die nächste Funktion.
+\end{block}
+
+\par \normalsize
+
+
+# Indexing & Slicing
+
+## Data Slicing (I) {.t}
+
+**\alert{Es gibt mehrere Wege, um in R Daten aus einem Dataframe zu extrahieren:}**
+
+\begin{enumerate}
+\item Mithilfe des \textbf{\texttt{\$}-Operators} oder \texttt{pull} (\emph{schon besprochen}).
+\item Über \textbf{eckige Klammern} \texttt{[,]}.
+\item Über die Funktion \textbf{\texttt{filter}} bzw. \textbf{\texttt{select}} aus dem \emph{\{tidyverse\}}.
+\end{enumerate}
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[width=0.5\paperwidth]{assets/subset.png}};
+\end{tikzpicture}
+
+
+## Data Slicing (II)
+
+**Slicing von Dataframes mit Eckigen Klammern**
+
+Subsetting von Dataframes mit eckigen Klammern ist etwas komplexer, erlaubt aber auch größere Flexibilität. Die generelle Form folgt der mathematischen Notation von Matrizen:
+
+
+\begin{align*}
+\texttt{A[2,1]} = 
+\mathbf{A}_{2,1} = 
+\overbrace{\begin{bmatrix}
+a_{11} & a_{12} & \dots & a_{1n}\\
+\alert{a_{21}} & a_{22} & \dots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \dots & a_{mn}
+\end{bmatrix}}^{\text{Variablen}}
+\end{align*}
+
+
+Die allgemeine Form zum Slicing ist also \texttt{data.frame[row, column]}.
+
+## Data Slicing (III)
+
+**Slicing von Dataframes mit Eckigen Klammern**
+
+\footnotesize
+
+Um ein Subset der Daten auszuwählen, brauchen wir einen **Index**. Typischerweise ist dies eine **Zahl**, die die Zeilen- bzw. Spaltennummer(n) angibt.
+
+```{r, eval=F}
+data[3,15]
+## [1] 26
+```
+
+Es können auch mehrere Zeilen/Spalten ausgewählt werden:
+
+```{r, eval=F}
+data[1:3,c(15,17)]
+##   cesd.0 cesd.2
+## 1     18     16
+## 2     22     23
+## 3     26     27
+```
+
+\par \normalsize
+
+## Data Slicing (IV) {.t}
+
+**Slicing von Dataframes mit Eckigen Klammern**
+
+\footnotesize
+
+Wird ein Slot frei gelassen, wird die gesamte Zeile/Spalte ausgewählt:
+
+```{r, eval=F}
+data[,2]
+##     group
+## 1       0
+## 2       0
+## 3       0
+```
+
+
+Eine Indizierung ist auch mit dem **Variablennamen** möglich:
+
+```{r, eval=F}
+data[1,"pss.0"]
+## [1] 25
+```
+
+\par \normalsize
+
+## Data Slicing (V) {.t}
+
+**Slicing von Dataframes mit Eckigen Klammern**
+
+\footnotesize
+
+Besonders hilfreich ist der Einsatz von `logical`s durch Vergleichsoperatoren. So kann z.B. der PSS-Wert aller Personen gefilter werden, die älter als 40 sind: 
+
+```{r, eval=F}
+data[data$age > 40,"pss.0"]
+##      pss.0
+##  1      25
+##  2      22
+##  3      25
+##  [...]
+```
+
+Dies funktioniert, da der Boole'sche Ausdruck als Index fungiert:
+
+```{r, eval=F}
+data$age > 40
+## [1]  TRUE  TRUE  TRUE FALSE  TRUE ...
+```
+
+
+\par \normalsize
+
+## Data Slicing (VI) {.t}
+
+**Slicing von Dataframes mit `filter` und `select`**
+
+\small
+
+Die `filter` und `select`-Funktionen sind Teil des _{tidyverse}_. Sie erleichtern das Filtern und Selegieren von Dataframes, und sind besonders "Pipe-freundlich".
+
+```{r, echo=F, message=F, warning=F}
+library(tidyverse)
+data = read.csv("data/data.csv")
+```
+
+
+```{r}
+data %>% 
+  filter(age > 40, sex == 0) %>% 
+  select(pss.0, pss.1, pss.2) %>% 
+  head(3)
+```
+
+Die `head`-Funktion wird genutzt, um nur die ersten 3 Zeilen auszugeben.
+
+\par \normalsize
+
+
+
+# Fehlermeldungen
+
+## Überblick Fehlermeldungen (I)
+
+\scriptsize
+
+\metroset{block=fill} 
+\begin{block}{Fehlerarten}
+\begin{itemize}
+  \item \textbf{Errors}: Eine Funktion kann nicht ausgeführt und muss gestoppt werden.
+  \item \textbf{Warnings}: Es ist ein Fehler aufgetreten, aber die Funktion kann trotzdem (teilweise) ausgeführt werden.
+  \item \textbf{Messages}: Information, dass eine Aktion für den Benutzer/ die Benutzerin ausgeführt wurde.
+\end{itemize}
+\end{block}
+
+\metroset{block=fill} 
+\begin{block}{Kein Grund zur Panik}
+\begin{itemize}
+  \item Fehlermeldungen in sind am Anfang meist sehr verwirrend, aber "normal".
+  \item Im Laufe der Zeit werden Fehlermeldungen immer informativer und leichter zu entziffern.
+  \item Googeln der Fehlermeldung ist hilfreich. Dazu sollte die Ausagesprache aber zuvor auf Englisch gestellt werden: \texttt{sys.setenv(LANG = "en")}.
+\end{itemize}
+\end{block}
+
+\par \normalsize
+
+\scriptsize [@wickham2016r, Kap. 6.2] \par \normalsize
+
+## Überblick Fehlermeldungen (II)
+
+**Im Skript in RStudio werden typische Fehler automatisch markiert**
+
+Syntaxfehler werden mit einem roten Kreuz und potentielle Probleme mit gelbem Ausrufezeichen am linken Rand markiert:
+
+\includegraphics[width=0.3\textwidth]{assets/RStudio_error.png}
+\includegraphics[width=0.8\textwidth]{assets/RStudio_potential_problem.png}
+
+\scriptsize [@wickham2016r, Kap. 6.2] \par \normalsize
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+## Übungsaufgaben 
+
+
+
+\scriptsize
+
+\begin{multicols}{2}
+
+  \null \vfill
+  \scriptsize
+  \begin{enumerate}
+    \item Log-transformiere die Variable \texttt{age} in \texttt{data} und speichere das Ergebnis unter dem Namen \texttt{age.log}.
+    \item Quadriere die Werte in \texttt{pss.1} und speichere das Ergebnis unter dem Namen \texttt{pss.1.squared}.
+    \item Berechne den Mittelwert und die Standardabweichung ($SD$) der Variable \texttt{cesd.2}. Nutze bei Bedarf das Internet um herauszufinden, welche Funktion in R die Standardabweichung berechnet.
+    \item Packe den Mittelwert und die Standardabweichung von \texttt{cesd.2} in eine Liste.
+    \item Hat die Variable \texttt{mbi.0} die passende Objektklasse \texttt{numeric}? Überprüfe dies mit R Code.
+  \end{enumerate}
+  \vfill \null
+
+\columnbreak
+
+
+  \null \vfill
+  \scriptsize
+  \begin{enumerate}
+  \setcounter{enumi}{5}
+    \item Lege im Dataframe \texttt{data} zwei neue Variablen an: (1) \texttt{age.50plus}, eine \texttt{logical}-Variable die mit \texttt{TRUE} und \texttt{FALSE} angibt, ob das Alter \texttt{age} einer Person $\geq$ 50 ist; (2) \texttt{pss.diff}, eine Variable die den Unterschied zwischen \texttt{pss.0} und \texttt{pss.1} für jede Person angibt.
+    \item Ändere den Wert von \texttt{ft.helps} in der dritten und vierten Zeile zu \texttt{NA}.
+    \item Mit der \texttt{order} Funktion kann für Variablen ein Index gebildet werden. Dieser Index zeigt an, in welcher Reihenfolge die Elemente korrekt geordnet wären. Nutze die R Documentation (\texttt{?order}), um mehr über die Funktion zu erfahren. Nutze dann diese Funktion in einer eckigen Klammer, um \texttt{data} dem Alter \texttt{age} nach zu ordnen!
+  \end{enumerate}
+  \vfill \null
+  \par \normalsize
+\end{multicols}
+
+\only<1>{%
+\tikz[overlay,remember picture]
+\node[text=protectBlue] at ([xshift=0cm,yshift=3.2cm]current page.center){\textbf{Fragen \& Antworten:} \href{https://www.protectlab.org/workshop/rct-evaluation-in-r/r-entdecken/slicing/\#uebung}{protectlab.org/workshop/rct-evaluation-in-r/r-entdecken/slicing/\#uebung}};
+}
+
+\par \normalsize
+
+## $~$ {.t}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+
+\huge
+
+\colorbox{white}{\textbf{\alert{Fragen?}}}
+
+\colorbox{white}{\textbf{\alert{Anmerkungen?}}}
+
+\colorbox{white}{\textbf{\alert{Kommentare?}}}
+
+
+\normalsize
+
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

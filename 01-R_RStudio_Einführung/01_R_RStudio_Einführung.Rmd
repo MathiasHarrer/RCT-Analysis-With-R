@@ -1,0 +1,238 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Einführung in R und RStudio
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+## Lerninhalte
+
+**\alert{Block I}** | **R Entdecken** \newline
+\checkmark Einführung in R & RStudio \newline
+\checkmark R Basics: Objektklassen, Funktionen, Operatoren, \dots \newline
+
+**\alert{Block II}** | **Einführung & Hintergrund** \newline
+\checkmark Methodischer Hintergrund von randomisierten Studien \newline
+\checkmark Import und Manipulation von Studiendaten mit R \newline
+\checkmark Schätzung fehlender Werte \newline
+
+**\alert{Block III}** | **Analysieren & Verstehen** \newline
+\checkmark Statistische Wirksamkeitsanalyse \newline
+\checkmark Alphakorrektur, Effektstärkenberechnung, Visualisierung, ...
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=2.5cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/rs.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=0.2cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/causal.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=2cm]{assets/raincloud.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=0cm] at (current page.center)
+    {\includegraphics[width=12cm, height=2.3cm]{assets/opacity.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-3cm] at (current page.center)
+    {\includegraphics[width=12cm, height=4cm]{assets/opacity.png}};
+\end{tikzpicture}
+
+
+# Was ist R?
+
+## Über R (I)
+
+**R ist eine kostenfreie Programmiersprache und Softwareumgebung, mit besonderen Schwerpunkt bei der \alert{statistischen Datenanalyse}**.
+
+- R unterscheidet sich von **Graphical User Interface** (GUI)-basierten Statistikprogrammen (wie IBM SPSS oder STATA). GUI-Software kann Analysen auf "Knopfdruck" durchführen, ist aber stets auf die Voreinstellungen der Hersteller begrenzt.
+
+- R fordert im Gegenzug  **mehr Hintergrundwissen**, bietet als vollständige Programmiersprache **maximale Flexibilität** - in R ist \underline{alles} implementierbar!
+
+- Überall auf der Welt können Experten zur Weiterentwicklung von R beitragen, vor allem durch sogenannte **Packages**.
+
+## Über R (II)
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=-2.5cm,yshift=1.5cm] at (current page.center)
+    {\includegraphics[height=4cm]{assets/spss.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=2.3cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=4cm]{assets/rconsole.png}};
+\end{tikzpicture}
+
+
+## Über R (III)
+
+**Die Programmiersprache R muss wie jede Sprache erlernt & geübt werden**
+
+- Frustration ist ein natürlicher Teil des Lernprozesses. Aber die anfängliche Anstrengung wird sich lohnen:
+\begin{center}
+\includegraphics[width=0.45\textwidth]{assets/iceberg.jpg}
+\end{center}
+
+
+**\alert{Mit etwas Zeit und Mühe kann jede:r R erlernen!}**
+
+
+
+# Was ist RStudio?
+
+## RStudio (I) {.t}
+
+**RStudio ist ein Computerprogramm, das es ermöglicht, R auf "einfachere" Weise zu nutzen** (_integrated development environment_; IDE).
+
+RStudio erleichtert u.a.
+
+- das Schreiben und Ausführen von R Code.
+- den Umgang mit Daten, Packages und Output.
+
+
+\metroset{block=fill} 
+\begin{block}{Cave: R versus RStudio}
+  RStudio ist nicht identisch zu R: Zur Nutzung von RStudio muss R (die "Sprache") bereits installiert sein.
+\end{block}
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=3cm, yshift=-3cm] at (current page.center)
+    {\includegraphics[height=1cm]{assets/rstudio.png}};
+\end{tikzpicture}
+
+## RStudio (II) 
+
+**RStudio wird beim ersten Öffnen wahrscheinlich so aussehen:**
+\begin{center}
+\includegraphics[width=1\textwidth]{assets/RStudio_noscript_harrer.png}
+\end{center}
+
+\scriptsize [@harrer2021doing, Kap. 2.1] \par \normalsize
+
+## RStudio (III) 
+
+**Fenster in RStudio**
+
+\metroset{block=fill} 
+\begin{exampleblock}{Console}
+  Die Konsole ist das Herzstück von R: Hinter dem Pfeil unten links kann R Code eingegeben und durch das Drücken der Entertaste ausgeführt werden.
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Environment}
+  Hier werden alle Objekte, die wir in R definieren, angezeigt.
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Files, Plots, Packages and Help}
+  Dieses Fenster erfüllt mehrere Funktionen: Hier werden z.B. Ordner auf dem Computer, Graphen und installierte \textbf{packages} angezeigt. Auch Hilfeseiten sind hier zu finden.
+\end{exampleblock}
+
+
+
+## RStudio (IV) 
+
+**Ein viertes Fenster, der Editor, öffnet sich über _"File > New File > R Script"_**
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{assets/rstudio-editor_wickham.png}
+\end{center}
+
+\metroset{block=fill} 
+\begin{exampleblock}{Editor}
+ In R Skripten im Editor kann wichtiger Code gespeichert werden. R Skripte können später über \emph{File > Save} in einer Datei mit der Erweiterung ".R" auf dem Computer gespeichert werden.
+\end{exampleblock}
+
+
+## RStudio (V) 
+
+\metroset{block=fill} 
+\begin{exampleblock}{Cave: Unterscheidung Editor und Konsole}
+  In der Konsole wird R Code ausgeführt und im Editor lediglich gespeichert. Wenn im Editor geschriebener Code ausgeführt werden soll, muss er dementsprechend der \textbf{Konsole übergeben werden}. \linebreak Dazu wird der relevante Code mit der Maus ausgewählt und entweder über den Button \textbf{"Run"} oben rechts im Editor oder die Tastenkombination \textsf{Ctrl/ Cmd + Enter} ausgeführt.
+\end{exampleblock}
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+

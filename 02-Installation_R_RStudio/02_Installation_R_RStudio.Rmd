@@ -1,0 +1,121 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Installation von R und RStudio auf dem PC oder MAC
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Installation von R
+
+## Herunterladen von R
+
+**R kann von der Comprehensive R Archive Network (CRAN) Website heruntergeladen werden**
+
+- für Windows: \href{https://cran.r-project.org/bin/windows/base/}{cran.r-project.org/bin/windows/base}
+
+- für macOS: \href{https://cran.r-project.org/bin/macosx/}{cran.r-project.org/bin/macosx}
+
+Eine **detaillierte Anleitung** zur Installation findet sich z.B. hier: \href{http://methods-berlin.com/wp-content/uploads/Installation.html}{Methodengruppe Berlin}.
+
+
+## Versionen von R {.t}
+
+**Es werden regelmäßig Updates und somit neue Versionen für R zur Verfügung gestellt**
+
+\metroset{block=fill} 
+\begin{exampleblock}{Cave: Veraltete Versionen von R}
+  Sollte die Version von \textsf{R} zu veraltet sein, kann es dazu kommen, dass bestimmte Dinge nicht mehr (wie intendiert) funktionieren. R sollte deshalb ca. einmal im Jahr upgedatet werden, indem man die Software neu installiert.
+\end{exampleblock}
+
+
+
+# Installation von RStudio
+
+\metroset{block=fill} 
+\begin{block}{Cave: R als Vorbedingung}
+  Um RStudio nutzen zu können, muss R bereits vorinstalliert sein.
+\end{block}
+
+**RStudio kann von folgender Website heruntergeladen werden:**
+
+- \href{https://www.rstudio.com/products/rstudio/download/}{rstudio.com/products/rstudio/download}.
+
+- Die **kostenfreie Version** von RStudio Desktop ist für unsere Zwecke ausreichend.
+
+Eine **detaillierte Anleitung** zur Installation findet sich z.B. wieder hier: \href{http://methods-berlin.com/wp-content/uploads/Installation.html}{Methodengruppe Berlin}.
+
+
+
+
+

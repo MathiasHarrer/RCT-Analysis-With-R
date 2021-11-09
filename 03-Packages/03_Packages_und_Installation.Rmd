@@ -1,0 +1,215 @@
+---
+title: Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}
+subtitle: Packages
+author: Prof. Dr. David Ebert & Mathias Harrer
+date: Graduiertenseminar TUM-FGZ
+institute: Psychology & Digital Mental Health Care, Technische Universität München
+output: binb::metropolis
+fontsize: 11pt
+bibliography: assets/bib.bib
+csl: assets/apa.csl
+monofont: "Fira Code"
+mainfont: "Fira Sans"
+header-includes: |
+  ```{=latex}
+  \usepackage{calc}
+  \usepackage{mathspec}
+  \usepackage{booktabs}
+  \usepackage{amsmath,amsthm}
+  \makeatletter
+  \let\@@magyar@captionfix\relax
+  \makeatother
+  \usepackage{xcolor}
+  \usepackage{tikz}
+  \definecolor{protectBlue}{RGB}{48,124,148}
+  \definecolor{protectGreen}{RGB}{161, 198, 66}
+  \definecolor{verywhite}{rgb}{1, 1, 1}
+  \usepackage{multicol}
+  \hypersetup{colorlinks,citecolor=protectGreen,
+    filecolor=red,linkcolor=protectGreen,urlcolor=blue}
+  \setbeamercolor{progress bar}{fg=protectGreen}
+  \setbeamercolor{alerted text}{fg=protectGreen}
+  \setbeamercolor{frametitle}{bg=protectBlue}
+  \setbeamercolor{normal text}{fg=protectBlue}
+  \titlegraphic{%
+  \hspace*{6cm}~%
+  \includegraphics[width=2cm]{assets/logo/tum-lightblue}
+  \hspace*{0.3cm}~%
+  \includegraphics[width=2cm]{assets/logo/protect}}
+  \setbeamertemplate{frame footer}{Evaluation Randomisiert-Kontrollierter Studien und Experimente mit \textsf{R}}%         <- !!SET FOOTER TITLE!!
+  \makeatletter
+  \setlength{\metropolis@frametitle@padding}{2.2ex}
+  \setbeamertemplate{footline}{%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0.7ex]{footline}
+          \usebeamerfont{page number in head/foot}%
+          \usebeamertemplate*{frame footer}
+          \hfill%
+          \usebeamertemplate*{frame numbering}
+      \end{beamercolorbox}%
+  }
+  \setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[%
+        wd=\paperwidth,%
+        sep=0pt,%
+        leftskip=\metropolis@frametitle@padding,%
+        rightskip=\metropolis@frametitle@padding,%
+      ]{frametitle}%
+    \metropolis@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \metropolis@frametitlestrut@end%
+    \hfill
+    \includegraphics[height=2ex,keepaspectratio]{assets/logo/tum_white}
+    \end{beamercolorbox}%
+  }
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newenvironment{CSLReferences}[3][0]%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  ```
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
+```
+
+
+# Packages in R
+
+## Was sind Packages?
+
+**Packages sind \alert{Sets von Funktionen}:**
+
+\begin{center}
+\includegraphics[width=0.2\textwidth]{assets/open_package.png}
+\end{center}
+
+\small
+- Packages stellen eine **Sammlung von R-Funktionen** dar, die für ein bestimmtes Problem oder eine bestimmte Anwendung nützlich sein können. Das package _{ggplot2}_ stellt z.B. Funktionen zum Erstellen von Grafiken bereit.
+- Packages können von **Experten** auf der ganzen Welt **entwickelt werden** und dann von **jedermann heruntergeladen** und in R genutzt werden.
+- Allein das _Comprehensive R Archive Network_ listet derzeit mehr als **16.000 installierbare Packages**.
+\par \normalsize
+
+
+
+## Base R
+
+- Manche Funktionen, Operatoren, Datensets und Plotting Tools sind bereits in R "vorinstalliert". Viele dieser Funktionen existieren bereits seit der Entwicklung von R Anfang der 90er Jahre.
+
+- Man spricht hierbei von **\alert{"Base R"}**, das verwendet werden kann, ohne weitere Packages installieren zu müssen. 
+
+- Manche Packages, wie _{stats}_ oder _{MASS}_, werden bei der Erstinstallation von R automatisch mitinstalliert, und gelten daher auch als "Base R".
+
+
+
+
+## Das _{tidyverse}_ (I)
+
+Das _{tidyverse}_ ist kein einzelnes Package, sondern **bündelt eine ganze Reihe von Packages**. Ziel dieser Packages ist das **Erleichtern der Manipulation und Visualisierung** von Daten in R.
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{assets/tidyverse.png}
+\end{center}
+
+\scriptsize \href{https://www.tidyverse.org/}{www.tidyverse.org} [@wickham2019welcome]\par 
+
+## Das _{tidyverse}_ (II)
+
+**\textsf{tidyverse} stellt u.A. folgende Packages zur Verfügung:**
+
+\metroset{block=fill} 
+\begin{exampleblock}{\emph{\{ggplot2\}}}
+ \begin{itemize}
+ \item Nutzung zur Erstellung von Grafiken
+ \end{itemize}
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{\emph{\{dplyr\}}}
+ \begin{itemize}
+ \item Nutzung zur Manipulation von Daten
+ \end{itemize}
+\end{exampleblock}
+
+\metroset{block=fill} 
+\begin{exampleblock}{\emph{\{purrr\}}}
+ \begin{itemize}
+ \item Erleichtert "Functional Programming" in \textsf{R}
+ \item Erleichtert Arbeit mit Funktionen und Vektoren
+ \end{itemize}
+\end{exampleblock}
+
+
+
+## Installation von Packages
+
+\small
+
+Folgende Funktion muss mit dem Namen des package als Argument in die Konsole eingetragen und mit der Taste Enter ausgeführt werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+install.packages("package")
+```
+
+\metroset{block=fill} 
+\begin{block}{\small Info}
+  Installierte Packages werden der \emph{system library} hinzugefügt und unter \emph{Packages} (in RStudio im rechten unteren Fenster zu finden) aufgelistet.
+\end{block}
+
+Um ein installiertes Package zu nutzen, muss es aus der \emph{system library} geladen werden:
+
+```{r, eval=FALSE, comment="##>", background="green"}
+library(package)
+```
+
+\metroset{block=fill} 
+\begin{block}{\small Cave}
+  Packages müssen nur einmal installiert, aber jedes Mal neu geladen werden, wenn \textsf{R} neu gestartet wird.
+\end{block}
+
+\par \normalsize
+
+
+
+## $~$
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.6cm] at (current page.center)
+    {\includegraphics[width=1.05\paperwidth]{assets/bg-praxis.jpg}};
+\end{tikzpicture}
+
+\Huge
+\colorbox{white}{\textbf{ Praxis-Teil }} \par \normalsize 
+
+\colorbox{white}{\textbf{ Installation des \emph{\{tidyverse\}} }}
+
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+$$~$$
+
+## Tipps zum Umgang mit Packages
+
+\small
+\begin{enumerate}
+  \item[$\checkmark$] \textbf{Der Befehl \texttt{install.packages()} wird normalerweise nicht in \textsf{R} Skripte mit aufgenommen:} wenn Skripte mit anderen geteilt werden, gilt es als "unziemlich", Settings auf Computern von anderen zu ändern.
+  \item[$\checkmark$] Zur besseren Übersicht wird empfohlen, \textbf{alle Packages}, die zur Ausführung des R Skripts geladen werden müssen, \textbf{an den Anfang des Skripts} zu schreiben (sogenannte "Dependencies").
+  \item[$\checkmark$] Manche Funktionen werden in verschiedenen Packages unterschiedlich genutzt. Mit folgender Schreibweise kann \textbf{genau spezifiziert werden, aus welchem Package die Funktion genommen werden soll: \texttt{package::function()}}.
+  \newline $\rightarrow$ Beispiel: \texttt{ggplot2::ggplot()} bedeutet, dass die \texttt{ggplot} Funktion aus dem \emph{\{ggplot2\}} Package genutzt wird.
+\end{enumerate}
+
+\scriptsize [@wickham2016r, Kap. 3] \par \normalsize
+
+# Referenzen
+
+## Referenzen {.allowframebreaks}
+
+\scriptsize
+
+
+
+
+

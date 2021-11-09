@@ -123,6 +123,7 @@ Methoden sind aber auch übertragbar auf Bereiche wie Pädagogik, Soziologie, Ö
 
 ## Lerninhalte
 
+
 **\alert{Block I}** | **R Entdecken** \newline
 \checkmark Einführung in R & RStudio \newline
 \checkmark R Basics: Objektklassen, Funktionen, Operatoren, \dots \newline
@@ -150,6 +151,7 @@ Methoden sind aber auch übertragbar auf Bereiche wie Pädagogik, Soziologie, Ö
   \node [xshift=4.5cm,yshift=-2cm] at (current page.center)
     {\includegraphics[height=2cm]{assets/raincloud.png}};
 \end{tikzpicture}
+
 
 
 ## $~$
@@ -192,6 +194,37 @@ $$~$$
 
 \includegraphics[width=1\textwidth]{assets/panic.jpg}
 
+# R & RCT-Analyse Lernen: Warum Es Den Aufwand Wert Ist
+
+## R kann (fast) alles!
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-0.4cm] at (current page.center)
+    {\includegraphics[height=8cm]{assets/r-capa.png}};
+\end{tikzpicture}
+
+
+## RCTs gelten als methodischer "Goldstandard"...
+
+...und sind ein über Disziplinen hinweg weit verbreitetes Forschungsdesign.
+
+```{r pubmed, fig.cap='Hits für "randomi?ed controlled trial" in PubMed, 1965-2020.', echo=F, message=F, warning = FALSE, fig.align='center', fig.width=3, fig.height=2}
+library(ggplot2)
+options(scipen = 999)
+
+read.csv("data/pubmed.csv", skip = 1)[-(1:2),] -> pubmed
+
+ggplot(pubmed, aes(x = Year, y = Count)) +
+  geom_line() +
+  geom_area(fill = "lightgrey") +
+  theme_minimal() +
+  #scale_y_continuous(breaks = seq(0, 125e+4, by = 25e+4)) +
+  xlab("") + ylab("") 
+
+```
+
+
+# Begleit-Website
 
 ## Begleit-Website {.t}
 

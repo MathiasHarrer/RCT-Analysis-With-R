@@ -77,6 +77,49 @@ header-includes: |
 knitr::opts_chunk$set(cache=TRUE, comment = "#>", background = '#F7F7F7')
 ```
 
+
+## Lerninhalte
+
+**\alert{Block I}** | **R Entdecken** \newline
+\checkmark Einführung in R & RStudio \newline
+\checkmark R Basics: Objektklassen, Funktionen, Operatoren, \dots \newline
+
+**\alert{Block II}** | **Einführung & Hintergrund** \newline
+\checkmark Methodischer Hintergrund von randomisierten Studien \newline
+\checkmark Import und Manipulation von Studiendaten mit R \newline
+\checkmark Schätzung fehlender Werte \newline
+
+**\alert{Block III}** | **Analysieren & Verstehen** \newline
+\checkmark Statistische Wirksamkeitsanalyse \newline
+\checkmark Alphakorrektur, Effektstärkenberechnung, Visualisierung, ...
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=2.5cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/rs.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=0.2cm] at (current page.center)
+    {\includegraphics[height=1.5cm]{assets/causal.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=4.5cm,yshift=-2cm] at (current page.center)
+    {\includegraphics[height=2cm]{assets/raincloud.png}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=2.5cm] at (current page.center)
+    {\includegraphics[width=12cm, height=2cm]{assets/opacity.png}};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[remember picture,overlay]  
+  \node [xshift=0cm,yshift=-3cm] at (current page.center)
+    {\includegraphics[width=12cm, height=4cm]{assets/opacity.png}};
+\end{tikzpicture}
+
+
 # Randomisiert-Kontrollierte Studien: Kernmerkmale
 
 ## Definition (I)
