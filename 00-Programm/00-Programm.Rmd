@@ -201,7 +201,8 @@ $$~$$
 \begin{tikzpicture}[remember picture,overlay]  
   \node [xshift=0cm,yshift=-0.4cm] at (current page.center)
     {\includegraphics[height=8cm]{assets/r-capa.png}};
-\end{tikzpicture}
+\end{tikzpicture} 
+
 
 
 ## RCTs gelten als methodischer "Goldstandard"...
